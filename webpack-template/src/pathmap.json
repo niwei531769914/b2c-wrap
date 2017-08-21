@@ -1,6 +1,4 @@
 {
-  "zepto": "js/lib/zepto.js",
-  "jquery": "js/lib/jquery-1.12.4.js",
-  "avalon": "js/lib/avalon.shim.js",
+  "zepto": "scripts/lib/zepto.js",
   "commonCss":"css/common.css"
 }

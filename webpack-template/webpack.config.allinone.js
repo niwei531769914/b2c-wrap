@@ -1,55 +1,58 @@
 /*
  * @Author:niwei
- * @Date: 2017-04-14
+ * @Date: 2017-06-14
  * @根据网上题材改编而来
  */
 'use strict';
 
-var webpack = require("webpack");
-var path = require("path");
-var glob = require('glob');
+let webpack = require("webpack");
+let path = require("path");
+let glob = require('glob');
 
 //路径定义
-var srcDir = path.resolve(process.cwd(), 'src');
-var distDir = path.resolve(process.cwd(), 'dist');
-var nodeModPath = path.resolve(__dirname, './node_modules');
-var pathMap = require('./src/pathmap.json');
-var publicPath = '/';
+let srcDir = path.resolve(process.cwd(), 'src');
+let distDir = path.resolve(process.cwd(), 'dist');
+let nodeModPath = path.resolve(__dirname, './node_modules');
+let pathMap = require('./src/pathmap.json');
+let publicPath = '/dist/';
+
 //插件定义
-var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+let CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
+let HtmlWebpackPlugin = require('html-webpack-plugin');
+let ExtractTextPlugin = require('extract-text-webpack-plugin');
+let UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+let autoprefixer = require('autoprefixer');
 
 //入口文件定义
-var entries = function () {
-    var jsDir = path.resolve(srcDir, 'js');
-    var entryFiles = glob.sync(jsDir + '/*.{js,jsx}');
-    var map = {};
+let entries = function () {
+    let jsDir = path.resolve(srcDir, 'scripts');
+    let entryFiles = glob.sync(jsDir + '/*.{js,jsx}');
+    let map = {};
 
-    for (var i = 0; i < entryFiles.length; i++) {
-        var filePath = entryFiles[i];
-        var filename = filePath.substring(filePath.lastIndexOf('\/') + 1, filePath.lastIndexOf('.'));
+    for (let i = 0; i < entryFiles.length; i++) {
+        let filePath = entryFiles[i];
+        let filename = filePath.substring(filePath.lastIndexOf('\/') + 1, filePath.lastIndexOf('.'));
         map[filename] = filePath;
     }
     return map;
 };
+
 //html_webpack_plugins 定义
-var html_plugins = function () {
-    var entryHtml = glob.sync(srcDir + '/*.html');
-    var r = [];
-    var entriesFiles = entries();
-    for (var i = 0; i < entryHtml.length; i++) {
-        var filePath = entryHtml[i];
-        var filename = filePath.substring(filePath.lastIndexOf('\/') + 1, filePath.lastIndexOf('.'));
-        var conf = {
+let html_plugins = function () {
+    let entryHtml = glob.sync(srcDir + '/*.html');
+    let r = [];
+    let entriesFiles = entries();
+    for (let i = 0; i < entryHtml.length; i++) {
+        let filePath = entryHtml[i];
+        let filename = filePath.substring(filePath.lastIndexOf('\/') + 1, filePath.lastIndexOf('.'));
+        let conf = {
             template: 'html!' + filePath,
             filename: filename + '.html'
-        }
+        };
         //如果和入口js文件同名
         if (filename in entriesFiles) {
             conf.inject = 'body';
-            conf.chunks = ['vendor', filename];
+            conf.chunks = ['common', filename];
         }
         //如果页面中不存在引入js
         else {
@@ -64,24 +67,27 @@ var html_plugins = function () {
 };
 
 module.exports = function(options){
+
+    //css
     options = options || {};
-    var debug = options.debug !==undefined ? options.debug :true;
+    let debug = options.debug !==undefined ? options.debug :true;
 
-    var plugins = [];
+    let plugins = [];
 
-    var extractCSS;
-    var cssLoader;
-    var sassLoader;
+    let extractCSS;
+    let cssLoader;
+    let lessLoader;
+
 
     plugins.push(new CommonsChunkPlugin({
-        name: 'vendor',
+        name: 'common',
         minChunks: Infinity
     }));
 
     if(debug){
-        extractCSS = new ExtractTextPlugin('styles/[name].css?[contenthash]');
-        cssLoader = extractCSS.extract(['css']);
-        sassLoader = extractCSS.extract(['css', 'sass']);
+        extractCSS = new ExtractTextPlugin('styles/[name].css');
+        cssLoader = extractCSS.extract([ 'css-loader', 'postcss-loader' ]);
+        lessLoader = extractCSS.extract([ 'css-loader', 'less-loader' ]);
 
         plugins.push(extractCSS)
     }else{
@@ -89,20 +95,22 @@ module.exports = function(options){
             // 当allChunks指定为false时，css loader必须指定怎么处理
             allChunks: false
         });
-        cssLoader = extractCSS.extract(['css?minimize']);
-        sassLoader = extractCSS.extract(['css?minimize', 'sass']);
-
+        cssLoader = extractCSS.extract(['css-loader', 'postcss-loader' ]);
+        lessLoader = extractCSS.extract([ 'css-loader', 'less-loader' ]);
+        //压缩js
         plugins.push(
             extractCSS,
+            //引入的React切换到产品版本
+            new webpack.DefinePlugin({
+                'process.env.NODE_ENV': '"production"'
+            }),
+            // 清除打包后的文件中的注释, 和copyright信息
             new UglifyJsPlugin({
                 compress: {
                     warnings: false
                 },
                 output: {
                     comments: false
-                },
-                mangle: {
-                    except: ['$', 'exports', 'require','avalon']
                 }
             }),
             new webpack.optimize.DedupePlugin(),
@@ -111,16 +119,17 @@ module.exports = function(options){
     }
 
     //config
-    var config = {
+    let config = {
+
         entry: Object.assign(entries(), {
-            // 用到什么公共lib（例如jquery.js），就把它加进vendor去，目的是将公用库单独提取打包
-            'vendor': ['jquery', 'avalon']
+            // 用到什么公共lib（例如zepto.js），就把它加进vendor去，目的是将公用库单独提取打包
+            'common': ['zepto','react','react-dom']
         }),
         output: {
             path: path.join(__dirname, "dist"),
-            filename: "scripts/[name].js",
-            chunkFilename: '[chunkhash:8].chunk.js'
-           // publicPath: publicPath
+            filename: "scripts/[name].[chunkhash:5].js",
+            chunkFilename: '/scripts/[name]/[chunkhash:5].min.js',
+            publicPath: publicPath
         },
         module: {
             loaders: [
@@ -137,16 +146,19 @@ module.exports = function(options){
                     loader: 'url?limit=10000&name=fonts/[hash:8].[name].[ext]'
                 },
                 {test: /\.(tpl|ejs)$/, loader: 'ejs'},
-                {test: /\.css$/, loader: cssLoader},
-                {test: /\.scss$/, loader: sassLoader}
-            ]
+                {test: /\.css$/,exclude: /^node_modules$/,loader: cssLoader,options:{minimize:true}},
+                {test: /\.less$/,exclude: /^node_modules$/,loader: lessLoader,options:{minimize:true}},
+                {test: /\.js$/, exclude: /^node_modules$/, loader: 'babel'},
+                {test: /\.jsx$/, exclude: /node_modules/, loaders: ['jsx', 'babel'],}
+            ],
         },
         resolve: {
-            extensions: ['', '.js', '.css', '.scss', '.tpl', '.png', '.jpg'],
+            extensions: ['', '.js', '.jsx', '.css', '.scss', '.tpl', '.png', '.jpg'],
             root: [srcDir, nodeModPath],
             alias: pathMap,
-          //  publicPath: '/'
+            publicPath: '/'
         },
+        //合拼插件组
         plugins: plugins.concat(html_plugins())
     };
 

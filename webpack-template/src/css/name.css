@@ -1,0 +1,12 @@
+.name {
+  margin: 20px;
+}
+.name .back {
+  font-size: 2px;
+}
+.name .telephone {
+  font-size: 20px;
+}
+.name .active {
+  background: #000000;
+}

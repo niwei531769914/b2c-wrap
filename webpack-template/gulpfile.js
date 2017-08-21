@@ -3,76 +3,79 @@
  */
 'use strict';
 
-var gulp = require('gulp');
-var webpack = require('webpack');
+let gulp = require('gulp');
+let autoprefixer = require('gulp-autoprefixer');
+let imagemin = require('gulp-imagemin');
+let webpack = require('webpack');
+
+let connect = require('gulp-connect');
+let proxy = require('http-proxy-middleware');
 
 //用于gulp传递参数
-var minimist = require('minimist');
+//轻量级的命令行参数解析引擎
+let minimist = require('minimist');
 
-var gutil = require('gulp-util');
+let gutil = require('gulp-util');
 
-var src = process.cwd() + '/src';
-var assets = process.cwd() + '/dist';
+// Load plugins
+let $ = require('gulp-load-plugins')();
 
-var knownOptions = {
+
+let src = process.cwd() + '/src';
+let assets = process.cwd() + '/dist';
+
+//根据命令行参数来判断流程
+let knownOptions = {
     string: 'env',
     default: {env: process.env.NODE_ENV || 'production'}
 };
 
-var options = minimist(process.argv.slice(2), knownOptions);
 
-var webpackConf = require('./webpack.config');
-var webpackConfDev = require('./webpack-dev.config');
+//获取命令行参数
+let options = minimist(process.argv.slice(2), knownOptions);
 
-var remoteServer = {
-    host: '192.168.56.129',
-    remotePath: '/data/website/website1',
-    user: 'root',
-    pass: 'password'
-};
-var localServer = {
-    host: '192.168.56.130',
-    remotePath: '/data/website/website1',
-    user: 'root',
-    pass: 'password'
-}
+let webpackConf = require('./webpack.config');
+let webpackConfDev = require('./webpack-dev.config');
 
 //check code
 gulp.task('hint', function () {
-    var jshint = require('gulp-jshint')
-    var stylish = require('jshint-stylish')
+    //是用来检测javascript的语法错误的
+    let jshint = require('gulp-jshint');
+    let stylish = require('jshint-stylish');
 
     return gulp.src([
-        '!' + src + '/js/lib/**/*.js',
-        src + '/js/**/*.js'
+        '!' + src + '/scripts/lib/**/*.js',
+        src + '/scripts/**/*.js'
     ])
-        .pipe(jshint())
-        .pipe(jshint.reporter(stylish));
-})
+});
 
 // clean asserts
 gulp.task('clean', ['hint'], function () {
-    var clean = require('gulp-clean');
+    let clean = require('gulp-clean');
     return gulp.src(assets, {read: true}).pipe(clean())
 });
 
 //run webpack pack
 gulp.task('pack', ['clean'], function (done) {
-    var _conf = options.env === 'production' ? webpackConf : webpackConfDev;
+    let _conf = options.env === 'production' ? webpackConf : webpackConfDev;
     webpack(_conf, function (err, stats) {
-        if (err) throw new gutil.PluginError('webpack', err)
-        gutil.log('[webpack]', stats.toString({colors: true}))
+        if (err) throw new gutil.PluginError('webpack', err);
+        gutil.log('[webpack]', stats.toString({colors: true}));
         done()
     });
 });
 
+//css 兼容
+// gulp.task('test',['pack'], function() {
+//     gulp.src('dist/**/*.css')
+//         .pipe(autoprefixer({
+//             browsers: ['last 2 versions', 'Android >= 4.0'],
+//             cascade: false
+//         }))
+//         .pipe(gulp.dest('dist'))
+//     }
+// );
+
+
 //default task
 gulp.task('default', ['pack']);
-
-//deploy assets to remote server
-gulp.task('deploy', function () {
-    var sftp = require('gulp-sftp');
-    var _conf = options.env === 'production' ? remoteServer : localServer;
-    return gulp.src(assets + '/**')
-        .pipe(sftp(_conf))
-})
