@@ -15,7 +15,7 @@ class Cond extends Component{
 
     render(){
         return(
-            <div className={style.page-a}>
+            <div className="header">
                 23
             </div>
         )

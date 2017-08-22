@@ -4,12 +4,8 @@
 'use strict';
 
 let gulp = require('gulp');
-let autoprefixer = require('gulp-autoprefixer');
-let imagemin = require('gulp-imagemin');
-let webpack = require('webpack');
 
-let connect = require('gulp-connect');
-let proxy = require('http-proxy-middleware');
+let webpack = require('webpack');
 
 //用于gulp传递参数
 //轻量级的命令行参数解析引擎
@@ -64,18 +60,6 @@ gulp.task('pack', ['clean'], function (done) {
         done()
     });
 });
-
-//css 兼容
-// gulp.task('test',['pack'], function() {
-//     gulp.src('dist/**/*.css')
-//         .pipe(autoprefixer({
-//             browsers: ['last 2 versions', 'Android >= 4.0'],
-//             cascade: false
-//         }))
-//         .pipe(gulp.dest('dist'))
-//     }
-// );
-
 
 //default task
 gulp.task('default', ['pack']);

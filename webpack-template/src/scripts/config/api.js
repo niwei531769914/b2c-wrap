@@ -10,7 +10,7 @@ import fetch from 'isomorphic-fetch';
  * @return 返回Promise
  */
 
-let production_url = 'http://mobile.vision-world.cn:8080';  //正式服务器地址
+let production_url = '';  //正式服务器地址
 let env_url = ''; //测试环境
 
 let api = function (params) {
@@ -24,7 +24,7 @@ let api = function (params) {
     //Promise构造函数接受一个函数作为参数，该函数的两个参数分别是resolve和reject。它们是两个函数，由JavaScript引擎提供，不用自己部署。
     return new Promise(function (resolve,reject) {
         // 请求
-        fetch(params.url,
+        fetch( env_url + params.url,
             {
                 method: params.method,
                 headers:header,

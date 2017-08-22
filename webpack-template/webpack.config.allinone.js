@@ -138,7 +138,7 @@ module.exports = function(options){
                     loaders: [
                         //小于10KB的图片会自动转成dataUrl，
                         'url?limit=10000&name=images/[hash:8].[name].[ext]',
-                        'image?{bypassOnDebug:true, progressive:true,optimizationLevel:3,pngquant:{quality:"65-80",speed:4}}'
+                       // 'image?{bypassOnDebug:true, progressive:true,optimizationLevel:3,pngquant:{quality:"65-80",speed:4}}'
                     ]
                 },
                 {
