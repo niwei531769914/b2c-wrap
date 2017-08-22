@@ -22,6 +22,7 @@ let HtmlWebpackPlugin = require('html-webpack-plugin');
 let ExtractTextPlugin = require('extract-text-webpack-plugin');
 let UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 let autoprefixer = require('autoprefixer');
+let ImageminPlugin = require('imagemin-webpack-plugin').default;
 
 //入口文件定义
 let entries = function () {
@@ -113,6 +114,14 @@ module.exports = function(options){
                     comments: false
                 }
             }),
+            //压缩图片大小
+            // new ImageminPlugin({
+            //     disable: 'process.env.NODE_ENV' !== 'production', // Disable during development
+            //     pngquant: {
+            //         quality: '65-90',
+            //         speed:4
+            //     },
+            // }),
             new webpack.optimize.DedupePlugin(),
             new webpack.NoErrorsPlugin()
         )
@@ -138,8 +147,7 @@ module.exports = function(options){
                     loaders: [
                         //小于10KB的图片会自动转成dataUrl，
                         'url?limit=10000&name=images/[hash:8].[name].[ext]',
-                       // 'image?{bypassOnDebug:true, progressive:true,optimizationLevel:3,pngquant:{quality:"65-80",speed:4}}'
-                    ]
+                    ],
                 },
                 {
                     test: /\.((ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9]))|(ttf|eot)$/,

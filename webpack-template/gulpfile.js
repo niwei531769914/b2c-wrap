@@ -12,9 +12,7 @@ let webpack = require('webpack');
 let minimist = require('minimist');
 
 let gutil = require('gulp-util');
-
-// Load plugins
-let $ = require('gulp-load-plugins')();
+let imagemin = require('gulp-imagemin');
 
 
 let src = process.cwd() + '/src';
@@ -32,6 +30,15 @@ let options = minimist(process.argv.slice(2), knownOptions);
 
 let webpackConf = require('./webpack.config');
 let webpackConfDev = require('./webpack-dev.config');
+
+//测试环境上传地址
+let remoteServer = {
+    host: '121.196.208.98',
+    remotePath: '/B2C/Tomcat8.0/webapps/dist',
+    user: 'root',
+    pass: 'root'
+};
+
 
 //check code
 gulp.task('hint', function () {
@@ -61,5 +68,24 @@ gulp.task('pack', ['clean'], function (done) {
     });
 });
 
+gulp.task('test',['pack'], function () {
+    gulp.src('dist/images/*.{png,jpg,gif,ico}')
+        .pipe(imagemin({
+            progressive: true,
+            optimizationLevel: 5
+        }))
+        .pipe(gulp.dest('dist/images'));
+});
+
 //default task
-gulp.task('default', ['pack']);
+gulp.task('default', ['test']);
+
+
+//deploy assets to remote server
+gulp.task('deploy', function () {
+    let sftp = require('gulp-sftp');
+    //设置都是传到一样的环境
+    let _conf = options.env === 'production' ? remoteServer : remoteServer;
+    return gulp.src(assets + '/**')
+        .pipe(sftp(_conf))
+});

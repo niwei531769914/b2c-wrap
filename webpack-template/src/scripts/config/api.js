@@ -17,7 +17,6 @@ let api = function (params) {
 
     let header = {
         "Content-Type": "application/json;charset=UTF-8",
-       // "accesstoken":token  //用户登陆后返回的token，某些涉及用户数据的接口需要在header中加上token
     };
 
    // console.log('request url:',params);  //打印请求参数
@@ -45,5 +44,5 @@ let api = function (params) {
 };
 
 
-export default api;
+export  { api };
 

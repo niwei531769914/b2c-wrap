@@ -73,9 +73,9 @@
 ## 本地调试 ##
 
     $ npm run server
-    # 或者 下面两种模式
-    $ webpack-dev-server
-    $ webpack-dev-server --inline
+    
+    结合React Developer Tools 来调试react
+   
 
 
 

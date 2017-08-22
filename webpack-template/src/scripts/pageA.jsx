@@ -6,6 +6,8 @@ import '../css/name.css';
 
 import style from '../css/pageA.css';
 
+import {Alert } from './layouts/util';
+
 class Cond extends Component{
 
     constructor(props){
@@ -13,9 +15,14 @@ class Cond extends Component{
 
     }
 
+    handleClick(){
+        let Name = this.refs.Input.innerHTML;
+        Alert(Name);
+    }
+
     render(){
         return(
-            <div className="header">
+            <div ref="Input" className="header" onClick={this.handleClick.bind(this)}>
                 23
             </div>
         )
