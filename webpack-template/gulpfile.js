@@ -58,8 +58,19 @@ gulp.task('clean', ['hint'], function () {
     return gulp.src(assets, {read: true}).pipe(clean())
 });
 
+//images压缩
+gulp.task('imgagemin',['clean'], function () {
+    gulp.src('src/images/*.{png,jpg,gif,ico}')
+        .pipe(imagemin({
+            progressive: true,
+            optimizationLevel: 5
+        }))
+        .pipe(gulp.dest('src/images'));
+});
+
+
 //run webpack pack
-gulp.task('pack', ['clean'], function (done) {
+gulp.task('pack', ['imgagemin'], function (done) {
     let _conf = options.env === 'production' ? webpackConf : webpackConfDev;
     webpack(_conf, function (err, stats) {
         if (err) throw new gutil.PluginError('webpack', err);
@@ -68,17 +79,9 @@ gulp.task('pack', ['clean'], function (done) {
     });
 });
 
-gulp.task('test',['pack'], function () {
-    gulp.src('dist/images/*.{png,jpg,gif,ico}')
-        .pipe(imagemin({
-            progressive: true,
-            optimizationLevel: 5
-        }))
-        .pipe(gulp.dest('dist/images'));
-});
 
 //default task
-gulp.task('default', ['test']);
+gulp.task('default', ['pack']);
 
 
 //deploy assets to remote server

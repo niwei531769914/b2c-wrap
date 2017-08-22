@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "server": "webpack-dev-server --inline",
-    "build": "gulp test --env debug",
-    "build-online": "gulp test --env production",
+    "build": "gulp pack --env debug",
+    "build-online": "gulp pack --env production",
     "deploy": "gulp deploy --env debug",
     "deploy-online": "gulp deploy --env production"
   },
