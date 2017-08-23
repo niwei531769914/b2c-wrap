@@ -2,11 +2,12 @@
 import React , { Component } from 'react';
 import ReactDOM , { render } from 'react-dom';
 
-import '../css/name.css';
+import 'commonCss';
+import '../css/pageA.css';
 
-import style from '../css/pageA.css';
+import { util } from './util/util';
 
-import {Alert } from './layouts/util';
+import './config/config';
 
 class Cond extends Component{
 
@@ -16,14 +17,13 @@ class Cond extends Component{
     }
 
     handleClick(){
-        let Name = this.refs.Input.innerHTML;
-        Alert(Name);
+        window.location.href = 'ress.html';
     }
 
     render(){
         return(
             <div ref="Input" className="header" onClick={this.handleClick.bind(this)}>
-                23
+                23ssss3333333333www3wqwq
             </div>
         )
     }

@@ -1,4 +1,5 @@
 {
   "zepto": "scripts/lib/zepto.js",
-  "commonCss":"css/common.css"
+  "commonCss":"css/common/common.css",
+  "fastclick":"scripts/lib/fastclick.js"
 }
