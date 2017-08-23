@@ -6,4 +6,5 @@
     float: left;
     text-line-through: none;
     text-align: center;
+    caption-side:inherit;
 }
