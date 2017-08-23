@@ -34,9 +34,10 @@ let webpackConfDev = require('./webpack-dev.config');
 //测试环境上传地址
 let remoteServer = {
     host: '121.196.208.98',
+    prort:'22',
     remotePath: '/B2C/Tomcat8.0/webapps/dist',
     user: 'root',
-    pass: 'root'
+    pass: 'Njhylh1QAZ1234'
 };
 
 
@@ -52,11 +53,13 @@ gulp.task('hint', function () {
     ])
 });
 
+
 // clean asserts
 gulp.task('clean', ['hint'], function () {
     let clean = require('gulp-clean');
     return gulp.src(assets, {read: true}).pipe(clean())
 });
+
 
 //images压缩
 gulp.task('imgagemin',['clean'], function () {
