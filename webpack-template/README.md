@@ -75,6 +75,18 @@
     $ npm run server
     
     结合React Developer Tools 来调试react
+    
+## git命令将分支代码合拼到主分支上去 ##
+
+    分支 // git status 检查远程与本地代码区分(git diff)
+    git add .
+    git commit -m "提交说明"
+    git push origin name (分支名)
+    
+    git checkout master //切换到主分支
+    
+   
+   
    
 
 
