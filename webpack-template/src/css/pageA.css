@@ -1,9 +1,9 @@
-.page-a{
+.header{
     color:red;
-    display: flex;
-    color: #000;
-    font-size: 32px;
-    float: left;
-    text-line-through: none;
+    font-size: .2rem;
+    font-weight: bold;
+    width: 100%;
+    height: .88rem;
     text-align: center;
+    border-bottom: 1px solid #e0e0e0;
 }

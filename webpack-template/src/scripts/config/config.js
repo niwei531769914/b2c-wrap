@@ -1,9 +1,12 @@
-//rem
+
+import FastClick from 'fastclick';
+
+//JS动态设置根Html值
 ((doc, win) => {
     const docEl = doc.documentElement,
         resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
         recalc = () => {
-            let clientWidth = doc.body.clientWidth;
+            let clientWidth = docEl.clientWidth;
             if (!clientWidth) return;
             docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
         };
@@ -12,3 +15,10 @@
     doc.addEventListener('DOMContentLoaded', recalc, false);
     //当dom加载完成时，或者 屏幕垂直、水平方向有改变进行html的根元素计算
 })(document, window);
+
+//消除300ms延迟
+if ('addEventListener' in document) {
+    document.addEventListener('DOMContentLoaded', function() {
+        FastClick.attach(document.body);
+    }, false);
+}

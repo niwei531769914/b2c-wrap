@@ -1,7 +1,5 @@
 import fetch from 'isomorphic-fetch';
 
-
-
 /**
  * @param {Promise} fetch_promise    fetch请求返回的Promise
  * @param {string} url 接口地址

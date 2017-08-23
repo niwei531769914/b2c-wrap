@@ -9,4 +9,9 @@
 
 3.css的编写，为了开发效率，编译工具配置less配置文件。
 
-4、
+4、immutable.js为了提高react渲染性能，对props/state前后数据的变化来判断该组件是否渲染(倪伟)
+  react的生命周期中的钩子函数shouldComponentUpdate（）方法中利用immutable来判断是否需要渲染
+  example:
+   shouldComponentUpdate(nextProps, nextState) {
+          return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
+      }
