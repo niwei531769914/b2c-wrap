@@ -4,4 +4,6 @@
     color: #000;
     font-size: 32px;
     float: left;
+    text-line-through: none;
+    text-align: center;
 }
