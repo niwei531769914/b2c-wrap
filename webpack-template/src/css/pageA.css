@@ -1,4 +1,6 @@
 .page-a{
     color:red;
     display: flex;
+    color: #000;
+    font-size: 32px;
 }
