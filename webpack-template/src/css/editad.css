@@ -4,8 +4,6 @@ body {
 
 /*!* 头部 *!*/
 
-
-
 #Middle,
 .identity,
 .default{
@@ -15,13 +13,26 @@ body {
 	background: #FFFFFF;
 }
 
-#Middle>p {
+#Middle input {
 	width: 92%;
 	height: .94rem;
 	line-height: .94rem;
 	float: left;
 	font-size: .28rem;
-	padding: 0 .32rem;
+	padding: 0 4%;
+	border-bottom: .002rem solid #F5F5F5;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#Middle .Address{
+	width: 92%;
+	height: .94rem;
+	line-height: .94rem;
+	float: left;
+	font-size: .28rem;
+	padding: 0 4%;
 	border-bottom: .002rem solid #F5F5F5;
 	white-space: nowrap;
 	overflow: hidden;
@@ -48,11 +59,11 @@ body {
 }
 
 .identity-Serial {
-	width: 100%;
+	width: 92%;
 	height: .96rem;
 	line-height: .96rem;
+	padding: 0 4%;
 	font-size: .28rem;
-	text-indent: .32rem;
 	border-bottom: .02rem solid #F5F5F5;
 	float: left;
 }
@@ -105,7 +116,12 @@ body {
 	padding-left: .38rem;
 	font-size: .24rem;
 	line-height: .96rem;
-	background: url(../img/ic_check_box_outline.png) no-repeat 0 .32rem;
+	background: url(../images/editad/ic_check_box_outline.png) no-repeat 0 .32rem;
+	background-size: .28rem;
+}
+
+.default .check.active{
+	background: url(../images/editad/ic_check_box.png) no-repeat 0 .32rem;
 	background-size: .28rem;
 }
 
@@ -127,7 +143,7 @@ body {
 	color: #FFFFFF;
 	text-align: center;
 	font-size: .32rem;
-	background: url(../img/bg_person.png) no-repeat;
+	background: url(../images/editad/bg_person.png) no-repeat;
 	background-size: 100%;
 	border-radius: .06rem;
 	 	

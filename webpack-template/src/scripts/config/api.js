@@ -1,46 +1,53 @@
-import fetch from 'isomorphic-fetch';
+//jsx语法
 
-/**
- * @param {Promise} fetch_promise    fetch请求返回的Promise
- * @param {string} url 接口地址
- * @param {string} method 请求方法：GET、POST，只能大写
- * @param {JSON} [params=''] body的请求参数，默认为空
- * @return 返回Promise
- */
 
-let production_url = '';  //正式服务器地址
-let env_url = ''; //测试环境
+import $ from 'jquery';
 
-let api = function (params) {
+
+let env_url = 'http://121.196.208.98:28080'; //测试环境
+
+
+let Api = function (params) {
+
+    let def = $.Deferred();
+
+    let successCallback = function(response) {
+        def.resolve(response);
+    };
+
+    let failCallback = function(error) {
+        def.reject(error);
+    };
 
     let header = {
         "Content-Type": "application/json;charset=UTF-8",
     };
 
-   // console.log('request url:',params);  //打印请求参数
-    //Promise构造函数接受一个函数作为参数，该函数的两个参数分别是resolve和reject。它们是两个函数，由JavaScript引擎提供，不用自己部署。
-    return new Promise(function (resolve,reject) {
+    // console.log('request url:',params);  //打印请求参数
         // 请求
-        fetch( env_url + params.url,
-            {
-                method: params.method,
-                headers:header,
-                body: JSON.stringify(params.params)
+        $.ajax({
+            url: env_url + params.url,
+            method: params.method,
+            data: JSON.stringify(params.params),
+            headers: header,
+            success: function (data) {
+                successCallback(data);
+            },
+            error: function (error) {
+                failCallback(error);
+            }
+        })
+            .done(function (data) {
+                successCallback(data);
             })
-            .then((response) => response.json())
-            .then((responseData) => {
-                //console.log('res:', responseData);  //网络请求成功返回的数据
-                resolve(responseData);
-            })
-            .catch((error) => {
-                //console.log('err:', error);   //网络请求失败返回的数据
-                console.log("服务器错误");
-                reject(error);
-            })
+            .fail(function (error) {
+                failCallback(error);
+            });
 
-    })
+        return def;
+
 };
 
 
-export  { api };
+export  { Api };
 
