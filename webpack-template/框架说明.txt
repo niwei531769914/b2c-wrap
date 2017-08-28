@@ -15,3 +15,9 @@
    shouldComponentUpdate(nextProps, nextState) {
           return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
       }
+3
+
+5.利用事件截根据后台数据库是否发生改变来判断我本地存储的 timestamp是否相同，来从新刷新这个页面来达到页面是否刷新，提高性能，首次进入页面请求过来的数据保存在本地（倪伟,韩刚刚）
+
+
+6.对状态机的管理store，建议使用中间键redux-saga来处理异步请求数据(倪伟)
