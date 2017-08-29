@@ -8,12 +8,14 @@ import {Api} from '../config/api';
 //query
 import {parseQueryString} from 'query';
 
-//zepto
+//jquery
 import $ from 'jquery';
 
 //header
 import {Header} from 'headerJsx';
 
+//area
+import { Area } from 'areaJsx';
 
 //地址Ui
 class EditAd extends Component {
@@ -35,9 +37,7 @@ class EditAd extends Component {
             addressid: "",
             name: "22",
             phone: "12121212",
-            province: "江苏省",
-            city: "南京市",
-            area: "江宁区",
+            province: "江苏省南京市江宁区",
             address: "量子国际",
             idCardNumber: "1212109938899",
             setdefault: 0
@@ -51,6 +51,8 @@ class EditAd extends Component {
         this.changeAddress = this.changeAddress.bind(this);
         this.changeIdCardNumber = this.changeIdCardNumber.bind(this);
         this.setdefaultAddress = this.setdefaultAddress.bind(this);
+        this.area = this.area.bind(this);
+        this.changeCity = this.changeCity.bind(this);
 
     }
 
@@ -103,6 +105,14 @@ class EditAd extends Component {
 
     }
 
+    area(){
+       $('.choose-address-page').addClass('show');
+    }
+
+    changeCity(){
+        alert(2);
+    }
+
     setdefaultAddress(element, Setdefault) {
         let param = {
             method: 'post',
@@ -142,9 +152,9 @@ class EditAd extends Component {
 
     render() {
         const {header} = this.props;
-        const {name, phone, province, city, area, address, idCardNumber, setdefault} = this.state;
+        const {name, phone, province, address, idCardNumber, setdefault} = this.state;
         return (
-            <div className="nwrapper">
+            <div >
                 {/*头部*/}
                 <Header header={ header }/>
 
@@ -153,11 +163,9 @@ class EditAd extends Component {
                     <div id="Middle">
                         <input className="UserName" value={ name }  onChange={ this.changeName }/>
                         <input className="Telephone" value={ phone } onChange={ this.changePhone } />
-                        <p className="Address">
-                            <span
-                                className="Address-title"><em>{ province }</em><em>{ city }</em><em>{ area }</em></span>
-                            <span className="Address-tab"><img
-                                src={ require('./../../images/editad/ic_chevron_right.png') }/></span>
+                        <p className="Address" onClick={this.area}>
+                            <span className="Address-title"><em>{ province }</em></span>
+                            <span className="Address-tab"><img src={ require('./../../images/editad/ic_chevron_right.png') }/></span>
                         </p>
                         <input className="DetailedAddress" value={ address } onChange={ this.changeAddress } />
                     </div>
@@ -178,6 +186,7 @@ class EditAd extends Component {
                         <a onClick={this.delete}>删除地址</a>
                     </div>
                 </section>
+                <Area ref="area" changeless = { this.props.changeCity } />
             </div>
         )
     }

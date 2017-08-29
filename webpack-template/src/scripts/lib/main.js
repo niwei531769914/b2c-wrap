@@ -413,3 +413,5 @@ let provinceList = [
     {name:'澳门', cityList:[
     ]}
 ];
+
+export { provinceList }

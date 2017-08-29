@@ -3,13 +3,18 @@
   "fastclick":"scripts/lib/fastclick.js",
   "config":"scripts/config/config.js",
   "api":"scripts/config/api.js",
+  "main":"scripts/lib/main.js",
+  "swiperJs":"scripts/lib/swiper.min.js",
 
   "commonCss":"css/common/common.css",
   "headerCss":"css/common/header.css",
+  "swiper":"css/swiper.min.css",
   "editadCss":"css/editad.css",
+  "areaCss":"css/area.css",
 
 
   "editadJsx":"scripts/components/lehu.h5.component.editad.jsx",
+  "areaJsx":"scripts/components/lehu.h5.component.area.jsx",
 
 
   "headerJsx":"scripts/commonViews/lehu.h5.commonviews.header.jsx",
