@@ -1,0 +1,121 @@
+body {
+	background: #F5F5F5;
+}
+
+/*!* 头部 *!*/
+
+
+ 
+.content {
+	width: 100%;
+	height: auto;
+}
+
+.content>li {
+	width: 100%;
+	height: auto;
+	float: left;
+	margin-top: .16rem;
+	background: #FFFFFF;
+}
+
+.content>li>img {
+	width: 100%;
+	height: 0.1rem;
+	float: left;
+}
+
+.content>li>div {
+ 	padding-left: .32rem;
+	padding-right: .32rem;
+}
+
+.content_information {
+	padding: .32rem;
+	padding-bottom: 0;
+	overflow: auto;
+	zoom: 1;
+	border-bottom: .01rem solid #909090;
+}
+
+.content_information>p {
+	width: 100%;
+	float: left;
+	margin-bottom: .16rem;
+}
+
+.content_information>p>span,
+.content_information>p>em {
+	font-size: .28rem;
+	float: left;
+}
+
+.content_information_name>span,
+.content_information_name>em {
+	font-size: .32rem !important;
+	color: #000000;
+	font-weight: bolder;
+}
+
+.content_information_name>img {
+	width: .6rem;
+	height: .3rem;
+	margin-left: .16rem;
+	float: left;
+}
+
+.content_information>p>span {
+	width: 20%;
+	display: block;
+}
+
+.content_information_address_box {
+	width: 80%;
+	line-height: .4rem;
+}
+
+.address_management {
+	height: .8rem;
+	margin: .1rem 0;
+}
+
+.address_management_left {
+	float: left;
+	height: .8rem;
+	line-height: .8rem;
+	font-size: .28rem;
+}
+
+.address_management_left>img {
+	width: .4rem;
+	height: .4rem;
+	padding: .2rem;
+	padding-left: 0;
+	float: left;
+	 
+}
+
+.address_management_right {
+	float: right;
+	height: .8rem;
+	line-height: .8rem;
+}
+
+.address_management_right>button {
+	float: left;
+	color: #909090;
+	background: #FFFFFF;
+	border-radius: .1rem;
+	margin: .1rem 0 .1rem .2rem;
+	border: .01rem solid #909090;
+	padding: .1rem .2rem .1rem .2rem;
+}
+
+.newAddress {
+	float: right;
+	margin: .32rem;
+	padding: .16rem .36rem .16rem .36rem;
+	color: #FFFFFF;
+	background: #F53828;
+	border-radius: .1rem;
+}
