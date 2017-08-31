@@ -14,8 +14,13 @@ import $ from 'jquery';
 //header
 import {Header} from 'headerJsx';
 
-//area
-import { Area } from 'areaJsx';
+import  Swiper  from 'swiperJs';
+
+import { provinceList } from 'main';
+
+import 'areaCss';
+import 'swiper';
+
 
 //地址Ui
 class EditAd extends Component {
@@ -26,6 +31,9 @@ class EditAd extends Component {
             title: "编辑地址",
             name: "保存"
         },
+        areaHeader: {
+            title: "地址选择"
+        }
 
 
     };
@@ -52,16 +60,124 @@ class EditAd extends Component {
         this.changeIdCardNumber = this.changeIdCardNumber.bind(this);
         this.setdefaultAddress = this.setdefaultAddress.bind(this);
         this.area = this.area.bind(this);
-        this.changeCity = this.changeCity.bind(this);
 
     }
 
     componentDidMount() {
+
+        let that = this;
+
         let params = parseQueryString(window.location.href);
 
         //设置addressid
         this.setState({
             addressid: params.addressid
+        });
+
+        //设置选择地址
+        let address = {};
+
+        let swiper = new Swiper('.address-container .swiper-container', {
+            visibilityFullFit: true,
+            noSwiping: true,
+            noSwipingClass: 'stop-swiping',
+        });
+
+        // 初始化高度
+        let Height = () => {
+            let headerHeight = $('.head-fix').height();
+            let TotalHeight = $(window).height();
+            $('.swiper-container').height(TotalHeight - headerHeight);
+        };
+
+        Height();
+
+        //初始书数据
+        let area = () =>{
+            let Length = provinceList.length;
+            let html = '';
+            for (let i = 0; i < Length; i++) {
+                html += '<p data-value = "' + i + '">' + provinceList[i].name + '</p>';
+            }
+            $('.address-container .swiper-slide').eq(0).empty().append(html);
+        };
+
+        area();
+
+        $('.head-address-ul li').on('click', function () {
+            if ($(this).text() == "") {
+                return false;
+            }
+
+            $(this).nextAll().html("");
+
+            $('.head-address-ul .head-address-li').removeClass('head-address-li');
+            $(this).addClass('head-address-li');
+            let Index = $(this).index();
+
+            //将该索引值之后的p元素removeClass active
+            $('.address-ul').eq(Index).nextAll().find('p.active').removeClass('active');
+
+            swiper.slideTo(Index, 300, false);
+        });
+
+
+        $(document).on('click', '.address-ul p', function () {
+
+            let addressName = "";
+
+            $(this).parents('.swiper-slide').find('p').removeClass('active');
+            $(this).addClass('active');
+
+            let LoIndex = $(this).parents('.swiper-slide').index();
+            let Index = parseFloat(LoIndex + 1);
+            let Name = $(this).html();
+            $('.head-address-ul li').eq(LoIndex).empty().html(Name);
+
+            let value = $(this).attr('data-value');
+
+            if (LoIndex == 0) {
+                address = provinceList[value];
+                let Length = address.cityList.length;
+                $('.head-address-ul .head-address-li').removeClass('head-address-li');
+                $('.head-address-ul li').eq(Index).empty().append("请选择").addClass('head-address-li');
+                let html = '';
+                for (let i = 0; i < Length; i++) {
+                    html += '<p data-value = "' + i + '">' + address.cityList[i].name + '</p>';
+                }
+                $('.address-container .swiper-slide').eq(Index).empty().append(html);
+                swiper.slideTo(Index, 300, false);
+            }
+            else if (LoIndex == 1) {
+                let areaAddress = address.cityList[value];
+                if(!areaAddress.hasOwnProperty("areaList")){
+                    $('.address-container p.active').each((index,item) => {
+                        addressName += $('.address-container p.active').eq(index).html();
+                    });
+                    $('.choose-address-page').removeClass('show');
+                    that.changArea(addressName);
+                    return false;
+                }
+                let Length = areaAddress.areaList.length;
+                $('.head-address-ul .head-address-li').removeClass('head-address-li');
+                $('.head-address-ul li').eq(Index).empty().append("请选择").addClass('head-address-li');
+                let html = '';
+                for (let i = 0; i < Length; i++) {
+                    html += '<p data-value = "' + i + '">' + areaAddress.areaList[i] + '</p>';
+                }
+                $('.address-container .swiper-slide').eq(Index).empty().append(html);
+                swiper.slideTo(Index, 300, false);
+            }
+            else if(LoIndex == 2){
+
+                $('.address-container p.active').each((index,item) => {
+                    addressName += $('.address-container p.active').eq(index).html();
+                });
+                $('.choose-address-page').removeClass('show');
+                that.changArea(addressName);
+                return false;
+            }
+
         });
 
 
@@ -109,8 +225,10 @@ class EditAd extends Component {
        $('.choose-address-page').addClass('show');
     }
 
-    changeCity(){
-        alert(2);
+    changArea(addressName){
+        this.setState({
+            province: addressName
+        })
     }
 
     setdefaultAddress(element, Setdefault) {
@@ -125,7 +243,7 @@ class EditAd extends Component {
             }
         };
         Api(param)
-            .then((data) => {
+            .done((data) => {
                 if (data.code == 1) {
                     alert(data.msg);
                     if (this.state.setdefault == 0) {
@@ -145,13 +263,13 @@ class EditAd extends Component {
                     alert(data.msg);
                 }
             })
-            .catch((error) => {
+            .fail((error) => {
                 alert("服务器错误!");
             });
     }
 
     render() {
-        const {header} = this.props;
+        const {header ,areaHeader} = this.props;
         const {name, phone, province, address, idCardNumber, setdefault} = this.state;
         return (
             <div >
@@ -159,18 +277,18 @@ class EditAd extends Component {
                 <Header header={ header }/>
 
                 {/*/!*content*!/*/}
-                <section className="OrderDetails-main">
+                <section className="OrderDetails-main" ref={(ref) => { this.Input = ref }}>
                     <div id="Middle">
-                        <input className="UserName" value={ name }  onChange={ this.changeName }/>
-                        <input className="Telephone" value={ phone } onChange={ this.changePhone } />
+                        <input type="text" className="UserName" value={ name }  onChange={ this.changeName }/>
+                        <input type="text" className="Telephone" value={ phone } onChange={ this.changePhone } />
                         <p className="Address" onClick={this.area}>
                             <span className="Address-title"><em>{ province }</em></span>
                             <span className="Address-tab"><img src={ require('./../../images/editad/ic_chevron_right.png') }/></span>
                         </p>
-                        <input className="DetailedAddress" value={ address } onChange={ this.changeAddress } />
+                        <input type="text" className="DetailedAddress" value={ address } onChange={ this.changeAddress } />
                     </div>
                     <div className="identity">
-                        <input className="identity-Serial" value={ idCardNumber } onChange={ this.changeIdCardNumber } />
+                        <input type="text" className="identity-Serial" value={ idCardNumber } onChange={ this.changeIdCardNumber } />
                         <div className="identity-content">
                             <span className="identity-upload">上传身份证</span>
                             <div className="identity-picture">
@@ -186,11 +304,41 @@ class EditAd extends Component {
                         <a onClick={this.delete}>删除地址</a>
                     </div>
                 </section>
-                <Area ref="area" changeless = { this.props.changeCity } />
+
+                {/*area change*/}
+                <div className="choose-address-page" >
+
+                    {/*top*/}
+                    <div className="head-fix">
+                        <Header header={ areaHeader }/>
+
+                        <ul className="head-address-ul">
+                            <li className="head-address-li">请选择</li>
+                            <li ></li>
+                            <li ></li>
+                            <li ></li>
+                        </ul>
+                    </div>
+
+                    {/*address container*/}
+
+                    <div className="address-container">
+                        <div className="swiper-container">
+                            <div className="swiper-wrapper">
+                                <div className="swiper-slide stop-swiping address-ul"></div>
+                                <div className="swiper-slide stop-swiping address-ul"></div>
+                                <div className="swiper-slide stop-swiping address-ul"></div>
+                                <div className="swiper-slide stop-swiping address-ul"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
         )
     }
 
 }
 
-export default EditAd;
+export { EditAd };

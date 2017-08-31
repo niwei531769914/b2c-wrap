@@ -28,7 +28,7 @@ let Api = function (params) {
         $.ajax({
             url: env_url + params.url,
             method: params.method,
-            data: JSON.stringify(params.params),
+            data: params.params,
             headers: header,
             success: function (data) {
                 successCallback(data);
