@@ -67,6 +67,7 @@ class EditAd extends Component {
 
         let that = this;
 
+        //获取url后的参数并转换为对象
         let params = parseQueryString(window.location.href);
 
         //设置addressid

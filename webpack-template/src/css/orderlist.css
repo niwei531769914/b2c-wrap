@@ -208,25 +208,3 @@ body {
     float: right;
     margin-left: .07rem;
 }
-.order .is-loading {
-    width: 100%;
-    height: auto;
-    float: left;
-    margin: 1rem 0;
-    font-size: 14px;
-    text-align: center;
-}
-.order .is-loading em {
-    width: 23px;
-    height: 25px;
-    display: inline-block;
-    background: url(../images/loading.gif) no-repeat center;
-    background-size: 23px 23px;
-    vertical-align: top;
-}
-.order .is-loading span {
-    color: #b3b3b3;
-    display: inline-block;
-    margin-left: .1rem;
-    line-height: 27px;
-}

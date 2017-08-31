@@ -4,14 +4,14 @@ import React, {Component} from 'react';
 
 
 import {Header} from 'headerJsx';
+import {IsLoading} from 'loadingJsx';
+import {Top} from 'topJsx'
 
 import {encription} from 'query';
 
 import {Api} from 'api';
 
 import $ from 'jquery';
-
-import md5 from 'md5';
 
 class OrderList extends Component {
 
@@ -317,13 +317,11 @@ class OrderList extends Component {
 
                     {/*isLoading*/}
                     {
-                        that.state.loading ? <div className="is-loading">
-                            <em></em>
-                            <span>加载中....</span>
-                        </div> : null
+                        that.state.loading ? <IsLoading/> : null
                     }
 
                 </div>
+                <Top/>
             </div>
         )
     }

@@ -230,3 +230,15 @@ body {
   margin-left: .1rem;
   line-height: 27px;
 }
+.bottom-to-top {
+  width: .8rem;
+  height: .8rem;
+  position: fixed;
+  bottom: 1rem;
+  right: .3rem;
+}
+.bottom-to-top img {
+  width: 100%;
+  height: auto;
+  display: block;
+}

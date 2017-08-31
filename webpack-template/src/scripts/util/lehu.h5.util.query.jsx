@@ -17,10 +17,8 @@ export const  parseQueryString = (url) =>{
     return ret;
 };
 
-// 调用方法
-// alert(GetQueryString("参数名1"));
 
-//md5机密
+//md5加密
 export const encription = (data) => {
 
     let Keyboard = '00BE62201707188DE8A63ZGH66D46yTXNREG1423';
