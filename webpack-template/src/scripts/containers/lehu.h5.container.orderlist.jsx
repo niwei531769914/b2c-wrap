@@ -141,7 +141,6 @@ class OrderList extends Component {
 
     //请求数据
     apiRequest() {
-        console.log(1);
         let that = this;
 
         let data = {
@@ -304,7 +303,7 @@ class OrderList extends Component {
 
                                             <div className="order-item-cf">
                                                 <span className="order-true-payed">实付款:<em
-                                                    className="imb-num">￥{item.totalPrice}</em><em className="imb-tax">(含运费￥{item.logisticsFare})</em></span>
+                                                    className="imb-num">￥{item.totalPrice}</em>{ item.logisticsFare == 0 ? null: <em>(含运费￥{item.logisticsFare})</em>  }</span>
                                                 <div className="order-btn-box">
                                                     <a href="javascript: void (0)" className="imb-btn">查看物流</a>
                                                 </div>
