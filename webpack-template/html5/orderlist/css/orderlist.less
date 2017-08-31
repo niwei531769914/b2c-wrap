@@ -1,0 +1,251 @@
+body {
+  background: #f0f2f5;
+}
+
+.order {
+  width: 100%;
+  height: .88rem;
+  float: left;
+  background: #ffffff;
+  .order-tab {
+    font-size: .28rem;
+    color: #757575;
+    width: 100%;
+    height: auto;
+    float: left;
+    border-bottom: 1px solid #f0f0f0;
+    ul {
+      width: 100%;
+      height: auto;
+      float: left;
+      li {
+        width: 20%;
+        height: .88rem;
+        display: block;
+        float: left;
+        line-height: .88rem;
+        text-align: center;
+        span{
+          position: relative;
+          width: auto;
+          height: 100%;
+          display: inline-block;
+        }
+
+      }
+      .active {
+        color: #f53828;
+        position: relative;
+        span:after {
+          width: 100%;
+          height: 1px;
+          border-bottom: 2px solid #f23030;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          content: '';
+        }
+      }
+    }
+  }
+  .order-list {
+    width: 100%;
+    height: auto;
+    float: left;
+    .order-all {
+      width: 100%;
+      height: auto;
+      float: left;
+      .order-item {
+        width: 100%;
+        height: auto;
+        float: left;
+        background: #ffffff;
+        margin-top: .2rem;
+        .order-item-title {
+          width: 6.86rem;
+          height: auto;
+          margin: .3rem .32rem .25rem;
+          float: left;
+
+          .item-store-name {
+            font-size: .3rem;
+            float: left;
+          }
+          .item-shopping-status{
+            float: right;
+            font-size: .28rem;
+            color: #f53828;
+          }
+        }
+        .order-item-list{
+          border-top: 1px solid #e0e0e0;
+          width: 100%;
+          height: auto;
+          float: left;
+          .item-goods{
+            width: 6.86rem;
+            height: auto;
+            padding: .2rem .32rem;
+            float: left;
+            border-bottom: 1px solid #e0e0e0;
+            .item-goods-images{
+              width: 1.4rem;
+              height: 1.4rem;
+              background: #e0e0e0;
+              float: left;
+              img{
+                width: 100%;
+                height: auto;
+                display: block;
+              }
+            }
+            .item-goods-content{
+              width: 5.16rem;
+              height: 1.4rem;
+              position: relative;
+              float: left;
+              margin-left: .3rem;
+              .goods-content-name{
+                width: 100%;
+                height: .6rem;
+                float: left;
+                font-size: .24rem;
+                .goods-name{
+                  width: 80%;
+                  height: .6rem;
+                  float: left;
+                  overflow: hidden;
+                  display: -webkit-box;
+                  -webkit-line-clamp: 2;
+                  -webkit-box-orient: vertical;
+                  line-height: .32rem;
+                }
+                .goods-price{
+                  width: 20%;
+                  height: auto;
+                  float: right;
+                  text-align: right;
+                }
+              }
+              .goods-content-spec{
+                width: 100%;
+                height: .3rem;
+                float: left;
+                font-size: .2rem;
+                color: #7a7a7a;
+                margin-top: .15rem;
+                em{
+                  margin-right: .1rem;
+                }
+              }
+              .goods-content-fot{
+                width: 100%;
+                height: auto;
+                color: #7a7a7a;
+                float: left;
+                position: absolute;
+                bottom: 0;
+                .goods-tax{
+                  font-size: .2rem;
+                  float: left;
+                  em{
+                    margin-left: .1rem;
+                  }
+                }
+                .goods-num{
+                  font-size: .28rem;
+                  float: right;
+                  em{
+                    margin-left: .05rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+        .order-item-cf{
+          width: 6.86rem;
+          height: 1rem;
+          padding: 0 .32rem ;
+          font-size: .24rem;
+          float: left;
+          .order-true-payed{
+            width: auto;
+            max-width: 3.86rem;
+            height: 1rem;
+            float: left;
+            color: #000;
+            display: block;
+            line-height: 1rem;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            .imb-num{
+              margin:0  .1rem;
+              font-size: .28rem;
+            }
+            .imb-tax{
+
+            }
+          }
+          .order-btn-box{
+            width:auto;
+            max-width: 3rem;
+            height: auto;
+            float: right;
+            margin: .22rem 0 0;
+            .imb-btn{
+              box-sizing: border-box;
+              border: 1px solid #f15353;
+              color: #f15353;
+              border-radius: 6px;
+              display: block;
+              width: 1.4rem;
+              height: .54rem;
+              line-height: .54rem;
+              text-align: center;
+              float: right;
+              margin-left: .07rem;
+            }
+          }
+        }
+      }
+    }
+  }
+  .is-loading{
+    width: 100%;
+    height: auto;
+    float: left;
+    margin: 1rem 0;
+    font-size: 14px;
+    text-align: center;
+    em{
+      width: 23px;
+      height: 25px;
+      display: inline-block;
+      background: url(../images/loading.gif) no-repeat center;
+      background-size: 23px 23px;
+      vertical-align: top;
+    }
+    span{
+      color: #b3b3b3;
+      display: inline-block;
+      margin-left: .1rem;
+      line-height: 27px;
+    }
+  }
+}
+
+.bottom-to-top{
+  width: .8rem;
+  height: .8rem;
+  position: fixed;
+  bottom: 1rem;
+  right: .3rem;
+  img{
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}

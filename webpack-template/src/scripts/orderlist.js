@@ -1,23 +1,23 @@
 
 /*
-* 编辑地址 容器主入口
-*/
+ * 编辑地址 容器主入口
+ */
 import React ,{ Component } from 'react';
 import ReactDOM , { render } from 'react-dom';
 
 //引入CSS
 import 'commonCss';
-import '../css/editad.css';
+import 'orderlistCss';
 
 
 //引入公共JS
 import 'config';
 
 //引入分支ui组件
-import { EditAd } from 'editadJsx';
+import { OrderList } from 'orderlistJsx';
 
 //render html
-let editAd = document.getElementById('editad');
-render(<EditAd/>,
-    editAd
+let orderlist = document.getElementById('orderlist');
+render(<OrderList/>,
+    orderlist
 );
