@@ -1,14 +1,12 @@
 
 import FastClick from 'fastclick';
 
-import $ from 'jquery';
-
 //JS动态设置根Html值
 ((doc, win) => {
     const docEl = doc.documentElement,
         resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
         recalc = () => {
-            let clientWidth = $(".nwrapper").width();
+            let clientWidth =  document.body.offsetWidth;
             if (!clientWidth) return;
             docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
         };

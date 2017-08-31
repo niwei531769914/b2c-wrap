@@ -1,6 +1,8 @@
 
 //把url的参数部分转化成json对象
 
+import md5 from 'md5';
+
 export const  parseQueryString = (url) =>{
     let reg_url = /^[^\?]+\?([\w\W]+)$/,
         reg_para = /([^&=]+)=([\w\W]*?)(&|$|#)/g,
@@ -15,5 +17,13 @@ export const  parseQueryString = (url) =>{
     return ret;
 };
 
-// 调用方法
-// alert(GetQueryString("参数名1"));
+
+//md5加密
+export const encription = (data) => {
+
+    let Keyboard = '00BE62201707188DE8A63ZGH66D46yTXNREG1423';
+    let mdName = 'key=' + Keyboard + '&body=' + JSON.stringify(data);
+    return md5(mdName);
+
+};
+
