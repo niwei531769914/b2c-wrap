@@ -12,7 +12,12 @@
   "managementCss":"css/management.css",
   "editadCss":"css/editad.css",
   "areaCss":"css/area.css",
-
+	
+	
+	
+	"welcomeJsx":"scripts/components/lehu.h5.component.welcome.jsx",
+	"loginJsx":"scripts/components/lehu.h5.component.login.jsx",
+  "exampleJsx":"scripts/components/lehu.h5.component.example.jsx",
   "managementJsx":"scripts/components/lehu.h5.component.management.jsx",
   "editadJsx":"scripts/components/lehu.h5.component.editad.jsx",
   "areaJsx":"scripts/components/lehu.h5.component.area.jsx",

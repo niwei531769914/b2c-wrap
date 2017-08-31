@@ -17,7 +17,8 @@ import 'config';
 import EditAD from 'editadJsx';
 
 //render html
-let editAd = document.getElementById('editad');
-render(<EditAD/>,
-    editAd
+//let editAd = document.getElementById('editad');
+ReactDOM.render(
+	<EditAD/>,
+   	document.getElementById('editad')
 );
