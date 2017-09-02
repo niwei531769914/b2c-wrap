@@ -16,8 +16,6 @@ import $ from 'jquery';
 //header
 import { Header } from 'headerJsx';
 
- 
-
 //地址Ui
 class Management extends Component {
 
@@ -32,51 +30,51 @@ class Management extends Component {
 
 	constructor(props) {
 		super(props);
-		
+
 		this.state = {
 			less: false
 		};
-		
- 		this.handleclick = this.handleclick.bind(this);
- 		this.deleteclick = this.deleteclick.bind(this);
 
+		this.handleclick = this.handleclick.bind(this);
+		this.delete = this.delete.bind(this);
 	}
-	
-	handleclick(event) {
- 		let element = event.target;
 
+	handleclick(event) {
+		let element = event.target;
 		console.log(element);
-		 
-		 this.setState((oldState) =>{
-            return {
-                less: !this.state.less
-            };
-        })
- 	}
-  
-	deleteclick(event) {
- 		let element = event.target;
- 		element.remove();
- 		console.log(element);
- 		
-		/*console.log($(this).parents("li"));
-		$(this).parents("li").remove();*/
- 		  
-  	}
+
+		this.setState((oldState) => {
+			return {
+				less: !this.state.less
+			};
+		})
+	}
+
+	edit() {
+		window.location.href = "http://localhost:8080/dist/editad.html";
+	}
+
+	delete(event) {
+		let element = event.target;
+		$(element).parents("li").remove()
+	}
 
 	render() {
-		const { header } = this.props;
-	 	let numbers = [ "王鹏", "倪伟", "刚刚"];
- 		let SPANLIST = (this.state.less ? <img src={require('../../images/management/ic_check_box_outline.png')}/> : <img src={require('../../images/management/ic_check_box.png')}/>);
-		return(
-			<div >
+		const {
+			header
+		} = this.props;
+		let numbers = ["王鹏", "倪伟", "刚刚"];
+		let SPANLIST = (this.state.less ? <img src = {require('../../images/management/ic_check_box_outline.png')}/> : <img src={require('../../images/management/ic_check_box.png')}/>);
+			return(
+				<div>
 	        {/*头部*/}
 	        <Header header={ header }/>
 	         {/*内容区*/}
 	        <ul className="content">
 		 			{
 	 	　　　　　　numbers.map(function(item, index){
-	 	　　　　　　　　return (<li key={index}>
+	 	　　　　　　　　return (
+	 						<li key={index} index={index}>
 	 							<img src={require('../../images/management/bg_order_address.png')}/>
 	 							<div className="content_information">
 								<p className="content_information_name">
@@ -98,11 +96,12 @@ class Management extends Component {
 								{SPANLIST}设为默认么地址
 								</div>
 								<div className="address_management_right">
-									<button>编辑地址</button>
-									<button onClick = { this.deleteclick }>删除地址</button>
+									<button onClick={this.edit}>编辑地址</button>
+									<button onClick={this.delete}>删除地址</button>
 								</div>
 							</div>
-	 						</li>)
+	 					</li>
+	 					)
 	 	　　　　　　}.bind(this))
 	 	　　　　}
   			</ul>
@@ -111,11 +110,8 @@ class Management extends Component {
 			</div>
 	        
 	     </div>
-		)
+			)
+		}
 	}
-}
 
-
-
-
-export default Management;
+	export default Management;

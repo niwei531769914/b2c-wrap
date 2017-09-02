@@ -20,7 +20,7 @@ import { EditAd } from 'editadJsx';
  
 //let editAd = document.getElementById('editad');
 ReactDOM.render(
-	<EditAD/>,
+	<EditAd/>,
    	document.getElementById('editad')
  
 );
