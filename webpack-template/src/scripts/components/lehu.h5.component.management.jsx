@@ -1,8 +1,6 @@
 //jsx语法
 
-import React, {
-	Component
-} from 'react';
+import React, { Component } from 'react';
 
 //api
 import { Api } from '../config/api';
@@ -18,53 +16,86 @@ import { Header } from 'headerJsx';
 
 //地址Ui
 class Management extends Component {
-
+ 
 	//默认props属性
 	static defaultProps = {
 		header: {
 			title: "地址管理",
 			name: "保存"
 		},
-
-	};
+ 	};
 
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			less: false
+			bgColor:0
 		};
 
-		this.handleclick = this.handleclick.bind(this);
+ 		this.handleclick = this.handleclick.bind(this);
 		this.delete = this.delete.bind(this);
 	}
-
-	handleclick(event) {
-		let element = event.target;
-		console.log(element);
-
-		this.setState((oldState) => {
-			return {
-				less: !this.state.less
-			};
+	
+	//选中处理
+	handleclick(index) {
+		
+ 		this.setState({
+ 			bgColor:index 
 		})
-	}
-
+ 	}
+ 
 	edit() {
+		
 		window.location.href = "http://localhost:8080/dist/editad.html";
 	}
 
 	delete(event) {
+		
 		let element = event.target;
 		$(element).parents("li").remove()
 	}
+	
+	componentDidMount() {
+        let that = this;
+        
+        //页面初始化数据  
+        this.apiRequest();
+ 
+    }
+	
+	//请求数据
+    apiRequest() {
+        let that = this;
+
+        let data = {
+            "userId": that.userId,
+        };
+
+        let param = {
+            url: "http://118.178.227.135/mobile-web-user/ws/mobile/v1/address/list",
+            method: "post",
+            params: JSON.stringify(data)
+        };
+
+        Api(param)
+            .done((data) => {
+
+                console.log(data)
+
+            })
+            .fail((error) => {
+                alert("服务器错误!");
+            })
+    }
 
 	render() {
-		const {
-			header
-		} = this.props;
+		const { header } = this.props;
 		let numbers = ["王鹏", "倪伟", "刚刚"];
-		let SPANLIST = (this.state.less ? <img src = {require('../../images/management/ic_check_box_outline.png')}/> : <img src={require('../../images/management/ic_check_box.png')}/>);
+		const style = {width:'10px', height:'10px', lineHeight:'10px',float:'left'}
+		const {bgColor} = this.state;
+		//let rowStyle = { backgroundColor: this.state.checked ? 'blue' : 'transparent' };
+		//console.log(rowStyle);
+		//let SPANLIST = (this.state.less ? <img src = {require('../../images/management/ic_check_box_outline.png')}/> : <img src={require('../../images/management/ic_check_box.png')}/>);
 			return(
 				<div>
 	        {/*头部*/}
@@ -74,7 +105,7 @@ class Management extends Component {
 		 			{
 	 	　　　　　　numbers.map(function(item, index){
 	 	　　　　　　　　return (
-	 						<li key={index} index={index}>
+	 						<li key={index} date-index={index}>
 	 							<img src={require('../../images/management/bg_order_address.png')}/>
 	 							<div className="content_information">
 								<p className="content_information_name">
@@ -92,8 +123,11 @@ class Management extends Component {
 								</p>
 								</div>
 								<div className="address_management">
-								<div onClick = { this.handleclick } className="address_management_left">
-								{SPANLIST}设为默认么地址
+								<div className="address_management_left">
+								<div key={index} onClick = { this.handleclick } 
+								className = {bgColor== index ? 'active' : null}
+								style = {style}
+								></div>设为默认么地址
 								</div>
 								<div className="address_management_right">
 									<button onClick={this.edit}>编辑地址</button>
@@ -106,7 +140,7 @@ class Management extends Component {
 	 	　　　　}
   			</ul>
   			<div>
-				<button className="newAddress">新增地址</button>
+				<button onClick={this.edit} className="newAddress">新增地址</button>
 			</div>
 	        
 	     </div>
