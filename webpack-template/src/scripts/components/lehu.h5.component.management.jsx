@@ -27,21 +27,17 @@ class Management extends Component {
 
 	constructor(props) {
 		super(props);
-
-		this.state = {
-			bgColor:0
-		};
-
- 		this.handleclick = this.handleclick.bind(this);
+		
+  		this.handleclick = this.handleclick.bind(this);
 		this.delete = this.delete.bind(this);
 	}
 	
 	//选中处理
-	handleclick(index) {
-		
- 		this.setState({
- 			bgColor:index 
-		})
+	handleclick(event, index) {
+	 	$(event.target).parents("ul").find("li .address_management_left_img img").removeClass("active");
+	 	$(event.target).parents("ul").find("li .content_information_name img").css('display','none');
+ 		$(event.target).parents("li").find(".content_information_name img").css('display','block');
+ 		$(event.target).addClass("active");
  	}
  
 	edit() {
@@ -60,7 +56,9 @@ class Management extends Component {
         
         //页面初始化数据  
         this.apiRequest();
- 
+        $(".address_management_left_img").parents("ul").find("li .content_information_name img").css('display','none');
+        $(".address_management_left_img").parents("ul").find("li").eq(0).find(".content_information_name img").css('display','block');
+  		$(".content").find("li").eq(0).find(".address_management_left_img img").addClass("active");
     }
 	
 	//请求数据
@@ -91,11 +89,7 @@ class Management extends Component {
 	render() {
 		const { header } = this.props;
 		let numbers = ["王鹏", "倪伟", "刚刚"];
-		const style = {width:'10px', height:'10px', lineHeight:'10px',float:'left'}
-		const {bgColor} = this.state;
-		//let rowStyle = { backgroundColor: this.state.checked ? 'blue' : 'transparent' };
-		//console.log(rowStyle);
-		//let SPANLIST = (this.state.less ? <img src = {require('../../images/management/ic_check_box_outline.png')}/> : <img src={require('../../images/management/ic_check_box.png')}/>);
+		 
 			return(
 				<div>
 	        {/*头部*/}
@@ -124,10 +118,9 @@ class Management extends Component {
 								</div>
 								<div className="address_management">
 								<div className="address_management_left">
-								<div key={index} onClick = { this.handleclick } 
-								className = {bgColor== index ? 'active' : null}
-								style = {style}
-								></div>设为默认么地址
+									<div className="address_management_left_img" key={index} onClick = { this.handleclick }>
+									<img src = {require('../../images/management/ic_check_box_outline.png')}/>
+									</div>设为默认么地址
 								</div>
 								<div className="address_management_right">
 									<button onClick={this.edit}>编辑地址</button>
@@ -139,7 +132,7 @@ class Management extends Component {
 	 	　　　　　　}.bind(this))
 	 	　　　　}
   			</ul>
-  			<div>
+  			<div>            
 				<button onClick={this.edit} className="newAddress">新增地址</button>
 			</div>
 	        
