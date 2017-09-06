@@ -21,12 +21,12 @@
 	
 	
 	
-	"welcomeJsx":"scripts/components/lehu.h5.component.welcome.jsx",
-	"loginJsx":"scripts/components/lehu.h5.component.login.jsx",
+  "welcomeJsx":"scripts/components/lehu.h5.component.welcome.jsx",
+  "loginJsx":"scripts/components/lehu.h5.component.login.jsx",
   "exampleJsx":"scripts/components/lehu.h5.component.example.jsx",
   "managementJsx":"scripts/components/lehu.h5.component.management.jsx",
   "editadJsx":"scripts/components/lehu.h5.component.editad.jsx",
- 	"orderlistJsx":"scripts/containers/lehu.h5.container.orderlist.jsx",
+  "orderlistJsx":"scripts/containers/lehu.h5.container.orderlist.jsx",
 
 
   "headerJsx":"scripts/commonViews/lehu.h5.commonviews.header.jsx",
