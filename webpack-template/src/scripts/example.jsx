@@ -57,5 +57,5 @@ class Lists extends Component {
 
 ReactDOM.render(
     <Lists/>,
-    document.getElementById('lists');
+    document.getElementById('lists')
 );
