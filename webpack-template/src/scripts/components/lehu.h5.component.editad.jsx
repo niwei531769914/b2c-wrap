@@ -14,9 +14,9 @@ import $ from 'jquery';
 //header
 import {Header} from 'headerJsx';
 
-import  Swiper  from 'swiperJs';
+import Swiper from 'swiperJs';
 
-import { provinceList } from 'main';
+import {provinceList} from 'main';
 
 import 'areaCss';
 import 'swiper';
@@ -94,7 +94,7 @@ class EditAd extends Component {
         Height();
 
         //初始书数据
-        let area = () =>{
+        let area = () => {
             let Length = provinceList.length;
             let html = '';
             for (let i = 0; i < Length; i++) {
@@ -151,8 +151,8 @@ class EditAd extends Component {
             }
             else if (LoIndex == 1) {
                 let areaAddress = address.cityList[value];
-                if(!areaAddress.hasOwnProperty("areaList")){
-                    $('.address-container p.active').each((index,item) => {
+                if (!areaAddress.hasOwnProperty("areaList")) {
+                    $('.address-container p.active').each((index, item) => {
                         addressName += $('.address-container p.active').eq(index).html();
                     });
                     $('.choose-address-page').removeClass('show');
@@ -169,9 +169,9 @@ class EditAd extends Component {
                 $('.address-container .swiper-slide').eq(Index).empty().append(html);
                 swiper.slideTo(Index, 300, false);
             }
-            else if(LoIndex == 2){
+            else if (LoIndex == 2) {
 
-                $('.address-container p.active').each((index,item) => {
+                $('.address-container p.active').each((index, item) => {
                     addressName += $('.address-container p.active').eq(index).html();
                 });
                 $('.choose-address-page').removeClass('show');
@@ -196,19 +196,19 @@ class EditAd extends Component {
         })
     }
 
-    changePhone(event){
+    changePhone(event) {
         this.setState({
             phone: event.target.value
         })
     }
 
-    changeAddress(event){
+    changeAddress(event) {
         this.setState({
             address: event.target.value
         })
     }
 
-    changeIdCardNumber(event){
+    changeIdCardNumber(event) {
         this.setState({
             idCardNumber: event.target.value
         })
@@ -222,11 +222,11 @@ class EditAd extends Component {
 
     }
 
-    area(){
-       $('.choose-address-page').addClass('show');
+    area() {
+        $('.choose-address-page').addClass('show');
     }
 
-    changArea(addressName){
+    changArea(addressName) {
         this.setState({
             province: addressName
         })
@@ -270,36 +270,42 @@ class EditAd extends Component {
     }
 
     render() {
-        const {header ,areaHeader} = this.props;
+        const {header, areaHeader} = this.props;
         const {name, phone, province, address, idCardNumber, setdefault} = this.state;
         return (
-            <div >
+            <div>
                 {/*头部*/}
-                <Header header={ header }/>
+                <Header header={header}/>
 
                 {/*/!*content*!/*/}
-                <section className="OrderDetails-main" ref={(ref) => { this.Input = ref }}>
+                <section className="OrderDetails-main" ref={(ref) => {
+                    this.Input = ref
+                }}>
                     <div id="Middle">
-                        <input type="text" className="UserName" value={ name }  onChange={ this.changeName }/>
-                        <input type="text" className="Telephone" value={ phone } onChange={ this.changePhone } />
+                        <input type="text" className="UserName" value={name} onChange={this.changeName}/>
+                        <input type="text" className="Telephone" value={phone} onChange={this.changePhone}/>
                         <p className="Address" onClick={this.area}>
-                            <span className="Address-title"><em>{ province }</em></span>
-                            <span className="Address-tab"><img src={ require('./../../images/editad/ic_chevron_right.png') }/></span>
+                            <span className="Address-title"><em>{province}</em></span>
+                            <span className="Address-tab"><img
+                                src={require('./../../images/editad/ic_chevron_right.png')}/></span>
                         </p>
-                        <input type="text" className="DetailedAddress" value={ address } onChange={ this.changeAddress } />
+                        <input type="text" className="DetailedAddress" value={address} onChange={this.changeAddress}/>
                     </div>
                     <div className="identity">
-                        <input type="text" className="identity-Serial" value={ idCardNumber } onChange={ this.changeIdCardNumber } />
+                        <input type="text" className="identity-Serial" value={idCardNumber}
+                               onChange={this.changeIdCardNumber}/>
                         <div className="identity-content">
                             <span className="identity-upload">上传身份证</span>
                             <div className="identity-picture">
-                                <a href="javascript:void (0)"><img src={ require('./../../images/editad/pic_id.png') }/></a>
-                                <a href="javascript:void (0)"><img src={ require('./../../images/editad/pic_id.png') }/></a>
+                                <a href="javascript:void (0)"><img
+                                    src={require('./../../images/editad/pic_id.png')}/></a>
+                                <a href="javascript:void (0)"><img
+                                    src={require('./../../images/editad/pic_id.png')}/></a>
                             </div>
                         </div>
                     </div>
                     <div className="default">
-                        <p data-value={ setdefault } className="check" onClick={this.check}>设置为默认地址</p>
+                        <p data-value={setdefault} className="check" onClick={this.check}>设置为默认地址</p>
                     </div>
                     <div className="delete">
                         <a onClick={this.delete}>删除地址</a>
@@ -307,17 +313,17 @@ class EditAd extends Component {
                 </section>
 
                 {/*area change*/}
-                <div className="choose-address-page" >
+                <div className="choose-address-page">
 
                     {/*top*/}
                     <div className="head-fix">
-                        <Header header={ areaHeader }/>
+                        <Header header={areaHeader}/>
 
                         <ul className="head-address-ul">
                             <li className="head-address-li">请选择</li>
-                            <li ></li>
-                            <li ></li>
-                            <li ></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
                         </ul>
                     </div>
 
@@ -342,4 +348,4 @@ class EditAd extends Component {
 
 }
 
-export { EditAd };
+export {EditAd};
