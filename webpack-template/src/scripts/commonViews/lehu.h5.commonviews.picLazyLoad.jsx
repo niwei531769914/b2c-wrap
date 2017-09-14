@@ -1,6 +1,7 @@
 // 加载组件
 import React, {Component} from 'react';
-
+//加载jq
+import $ from 'jquery';
 
 class PicLazyLoad extends Component {
     constructor(props) {
