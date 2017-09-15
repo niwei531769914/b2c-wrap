@@ -1,4 +1,5 @@
-import $ from '../lib/zepto';
+import $ from 'jquery';
+
 
 //检查邮箱地址
 export const checkEmail = (data) => {
@@ -91,8 +92,18 @@ export const isMobile = {
 };
 
 //弹窗
-export const Tip = (message) => {
-    alert(message);
+
+export const Tip = (message, time) => {
+    let $el = $('<div class="dialog-cart"><div class="dialog-cart-inner"><span>' + message + '</span></div></div>');
+    if ($('.dialog-cart').length > 0) {
+        return false;
+    }
+    ;
+    $(document.body).append($el);
+    setTimeout(function () {
+        $el.remove();
+    }, time || "3000");
+
 };
 
 //动态获取host

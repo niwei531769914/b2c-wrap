@@ -1,5 +1,6 @@
-//我的订单组件
-
+/*
+ * 我的订单 容器组件
+ */
 import React, {Component} from 'react';
 
 import {Header} from 'headerJsx';
@@ -7,6 +8,7 @@ import {IsLoading} from 'loadingJsx';
 import {Top} from 'topJsx';
 
 import {encription} from 'query';
+import { Tip } from 'util';
 
 import {Api} from 'api';
 
@@ -47,6 +49,7 @@ class OrderList extends Component {
         this.token = '1cd425494c9d50c78aad428b7ea18395';
 
         //    事件绑定
+        this.Alert = this.Alert.bind(this);
 
     }
 
@@ -219,6 +222,12 @@ class OrderList extends Component {
         }
     }
 
+    Alert(){
+
+        Tip('你好',2000);
+
+    }
+
     render() {
         let that = this;
         const {
@@ -237,8 +246,7 @@ class OrderList extends Component {
                     {/*tab*/}
                     <div className="order-tab">
                         <ul>
-                            <li className="li_orderlist active" data-status="100">
-                                <span>全部</span></li>
+                            <li className="li_orderlist active" data-status="100"><span>全部</span></li>
                             <li className="li_orderlist" data-status="101"><span>待付款</span>
                             </li>
                             <li className="li_orderlist" data-status="102"><span>待发货</span>
@@ -259,7 +267,7 @@ class OrderList extends Component {
                                     let STATUS = that.judgeStatus(item.status);
 
                                     return (
-                                        <div className="order-item border-1px" key={index}>
+                                        <div className="order-item border-1px" key={index}   onClick={this.Alert}>
 
                                             <div className="order-item-title">
                                                 <span className="item-store-name">店铺:<em>{item.storeName}</em></span>
@@ -280,19 +288,15 @@ class OrderList extends Component {
                                                                 </div>
                                                                 <div className="item-goods-content">
                                                                     <div className="goods-content-name">
-                                                                        <span
-                                                                            className="goods-name">{items.goodsName}</span>
-                                                                        <span
-                                                                            className="goods-price"> ￥{items.price}</span>
+                                                                        <span className="goods-name">{items.goodsName}</span>
+                                                                        <span className="goods-price"> ￥{items.price}</span>
                                                                     </div>
                                                                     <div className="goods-content-spec">
                                                                         <em>{items.normsValue}</em>
                                                                     </div>
                                                                     <div className="goods-content-fot">
-                                                                        <span
-                                                                            className="goods-tax">税费:<em>￥{items.taxPrice}</em></span>
-                                                                        <span
-                                                                            className="goods-num">x<em>{items.quantity}</em></span>
+                                                                        <span className="goods-tax">税费:<em>￥{items.taxPrice}</em></span>
+                                                                        <span className="goods-num">x<em>{items.quantity}</em></span>
                                                                     </div>
                                                                 </div>
                                                             </div>

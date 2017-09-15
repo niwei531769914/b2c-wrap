@@ -81,37 +81,37 @@
 
 </body>
 <script type="text/javascript">
-//    let myscroll;
-//    function loaded() {
-//        myscroll = new iScroll("wrapper",{
-//            hScroll:true,
-//            vScroll:false,
-//            bounce: true,
-//            hScrollbar: false,
-//            hideScrollbar: true
-//        });
-//        select();
-//    }
-//    window.addEventListener("DOMContentLoaded",loaded,false);
-//
-//    $('.equal-table li').click(function () {
-//        let Index = $(this).index();
-//        $('.equal-table .nav-current').removeClass('nav-current');
-//        $('.equal-table li').eq(Index).addClass('nav-current');
-//        let PositionIndex = document.querySelector('#wrapper li[class="nav-current"]');
-//        myscroll.scrollToElement(PositionIndex,200,true,true);
-//    });
-//
-//    function select() {
-//        let PositionIndex = document.querySelector('#wrapper li[class="nav-current"]');
-//        myscroll.scrollToElement(PositionIndex,200,true,true);
-//    }
-//
-//
-//    $(window).ready(function () {
-//        $('#wrapper li').click(function () {
-//
-//        })
-//    })
+    let myscroll;
+    function loaded() {
+        myscroll = new IScroll("wrapper",{
+            hScroll:true,
+            vScroll:false,
+            bounce: true,
+            hScrollbar: false,
+            hideScrollbar: true
+        });
+        select();
+    }
+    window.addEventListener("DOMContentLoaded",loaded,false);
+
+    $('.equal-table li').click(function () {
+        let Index = $(this).index();
+        $('.equal-table .nav-current').removeClass('nav-current');
+        $('.equal-table li').eq(Index).addClass('nav-current');
+        let PositionIndex = document.querySelector('#wrapper li[class="nav-current"]');
+        myscroll.scrollToElement(PositionIndex,200,true,true);
+    });
+
+    function select() {
+        let PositionIndex = document.querySelector('#wrapper li[class="nav-current"]');
+        myscroll.scrollToElement(PositionIndex,200,true,true);
+    }
+
+
+    $(window).ready(function () {
+        $('#wrapper li').click(function () {
+
+        })
+    })
 </script>
 </html>

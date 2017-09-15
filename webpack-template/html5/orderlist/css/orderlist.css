@@ -37,6 +37,8 @@ body {
 .order .order-tab ul .active {
   color: #f53828;
   position: relative;
+  font-size: .32rem;
+  font-weight: 600;
 }
 .order .order-tab ul .active span:after {
   width: 100%;
@@ -241,4 +243,31 @@ body {
   width: 100%;
   height: auto;
   display: block;
+}
+.dialog-cart {
+  max-width: 750px;
+  position: fixed;
+  top: 4rem;
+  width: 100%;
+  height: 3rem;
+  z-index: 999;
+}
+.dialog-cart .dialog-cart-inner {
+  background: rgba(0, 0, 0, 0.7);
+  position: relative;
+  overflow: hidden;
+  width: 5rem;
+  height: 3rem;
+  margin: 0 auto;
+  padding: .2rem;
+  border-radius: 6px;
+}
+.dialog-cart .dialog-cart-inner span {
+  width: auto;
+  height: 2.6rem;
+  float: left;
+  font-size: .32rem;
+  overflow: hidden;
+  color: #ffffff;
+  line-height: .5rem;
 }

@@ -132,7 +132,7 @@ module.exports = function(options){
 
         entry: Object.assign(entries(), {
             // 用到什么公共lib（例如zepto.js），就把它加进vendor去，目的是将公用库单独提取打包
-            'common': ['jquery','react','react-dom']
+            'common': ['jquery','react','react-dom','config']
         }),
         output: {
             path: path.join(__dirname, "dist"),

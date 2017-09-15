@@ -37,6 +37,8 @@ body {
 .order .order-tab ul .active {
     color: #f53828;
     position: relative;
+    font-size: .32rem;
+    font-weight: 600;
 }
 .order .order-tab ul .active span:after {
     width: 100%;
