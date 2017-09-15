@@ -1,31 +1,29 @@
-import React, {
-    View,
-    Text,
-    TouchableOpacity
-} from 'react-native';
-//import Login from './Login';
+import React from 'react';
+import LazyLoad from 'react-lazy-load';
 
-//引入分支ui组件
-import Login from 'loginJsx';
-
-class Splash extends React.Component {
-    _openPage() {//打开login页面
-        this.props.navigator.push({
-            title: 'Login',
-            component: Login
-        })
-    }
-    render() {
-        return (
-            <View style={{ flex: 1, alignItems: 'center', backgroundColor: '#FFFFFF' }}>
-                <Text>Splash Page</Text>
-
-                <TouchableOpacity onPress={this._openPage.bind(this)}>
-                    <Text style={{ color: '#55ACEE' }}>Open New Page</Text>
-                </TouchableOpacity>
-            </View>
-        );
-    }
-}
-
-export default Splash;
+const MyComponent = () => (
+    <div>
+        Scroll to load images.
+        <div className="filler" />
+        <LazyLoad height={762} offsetVertical={300}>
+            <img src='http://apod.nasa.gov/apod/image/1502/HDR_MVMQ20Feb2015ouellet1024.jpg' />
+        </LazyLoad>
+        <div className="filler" />
+        <LazyLoad height={683} offsetTop={200}>
+            <img src='http://apod.nasa.gov/apod/image/1502/2015_02_20_conj_bourque1024.jpg' />
+        </LazyLoad>
+        <div className="filler" />
+        <LazyLoad height={480} offsetHorizontal={50}>
+            <img src='http://apod.nasa.gov/apod/image/1502/MarsPlume_jaeschke_480.gif' />
+        </LazyLoad>
+        <div className="filler" />
+        <LazyLoad
+            height={720}
+            onContentVisible={() => console.log('look ma I have been lazyloaded!')}
+        >
+            <img src='http://apod.nasa.gov/apod/image/1502/ToadSky_Lane_1080_annotated.jpg' />
+        </LazyLoad>
+        <div className="filler" />
+    </div>
+);
+   

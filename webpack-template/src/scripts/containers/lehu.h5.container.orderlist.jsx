@@ -1,8 +1,6 @@
 //我的订单组件
 
-import React, {
-    Component
-} from 'react';
+import React, {Component} from 'react';
 
 import {Header} from 'headerJsx';
 import {IsLoading} from 'loadingJsx';
@@ -13,6 +11,8 @@ import {encription} from 'query';
 import {Api} from 'api';
 
 import $ from 'jquery';
+
+import {imgLazyLoad} from 'piclazyLoad';
 
 class OrderList extends Component {
 
@@ -43,8 +43,8 @@ class OrderList extends Component {
         this.pageAmount = 1;
 
         //设置userId和token
-        this.userId = '721652';
-        this.token = '9c0cbd6056a858e0015bcb1ff59b11ecd64ffcb6739538760f1bb79573ff0211';
+        this.userId = '187131';
+        this.token = '1cd425494c9d50c78aad428b7ea18395';
 
         //    事件绑定
 
@@ -82,6 +82,9 @@ class OrderList extends Component {
 
         //滚动加载初始化
         that.bindScroll();
+
+        //img图片懒加载
+        $.imgLazyLoad();
 
     }
 
@@ -270,7 +273,9 @@ class OrderList extends Component {
                                                         return (
                                                             <div className="item-goods" key={indexs}>
                                                                 <div className="item-goods-images">
-                                                                    <img src={items.img}/>
+                                                                    <img className="lazyload"
+                                                                         src={require('./../../images/goods_back.png')}
+                                                                         data-img={items.img}/>
                                                                 </div>
                                                                 <div className="item-goods-content">
                                                                     <div className="goods-content-name">

@@ -2,10 +2,11 @@
   "jquery": "scripts/lib/jquery.min.js",
   "fastclick":"scripts/lib/fastclick.js",
   "config":"scripts/config/config.js",
-  "api":"scripts/config/api.js",
+   "api":"scripts/config/api.js",
   "md5":"scripts/config/md5.min.js",
   "main":"scripts/lib/main.js",
   "swiperJs":"scripts/lib/swiper.min.js",
+  "piclazyLoad":"scripts/config/zepto.piclazyLoad.min.js",
 
   "commonCss":"css/common/common.css",
   "headerCss":"css/common/header.css",
@@ -27,6 +28,7 @@
   "managementJsx":"scripts/components/lehu.h5.component.management.jsx",
   "editadJsx":"scripts/components/lehu.h5.component.editad.jsx",
   "orderlistJsx":"scripts/containers/lehu.h5.container.orderlist.jsx",
+  "fadeinJsx":"scripts/examples/pages/fadein.js",
 
 
   "headerJsx":"scripts/commonViews/lehu.h5.commonviews.header.jsx",
