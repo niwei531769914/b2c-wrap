@@ -82,10 +82,7 @@ class OrderList extends Component {
 
         //滚动加载初始化
         that.bindScroll();
-
-        //img图片懒加载
-        $.imgLazyLoad();
-
+ 
     }
 
     /**
@@ -186,6 +183,10 @@ class OrderList extends Component {
                     orderList: that.state.orderList.concat(data.response.orders),
                     pageAmount: data.page.pageAmount,
                 });
+
+
+                //img图片懒加载
+                $.imgLazyLoad();
 
             })
             .fail((error) => {
