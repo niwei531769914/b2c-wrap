@@ -22,6 +22,7 @@
 
 
   "editadJsx":"scripts/components/lehu.h5.component.editad.jsx",
+  "swiperJsx":"scripts/components/lehu.h5.component.swiper.jsx",
 
 
   "orderlistJsx":"scripts/containers/lehu.h5.container.orderlist.jsx",
