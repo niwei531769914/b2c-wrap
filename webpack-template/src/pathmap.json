@@ -6,6 +6,7 @@
   "md5":"scripts/config/md5.min.js",
   "main":"scripts/lib/main.js",
   "swiperJs":"scripts/lib/swiper.min.js",
+  "iscrollJs":"scripts/lib/iscroll.js",
 
   "commonCss":"css/common/common.css",
   "headerCss":"css/common/header.css",
@@ -17,12 +18,14 @@
   "editadCss":"css/editad.css",
   "areaCss":"css/area.css",
   "orderlistCss":"css/orderlist.css",
+  "classifyCss":"css/classify.css",
 
 
   "editadJsx":"scripts/components/lehu.h5.component.editad.jsx",
 
 
   "orderlistJsx":"scripts/containers/lehu.h5.container.orderlist.jsx",
+  "classifyJsx":"scripts/containers/lehu.h5.container.classify.jsx",
 
 
   "headerJsx":"scripts/commonViews/lehu.h5.commonviews.header.jsx",
@@ -30,7 +33,7 @@
   "topJsx":"scripts/commonViews/lehu.h5.commonviews.top.jsx",
 
 
-  "util":"scripts/util/lehu.h5.util.util.jsx",
-  "query":"scripts/util/lehu.h5.util.query.jsx"
+  "util":"scripts/util/lehu.h5.util.util.js",
+  "query":"scripts/util/lehu.h5.util.query.js"
 
 }

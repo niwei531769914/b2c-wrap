@@ -883,6 +883,7 @@ IScroll.prototype = {
 
 /* REPLACE START: _translate */
 
+            //alert(y);
 			this.scrollerStyle[utils.style.transform] = 'translate(' + x + 'px,' + y + 'px)' + this.translateZ;
 
 /* REPLACE END: _translate */

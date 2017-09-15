@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="-webkit-overflow-scrolling: touch">
 <head>
     <meta charset="UTF-8">
     <title>分类</title>
@@ -14,110 +14,119 @@
     <script src="js/classify.js"></script>
     <link href="css/classify.css" rel="stylesheet">
     <script src="../common/js/zepto.min.js"></script>
-    <style type="text/css">
-        html{-webkit-overflow-scrolling: touch}
-        body{-webkit-overflow-scrolling: touch}
-        ::-webkit-scrollbar{display: none}
-        ::-webkit-scrollbar{ width: 1px; height: 1px}
-        ::scrollbar{ width: 1px; height: 1px}
 
-    </style>
 </head>
-<body>
-<div class="nwrapper">
-<div class="tabs">
-    <a href="javascript:;" class="active">分类</a>
-    <a href="javascript:;" >国家</a>
-</div>
+<body class="nwrapper">
+<div class="category-viewport">
+   <div class="hy-category-tab">
+       <div id="category">
+           <ul>
+               <li class="active"><a class="hy-btn" href="javascript: void (0);">热门推荐</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">京东超市</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">国际品牌</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">奢侈品</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">全球购</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">男装</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">女装</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">男鞋</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">内衣配饰</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">热门推荐</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">热门推荐</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">热门推荐</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">热门推荐</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">热门推荐</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">热门推荐</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">热门推荐</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">热门推荐</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">热门推荐</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">热门推荐</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">热门推荐</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">热门推荐</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">热门推荐</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">热门推荐</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">热门推荐</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">热门推荐</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">热门推荐</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">热门推荐</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">热门推荐</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">热门推荐</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">热门推荐</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">热门推荐</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">热门推荐</a></li>
+               <li><a class="hy-btn" href="javascript: void (0);">二手车</a></li>
+           </ul>
+       </div>
+   </div>
 
-    <div class="classify-type">
-      <!--品牌分类-->
-        <div class="classify-type-list">
-            <a href="javascript:;" class="list-active">美容护肤</a>
-            <a href="javascript:;">美容护肤</a>
-            <a href="javascript:;">美容护肤</a>
-            <a href="javascript:;">美容护肤</a>
-            <a href="javascript:;">美容护肤</a>
-            <a href="javascript:;">美容护肤</a>
-            <a href="javascript:;">美容护肤</a>
-            <a href="javascript:;">美容护肤</a>
-            <a href="javascript:;">美容护肤</a>
-            <a href="javascript:;">美容护肤</a>
-            <a href="javascript:;">美容护肤</a>
-            <a href="javascript:;">美容护肤</a>
-            <a href="javascript:;">美容护肤</a>
-            <a href="javascript:;">美容护肤</a>
-            <a href="javascript:;">美容护肤</a>
-            <a href="javascript:;">美容护肤</a>
-            <a href="javascript:;">美容护肤</a>
-            <a href="javascript:;">美容护肤</a>
-        </div>
-        <div class="classify-type-goods">
-             <a href="javascript:;"><img src="http://lehumall.b0.upaiyun.com//upload/image/store/2017/20170520/201705200957025038_290X290.jpg"><span>猕猴桃</span></a>
-             <a href="javascript:;"><img src="http://lehumall.b0.upaiyun.com//upload/image/store/2017/20170520/201705200957025038_290X290.jpg"><span>猕猴桃</span></a>
-             <a href="javascript:;"><img src="http://lehumall.b0.upaiyun.com//upload/image/store/2017/20170520/201705200957025038_290X290.jpg"><span>猕猴桃</span></a>
-             <a href="javascript:;"><img src="http://lehumall.b0.upaiyun.com//upload/image/store/2017/20170520/201705200957025038_290X290.jpg"><span>猕猴桃</span></a>
-             <a href="javascript:;"><img src="http://lehumall.b0.upaiyun.com//upload/image/store/2017/20170520/201705200957025038_290X290.jpg"><span>猕猴桃</span></a>
-             <a href="javascript:;"><img src="http://lehumall.b0.upaiyun.com//upload/image/store/2017/20170520/201705200957025038_290X290.jpg"><span>猕猴桃</span></a>
-             <a href="javascript:;"><img src="http://lehumall.b0.upaiyun.com//upload/image/store/2017/20170520/201705200957025038_290X290.jpg"><span>猕猴桃</span></a>
-             <a href="javascript:;"><img src="http://lehumall.b0.upaiyun.com//upload/image/store/2017/20170520/201705200957025038_290X290.jpg"><span>猕猴桃</span></a>
-             <a href="javascript:;"><img src="http://lehumall.b0.upaiyun.com//upload/image/store/2017/20170520/201705200957025038_290X290.jpg"><span>猕猴桃</span></a>
-             <a href="javascript:;"><img src="http://lehumall.b0.upaiyun.com//upload/image/store/2017/20170520/201705200957025038_290X290.jpg"><span>猕猴桃</span></a>
-             <a href="javascript:;"><img src="http://lehumall.b0.upaiyun.com//upload/image/store/2017/20170520/201705200957025038_290X290.jpg"><span>猕猴桃</span></a>
-             <a href="javascript:;"><img src="http://lehumall.b0.upaiyun.com//upload/image/store/2017/20170520/201705200957025038_290X290.jpg"><span>猕猴桃</span></a>
-             <a href="javascript:;"><img src="http://lehumall.b0.upaiyun.com//upload/image/store/2017/20170520/201705200957025038_290X290.jpg"><span>猕猴桃</span></a>
-             <a href="javascript:;"><img src="http://lehumall.b0.upaiyun.com//upload/image/store/2017/20170520/201705200957025038_290X290.jpg"><span>猕猴桃</span></a>
-             <a href="javascript:;"><img src="http://lehumall.b0.upaiyun.com//upload/image/store/2017/20170520/201705200957025038_290X290.jpg"><span>猕猴桃</span></a>
-             <a href="javascript:;"><img src="http://lehumall.b0.upaiyun.com//upload/image/store/2017/20170520/201705200957025038_290X290.jpg"><span>猕猴桃</span></a>
-             <a href="javascript:;"><img src="http://lehumall.b0.upaiyun.com//upload/image/store/2017/20170520/201705200957025038_290X290.jpg"><span>猕猴桃</span></a>
-             <a href="javascript:;"><img src="http://lehumall.b0.upaiyun.com//upload/image/store/2017/20170520/201705200957025038_290X290.jpg"><span>猕猴桃</span></a>
-             <a href="javascript:;"><img src="http://lehumall.b0.upaiyun.com//upload/image/store/2017/20170520/201705200957025038_290X290.jpg"><span>猕猴桃</span></a>
-             <a href="javascript:;"><img src="http://lehumall.b0.upaiyun.com//upload/image/store/2017/20170520/201705200957025038_290X290.jpg"><span>猕猴桃</span></a>
-             <a href="javascript:;"><img src="http://lehumall.b0.upaiyun.com//upload/image/store/2017/20170520/201705200957025038_290X290.jpg"><span>猕猴桃</span></a>
-             <a href="javascript:;"><img src="http://lehumall.b0.upaiyun.com//upload/image/store/2017/20170520/201705200957025038_290X290.jpg"><span>猕猴桃</span></a>
-             <a href="javascript:;"><img src="http://lehumall.b0.upaiyun.com//upload/image/store/2017/20170520/201705200957025038_290X290.jpg"><span>猕猴桃</span></a>
-             <a href="javascript:;"><img src="http://lehumall.b0.upaiyun.com//upload/image/store/2017/20170520/201705200957025038_290X290.jpg"><span>猕猴桃</span></a>
-             <a href="javascript:;"><img src="http://lehumall.b0.upaiyun.com//upload/image/store/2017/20170520/201705200957025038_290X290.jpg"><span>猕猴桃</span></a>
-             <a href="javascript:;"><img src="http://lehumall.b0.upaiyun.com//upload/image/store/2017/20170520/201705200957025038_290X290.jpg"><span>猕猴桃</span></a>
+    <div class="hy-category-content">
+        <div id="branchScroll" class="hy-category-content-wrapper" >
+            <div id="branchList">
+                <div style="width: 100%; height: 2000px; background: red" class="">
+22
+                </div>
+            </div>
         </div>
     </div>
 
-
-<div class="classify-city" style="display: none">
-    <a href="javascript:;"><img src="img/city_03.jpg"><span>日韩馆</span></a>
-    <a href="javascript:;"><img src="img/city_05.jpg"><span>日韩馆</span></a>
-    <a href="javascript:;"><img src="img/city_09.jpg"><span>日韩馆</span></a>
-    <a href="javascript:;"><img src="img/city_10.jpg"><span>日韩馆</span></a>
-</div>
-
 </div>
 </body>
+<script src="../common/js/iscroll.js"></script>
 <script type="text/javascript">
     $(window).ready(function () {
-         var WHeight = $(window).height();
-         var Height = $('.tabs').height();
-         $('.classify-type-list').height(WHeight - Height);
-         $('.classify-type-goods').height(WHeight - Height);
-//        tab change
-        $('.tabs a').click(function () {
-            var Index = $(this).index();
-            $('.tabs a').removeClass('active');
+
+        Height();
+
+        let Scroll = new IScroll('#category',
+            {
+                preventDefault: false ,
+                tap: true,
+                scrollbars: false,
+            });
+
+        let myScroll = new IScroll('#branchScroll',
+            {
+                preventDefault: false ,
+                tap: true,
+                scrollbars: false,
+            });
+
+        //设置需要滚动模块高度
+        function Height() {
+            let WindowHeight = window.screen.availHeight;
+            document.querySelector('#category').style.height = WindowHeight + 'px';
+            document.querySelector('#branchScroll').style.height = WindowHeight + 'px';
+        }
+
+        window.onresize = function(){
+            Height();
+        };
+
+        //点击切换active
+        $('#category ul li').on('tap',function () {
+
+            if($(this).hasClass('active')){
+                console.log(1);
+                return false;
+            }
+
+            $('#category ul li').removeClass('active');
             $(this).addClass('active');
-            if(Index == 0){
-                $('.classify-type').show();
-                $('.classify-city').hide();
-            }
-            else {
-                $('.classify-type').hide();
-                $('.classify-city').show();
-            }
+            let PositionIndex = document.querySelector('#category li[class="active"]');
+            //中间
+            Scroll.scrollToElement(PositionIndex,200,true,true);
+            //顶部
+            //Scroll.scrollToElement(PositionIndex,200,false,false);
+
+            document.querySelector('#branchList').style.opacity = '0';
+            document.querySelector('#branchList').style.transition = 'opacity .2s linear 0s';
+            setTimeout(function () {
+                document.querySelector('#branchList').style.opacity = '1';
+                setTimeout(function () {
+                    document.querySelector('#branchList').setAttribute('style','transform: translate(0px, 0px);');
+                },200)
+            },200);
         })
-//        list change
-        $('.classify-type-list a ').click(function () {
-            var Index = $(this).index();
-            $('.classify-type-list a').removeClass('list-active');
-            $(this).addClass('list-active');
-        })
+
     })
 </script>
 </html>

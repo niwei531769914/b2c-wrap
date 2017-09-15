@@ -7,17 +7,15 @@ import ReactDOM , { render } from 'react-dom';
 
 //引入CSS
 import 'commonCss';
-import 'orderlistCss';
-
 
 //引入公共JS
-import 'config';
+//import 'config';
 
 //引入分支ui组件
-import { OrderList } from 'orderlistJsx';
+import { LightBox } from './containers/lehu.h5.container.lightbox';
 
 //render html
-let orderlist = document.getElementById('orderlist');
-render(<OrderList/>,
-    orderlist
+let lightbox = document.getElementById('lightbox');
+render(<LightBox/>,
+    lightbox
 );

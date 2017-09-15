@@ -1,23 +1,24 @@
 
 /*
-* 编辑地址 容器主入口
-*/
+ * 商品分类 容器主入口
+ */
 import React ,{ Component } from 'react';
 import ReactDOM , { render } from 'react-dom';
 
+
 //引入CSS
 import 'commonCss';
-import '../css/editad.css';
+import 'classifyCss';
 
 
 //引入公共JS
 //import 'config';
 
 //引入分支ui组件
-import { EditAd } from 'editadJsx';
+import { Classify } from 'classifyJsx';
 
 //render html
-let editAd = document.getElementById('editad');
-render(<EditAd/>,
-    editAd
+let classify = document.getElementById('classify');
+render(<Classify/>,
+    classify
 );

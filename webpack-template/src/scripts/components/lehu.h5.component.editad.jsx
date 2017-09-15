@@ -184,6 +184,10 @@ class EditAd extends Component {
 
     }
 
+    componentWillUnmount() {
+
+    }
+
     //删除地址
     delete() {
         console.log(2);

@@ -1,0 +1,103 @@
+
+.category-viewport{
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  .hy-category-tab{
+    float: left;
+    min-width: 76px;
+    width: 76px;
+    height: auto;
+    overflow-y: auto;
+    min-height: 100%;
+    #category{
+      overflow: hidden;
+      ul{
+        display: block;
+        li{
+          height: 46px;
+          line-height: 46px;
+          background: #fff;
+          text-align: center;
+          position: relative;
+          a{
+            display: block;
+            width: 100%;
+            height: 46px;
+            line-height: 46px;
+            text-decoration: none;
+            font-size: 11px;
+            color: #232326;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            text-align: center;
+          }
+        }
+        .active a{
+          color: #f23030;
+        }
+        :before{
+          content: '';
+          height: 92px;
+          width: 1px;
+          position: absolute;
+          left: auto;
+          top: 0px;
+          right: 0px;
+          bottom: auto;
+          background-color: #e5e5e5;
+          border: 0px solid transparent;
+          border-radius: 0px;
+          -webkit-border-radius: 0px;
+          transform: scale(0.5);
+          -webkit-transform: scale(0.5);
+          -moz-transform: scale(0.5);
+          -ms-transform: scale(0.5);
+          -o-transform: scale(0.5);
+          transform-origin: top left;
+          -webkit-transform-origin: top left;
+          -moz-transform-origin: top left;
+          -ms-transform-origin: top left;
+          -o-transform-origin: top left;
+        }
+        :after{
+          content: '';
+          height: 1px;
+          width: 200%;
+          position: absolute;
+          left: 0px;
+          top: auto;
+          right: auto;
+          bottom: 0px;
+          background-color: #e5e5e5;
+          border: 0px solid transparent;
+          border-radius: 0px;
+          -webkit-border-radius: 0px;
+          transform: scale(0.5);
+          -webkit-transform: scale(0.5);
+          -moz-transform: scale(0.5);
+          -ms-transform: scale(0.5);
+          -o-transform: scale(0.5);
+          transform-origin: top left;
+          -webkit-transform-origin: top left;
+          -moz-transform-origin: top left;
+          -ms-transform-origin: top left;
+          -o-transform-origin: top left;
+        }
+      }
+    }
+  }
+  .hy-category-content{
+    height: auto;
+    min-height: 100%;
+    width: 100%;
+    font-size: 12px;
+    color: #252525;
+    background-color: #f3f5f7;
+    .hy-category-content-wrapper{
+      margin-left: 76px;
+      overflow: hidden;
+    }
+  }
+}
