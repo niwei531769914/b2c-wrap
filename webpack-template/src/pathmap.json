@@ -1,34 +1,45 @@
 {
   "jquery": "scripts/lib/jquery.min.js",
-  "fastclick": "scripts/lib/fastclick.js",
-  "config": "scripts/config/config.js",
-  "api": "scripts/config/api.js",
-  "md5": "scripts/config/md5.min.js",
-  "main": "scripts/lib/main.js",
-  "swiperJs": "scripts/lib/swiper.min.js",
+
+  "fastclick":"scripts/lib/fastclick.js",
+  "config":"scripts/config/config.js",
+  "api":"scripts/config/api.js",
+  "md5":"scripts/config/md5.min.js",
+  "main":"scripts/lib/main.js",
+  "swiperJs":"scripts/lib/swiper.min.js",
+  "iscrollJs":"scripts/lib/iscroll.js",
   "piclazyLoad": "scripts/config/zepto.piclazyLoad.min.js",
-  "iscrollJs": "scripts/lib/iscroll.js",
-  "commonCss": "css/common/common.css",
-  "headerCss": "css/common/header.css",
-  "isloadingCss": "css/common/isloading.css",
-  "topCss": "css/common/top.css",
-  "swiper": "css/swiper.min.css",
+
+  "commonCss":"css/common/common.css",
+  "headerCss":"css/common/header.css",
+  "isloadingCss":"css/common/isloading.css",
+  "topCss":"css/common/top.css",
+  "swiper":"css/swiper.min.css",
   "managementCss": "css/management.css",
-  "orderlistCss": "css/orderlist.css",
-  "editadCss": "css/editad.css",
-  "areaCss": "css/area.css",
-  "welcomeJsx": "scripts/components/lehu.h5.component.welcome.jsx",
-  "loginJsx": "scripts/components/lehu.h5.component.login.jsx",
-  "exampleJsx": "scripts/components/lehu.h5.component.example.jsx",
-  "managementJsx": "scripts/components/lehu.h5.component.management.jsx",
-  "orderlistCss": "css/orderlist.css",
-  "classifyCss": "css/classify.css",
-  "editadJsx": "scripts/components/lehu.h5.component.editad.jsx",
-  "orderlistJsx": "scripts/containers/lehu.h5.container.orderlist.jsx",
-  "classifyJsx": "scripts/containers/lehu.h5.container.classify.jsx",
-  "headerJsx": "scripts/commonViews/lehu.h5.commonviews.header.jsx",
-  "loadingJsx": "scripts/commonViews/lehu.h5.commonviews.loading.jsx",
-  "topJsx": "scripts/commonViews/lehu.h5.commonviews.top.jsx",
-  "util": "scripts/util/lehu.h5.util.util.js",
-  "query": "scripts/util/lehu.h5.util.query.js"
+
+
+  "editadCss":"css/editad.css",
+  "areaCss":"css/area.css",
+  "orderlistCss":"css/orderlist.css",
+  "classifyCss":"css/classify.css",
+
+
+  "editadJsx":"scripts/components/lehu.h5.component.editad.jsx",
+ "managementJsx": "scripts/components/lehu.h5.component.management.jsx",
+  "swiperJsx":"scripts/components/lehu.h5.component.swiper.jsx",
+
+
+  "orderlistJsx":"scripts/containers/lehu.h5.container.orderlist.jsx",
+  "classifyJsx":"scripts/containers/lehu.h5.container.classify.jsx",
+
+
+  "headerJsx":"scripts/commonViews/lehu.h5.commonviews.header.jsx",
+  "loadingJsx":"scripts/commonViews/lehu.h5.commonviews.loading.jsx",
+  "topJsx":"scripts/commonViews/lehu.h5.commonviews.top.jsx",
+
+
+  "util":"scripts/util/lehu.h5.util.util.js",
+  "query":"scripts/util/lehu.h5.util.query.js"
+
 }
+ 
