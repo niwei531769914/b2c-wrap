@@ -6,12 +6,12 @@ import ReactDOM, {render} from 'react-dom';
 
 
 //引入分支ui组件
-import {FadeIn} from 'fadeinJsx';
+//import {FadeIn} from 'fadeinJsx';
 
 //render html
 
 //let editAd = document.getElementById('editad');
 ReactDOM.render(
-    <FadeIn/>,
+   
     document.getElementById('lists')
 );
