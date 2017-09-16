@@ -11,13 +11,16 @@ import '../css/editad.css';
 
 
 //引入公共JS
-import 'config';
+//import 'config';
 
 //引入分支ui组件
 import { EditAd } from 'editadJsx';
 
 //render html
-let editAd = document.getElementById('editad');
-render(<EditAd/>,
-    editAd
+ 
+//let editAd = document.getElementById('editad');
+ReactDOM.render(
+	<EditAd/>,
+   	document.getElementById('editad')
+ 
 );

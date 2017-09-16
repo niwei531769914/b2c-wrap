@@ -18,7 +18,7 @@ class Top extends Component {
         let topElement = document.querySelector(".bottom-to-top");
 
         //滚动判断
-        window.addEventListener("scroll",  () => {
+        window.addEventListener("scroll", () => {
             let clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
             let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
             if (scrollTop > clientHeight) {
@@ -44,7 +44,7 @@ class Top extends Component {
     render() {
         return (
             <div className="bottom-to-top" onClick={this.backTop}>
-                <img src={ require('../../images/scroll-to-top-icon.png') }/>
+                <img src={require('../../images/scroll-to-top-icon.png')}/>
             </div>
         )
     }

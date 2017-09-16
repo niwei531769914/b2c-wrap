@@ -69,7 +69,7 @@
 
 
 /*购物车*/
-.npost-shopping-list{ width: 100%; height: auto; position: fixed; background: #ffffff; top: 0; left: 0; right: 0 ; bottom: 0; z-index: 999; transform: translate(0,100%);transition: transform .2s cubic-bezier(0,0,.25,1) }
+.npost-shopping-list{ width: 100%; height: auto; position: fixed; background: #ffffff;  left: 0; right: 0 ; bottom: 0; z-index: 999; transform: translate(0,100%);transition: transform .2s cubic-bezier(0,0,.25,1) }
 .npost-shopping-title{ width: 94%; height: 2rem; padding: 0 3%; float: left; margin-top: .2rem}
 .npost-shopping-title a{ width: 2rem; height: 2rem; float: left;}
 .npost-shopping-title img{ width: 2rem; height: 2rem; display: block}

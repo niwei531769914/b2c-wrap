@@ -1,17 +1,20 @@
-//我的订单组件
-
+/*
+ * 我的订单 容器组件
+ */
 import React, {Component} from 'react';
-
 
 import {Header} from 'headerJsx';
 import {IsLoading} from 'loadingJsx';
-import {Top} from 'topJsx'
+import {Top} from 'topJsx';
 
 import {encription} from 'query';
+import { Tip } from 'util';
 
 import {Api} from 'api';
 
 import $ from 'jquery';
+
+import {imgLazyLoad} from 'piclazyLoad';
 
 class OrderList extends Component {
 
@@ -41,12 +44,12 @@ class OrderList extends Component {
         this.pageIndex = 1;
         this.pageAmount = 1;
 
-
         //设置userId和token
         this.userId = '187131';
-        this.token = '506f08bb82a05eff00d42197ff34da1d';
+        this.token = '1cd425494c9d50c78aad428b7ea18395';
 
         //    事件绑定
+        this.Alert = this.Alert.bind(this);
 
     }
 
@@ -82,7 +85,7 @@ class OrderList extends Component {
 
         //滚动加载初始化
         that.bindScroll();
-
+ 
     }
 
     /**
@@ -166,12 +169,12 @@ class OrderList extends Component {
                     this.setState({
                         orderList: [],
                         pageAmount: data.page.pageAmount,
-                        loading:false
+                        loading: false
                     });
                     return false;
                 }
 
-                if(that.state.pageIndex == data.page.pageAmount){
+                if (that.state.pageIndex == data.page.pageAmount) {
 
                     that.setState({
                         loading: false
@@ -185,6 +188,9 @@ class OrderList extends Component {
                 });
 
 
+                //img图片懒加载
+                $.imgLazyLoad();
+
             })
             .fail((error) => {
                 alert("服务器错误!");
@@ -195,52 +201,52 @@ class OrderList extends Component {
     judgeStatus(status) {
         if (status == 1 || status == 0) {
             return "未付款";
-        }
-        else if (status == 2) {
+        } else if (status == 2) {
             return "订单待审核";
-        }
-        else if (status == 3) {
+        } else if (status == 3) {
             return "待发货";
-        }
-        else if (status == 4) {
+        } else if (status == 4) {
             return "待收货";
-        }
-        else if (status == 5) {
+        } else if (status == 5) {
             return "待评价";
-        }
-        else if (status == 6) {
+        } else if (status == 6) {
             return "交易完成";
-        }
-        else if (status == 7) {
+        } else if (status == 7) {
             return "已取消";
-        }
-        else if (status == 11) {
+        } else if (status == 11) {
             return "退货处理中";
-        }
-        else if (status == 12) {
+        } else if (status == 12) {
             return "退货完成";
-        }
-        else if (status == 40) {
+        } else if (status == 40) {
             return "退款处理中";
         }
     }
 
+    Alert(){
+
+        Tip('你好',2000);
+
+    }
+
     render() {
         let that = this;
-        const {header} = this.props;
-        const {orderList} = this.state;
+        const {
+            header
+        } = this.props;
+        const {
+            orderList
+        } = this.state;
         return (
             <div>
                 {/*top*/}
-                <Header header={ header }/>
+                <Header header={header}/>
 
                 {/*content*/}
                 <div className="order">
                     {/*tab*/}
                     <div className="order-tab">
                         <ul>
-                            <li className="li_orderlist active" data-status="100">
-                                <span>全部</span></li>
+                            <li className="li_orderlist active" data-status="100"><span>全部</span></li>
                             <li className="li_orderlist" data-status="101"><span>待付款</span>
                             </li>
                             <li className="li_orderlist" data-status="102"><span>待发货</span>
@@ -261,7 +267,7 @@ class OrderList extends Component {
                                     let STATUS = that.judgeStatus(item.status);
 
                                     return (
-                                        <div className="order-item border-1px" key={index}>
+                                        <div className="order-item border-1px" key={index}   onClick={this.Alert}>
 
                                             <div className="order-item-title">
                                                 <span className="item-store-name">店铺:<em>{item.storeName}</em></span>
@@ -276,23 +282,21 @@ class OrderList extends Component {
                                                         return (
                                                             <div className="item-goods" key={indexs}>
                                                                 <div className="item-goods-images">
-                                                                    <img src={ items.img }/>
+                                                                    <img className="lazyload"
+                                                                         src={require('./../../images/goods_back.png')}
+                                                                         data-img={items.img}/>
                                                                 </div>
                                                                 <div className="item-goods-content">
                                                                     <div className="goods-content-name">
-                                                                        <span
-                                                                            className="goods-name">{items.goodsName}</span>
-                                                                        <span
-                                                                            className="goods-price"> ￥{items.price}</span>
+                                                                        <span className="goods-name">{items.goodsName}</span>
+                                                                        <span className="goods-price"> ￥{items.price}</span>
                                                                     </div>
                                                                     <div className="goods-content-spec">
                                                                         <em>{items.normsValue}</em>
                                                                     </div>
                                                                     <div className="goods-content-fot">
-                                                                        <span
-                                                                            className="goods-tax">税费:<em>￥{items.taxPrice}</em></span>
-                                                                        <span
-                                                                            className="goods-num">x<em>{items.quantity}</em></span>
+                                                                        <span className="goods-tax">税费:<em>￥{items.taxPrice}</em></span>
+                                                                        <span className="goods-num">x<em>{items.quantity}</em></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -303,7 +307,8 @@ class OrderList extends Component {
 
                                             <div className="order-item-cf">
                                                 <span className="order-true-payed">实付款:<em
-                                                    className="imb-num">￥{item.totalPrice}</em>{ item.logisticsFare == 0 ? null: <em>(含运费￥{item.logisticsFare})</em>  }</span>
+                                                    className="imb-num">￥{item.totalPrice}</em>{item.logisticsFare == 0 ? null :
+                                                    <em>(含运费￥{item.logisticsFare})</em>}</span>
                                                 <div className="order-btn-box">
                                                     <a href="javascript: void (0)" className="imb-btn">查看物流</a>
                                                 </div>

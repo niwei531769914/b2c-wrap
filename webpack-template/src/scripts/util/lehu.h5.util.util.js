@@ -1,5 +1,5 @@
+import $ from 'jquery';
 
-import $ from '../lib/zepto';
 
 //检查邮箱地址
 export const checkEmail = (data) => {
@@ -7,7 +7,7 @@ export const checkEmail = (data) => {
 };
 
 //判断用户登录设备代理
-export const isMobile =  {
+export const isMobile = {
     Android() {
         return navigator.userAgent.match(/Android/i);
     },
@@ -92,15 +92,24 @@ export const isMobile =  {
 };
 
 //弹窗
-export const Tip =  (message) => {
-    alert(message);
+
+export const Tip = (message, time) => {
+    let $el = $('<div class="dialog-cart"><div class="dialog-cart-inner"><span>' + message + '</span></div></div>');
+    if ($('.dialog-cart').length > 0) {
+        return false;
+    }
+    ;
+    $(document.body).append($el);
+    setTimeout(function () {
+        $el.remove();
+    }, time || "3000");
+
 };
 
-
 //动态获取host
-export const HTTP = () =>{
+export const HTTP = () => {
     let HOST = window.location.host;
-    if(HOST.indexOf("http://") == -1){
+    if (HOST.indexOf("http://") == -1) {
         HOST = "https://" + HOST;
     }
     return HOST;
