@@ -8,12 +8,14 @@
     min-width: 320px;
     z-index: 9;
 }
+
 .navbar-header header {
     width: 100%;
     height: auto;
     background: #f53828;
     padding: .1rem 0;
 }
+
 .navbar-header header .search-placeholder {
     width: 80%;
     height: .6rem;
@@ -22,6 +24,7 @@
     margin: 0 auto;
     text-align: center;
 }
+
 .navbar-header header .search-placeholder span {
     font-size: .24rem;
     color: #cccccc;
@@ -30,77 +33,136 @@
     height: .6rem;
     line-height: .6rem;
 }
-#wrapper {
-    height: .8rem;
-    position: absolute;
-    z-index: 1;
-    top: 40px;
-    left: 0;
+
+body {
+    position: fixed !important;
     width: 100%;
-    overflow: hidden;
-    background: #ffffff;
-    z-index: 9;
+    height: 100%;
 }
 
-#wrapper ul {
-    overflow: hidden;
+.category-viewport {
+    width: 100%;
+    height: auto;
+    min-height: 100%;
 }
-#wrapper ul li {
+
+.category-viewport .hy-category-tab {
+    width: 100%;
+    height: 46px;
+    overflow-x: auto;
+    min-height: 100%;
+    background-color: #ffffff;
+}
+
+.category-viewport .hy-category-tab #category {
+    width: 100%;
+    height: 46px;
+
+}
+
+.category-viewport .hy-category-tab #category ul {
+    overflow: hidden;
+    height: 46px;
+}
+
+.category-viewport .hy-category-tab #category ul li {
     width: 80px;
-    height: .8rem;
-    line-height: .8rem;
-    display: block;
+    height: 46px;
+    line-height: 46px;
+    background: #fff;
     text-align: center;
-    font-size: 16px;
+    position: relative;
     float: left;
+}
+
+.category-viewport .hy-category-tab #category ul li a {
+    display: block;
+    width: 100%;
+    height: 46px;
+    line-height: 46px;
+    text-decoration: none;
+    font-size: 16px;
     font-weight: 300;
-    color: #909090;
+    color: #232326;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
     position: relative;
 }
-#wrapper ul li span {
+
+.category-viewport .hy-category-tab #category ul li a span {
     width: 100%;
-    height: .04rem;
-    position: absolute;
-    left: 0;
-    bottom: .02rem;
+    height: 2px;
     background: #f9c017;
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    display: none;
 }
-.active {
-    color: #f9c017 !important;
+
+.category-viewport .hy-category-tab #category ul .active a {
+    color: #f9c017;
+
 }
+
+.category-viewport .hy-category-tab #category ul a span.span_active {
+    display: block;
+}
+
+.category-viewport .hy-category-content {
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    font-size: 12px;
+    color: #252525;
+    background-color: #f3f5f7;
+}
+
+.category-viewport .hy-category-content .hy-category-content-wrapper {
+    overflow: hidden;
+}
+
 .L-brand-list {
     width: 100%;
     height: 200000px;
     background: #f2f2f2;
     z-index: -1;
 }
+
 .L-brand-list .swiper-container-01 {
     width: 100%;
 }
+
 .L-brand-list .swiper-container-01 .swiper-wrapper {
     width: 100%;
     height: 3rem;
 }
+
 .L-brand-list .swiper-container-01 .swiper-wrapper .swiper-slide {
     width: 100%;
     text-align: center;
     vertical-align: middle;
     margin: 0 auto;
 }
+
 .L-brand-list .swiper-container-01 .swiper-wrapper .swiper-slide img {
     width: 100%;
     height: 100%;
 }
+
 .L-brand-list .tigerHeadlines {
     overflow: hidden;
     zoom: 1;
     background: #fff;
     margin: .16rem 0;
 }
+
 .L-brand-list .tigerHeadlines .tigerHeadlines-l {
     float: left;
     height: .7rem;
 }
+
 .L-brand-list .tigerHeadlines .tigerHeadlines-l span {
     font-size: .3rem;
     font-weight: bolder;
@@ -109,6 +171,7 @@
     line-height: .7rem;
     padding: 0 .2rem;
 }
+
 .L-brand-list .tigerHeadlines .tigerHeadlines-l em {
     float: left;
     height: 70%;
@@ -116,10 +179,12 @@
     width: .02rem;
     background: #CCCCCC;
 }
+
 .L-brand-list .tigerHeadlines .tigerHeadlines-l img {
     float: left;
     margin: .12rem .2rem;
 }
+
 .L-brand-list .tigerHeadlines .tigerHeadlines-r {
     float: left;
     width: 65%;
@@ -127,27 +192,33 @@
     line-height: .7rem;
     font-size: .24rem;
 }
+
 .L-brand-list .tigerHeadlines .tigerHeadlines-r .swiper-container-02 {
     float: left;
 }
+
 .L-brand-list .tigerHeadlines .tigerHeadlines-r .swiper-container-02 .swiper-wrapper {
     float: left;
 }
+
 .L-brand-list .tigerHeadlines .tigerHeadlines-r .swiper-container-02 .swiper-wrapper .swiper-slide {
     float: left;
     overflow: hidden;
 }
+
 .L-brand-list .functionalModule {
     width: 100%;
     height: 1.6rem;
     margin: 0.16rem 0;
     background: #fff;
 }
+
 .L-brand-list .functionalModule .functionalModule-list {
     width: 20%;
     height: 100%;
     float: left;
 }
+
 .L-brand-list .functionalModule .functionalModule-list p {
     width: .84rem;
     height: .84rem;
@@ -155,6 +226,7 @@
     border-radius: 50%;
     margin: .15rem auto;
 }
+
 .L-brand-list .functionalModule .functionalModule-list span {
     width: 100%;
     height: 20%;
@@ -163,16 +235,19 @@
     display: block;
     text-align: center;
 }
+
 .L-brand-list .newArrivals {
     width: 100%;
     overflow: hidden;
     zoom: 1;
 }
+
 .L-brand-list .newArrivals .newArrivals-title {
     width: 100%;
     height: 0.86rem;
     background: #fff;
 }
+
 .L-brand-list .newArrivals .newArrivals-title span {
     float: left;
     margin: 0 .2rem;
@@ -183,15 +258,18 @@
     font-weight: bold;
     color: #f9c017;
 }
+
 .L-brand-list .newArrivals .newArrivals-title img {
     height: 0.56rem;
     margin: .15rem 0;
     float: right;
 }
+
 .L-brand-list .newArrivals .newArrivals-box {
     width: 100%;
     margin-top: .08rem;
 }
+
 .L-brand-list .newArrivals .newArrivals-box .newArrivals-list {
     width: 49.2%;
     height: 2rem;
@@ -199,17 +277,20 @@
     background: #fff;
     margin-bottom: 0.09rem;
 }
+
 .L-brand-list .newArrivals .newArrivals-box .newArrivals-list .newArrivals-list-l {
     width: 60%;
     height: 100%;
     float: left;
 }
+
 .L-brand-list .newArrivals .newArrivals-box .newArrivals-list .newArrivals-list-l img {
     width: 1rem;
     height: 0.34rem;
     float: left;
     margin-top: .2rem;
 }
+
 .L-brand-list .newArrivals .newArrivals-box .newArrivals-list .newArrivals-list-l p {
     height: .3rem;
     float: left;
@@ -218,6 +299,7 @@
     text-align: center;
     font-size: .28rem;
 }
+
 .L-brand-list .newArrivals .newArrivals-box .newArrivals-list .newArrivals-list-l span {
     float: left;
     height: .3rem;
@@ -226,30 +308,36 @@
     margin: .1rem 0 0 .2rem;
     color: #ccc;
 }
+
 .L-brand-list .newArrivals .newArrivals-box .newArrivals-list .newArrivals-list-r {
     float: left;
     width: 40%;
     height: 100%;
 }
+
 .L-brand-list .newArrivals .newArrivals-box .newArrivals-list .newArrivals-list-r img {
     float: left;
     width: 100%;
     height: 100%;
 }
+
 .L-brand-list .newArrivals .newArrivals-box .newArrivals-list:nth-child(even) {
     margin-left: 0.09rem;
 }
+
 .L-brand-list .Discount {
     width: 100%;
     overflow: hidden;
     zoom: 1;
     margin: .16rem 0;
 }
+
 .L-brand-list .Discount .Discount-title {
     width: 100%;
     height: 0.86rem;
     background: #fff;
 }
+
 .L-brand-list .Discount .Discount-title span {
     float: left;
     margin: 0 .2rem;
@@ -260,9 +348,11 @@
     font-weight: bold;
     color: #f9c017;
 }
+
 .L-brand-list .Discount .Discount-title .countDown {
     float: left;
 }
+
 .L-brand-list .Discount .Discount-title .countDown b {
     float: left;
     background: #000000;
@@ -273,6 +363,7 @@
     padding: .1rem;
     margin: .2rem 0;
 }
+
 .L-brand-list .Discount .Discount-title .countDown .jiedian {
     width: .4rem;
     line-height: .42rem;
@@ -281,32 +372,38 @@
     font-size: .48rem;
     padding: 0;
 }
+
 .L-brand-list .Discount .Discount-title img {
     height: 0.56rem;
     margin: .15rem 0;
     float: right;
 }
+
 .L-brand-list .Discount .Discount-box {
     width: 100%;
     margin-top: .08rem;
     overflow: hidden;
     zoom: 1;
 }
+
 .L-brand-list .Discount .Discount-box .Discount-list {
     width: 2.5rem;
     float: left;
     margin-bottom: 0.09rem;
 }
+
 .L-brand-list .Discount .Discount-box .Discount-list .Discount-list-t {
     background: #fff;
     width: 100%;
     height: 3rem;
     position: relative;
 }
+
 .L-brand-list .Discount .Discount-box .Discount-list .Discount-list-t img {
     width: 100%;
     height: 100%;
 }
+
 .L-brand-list .Discount .Discount-box .Discount-list .Discount-list-t .fuceng {
     width: .22rem;
     height: .83rem;
@@ -314,11 +411,13 @@
     left: .2rem;
     top: .1rem;
 }
+
 .L-brand-list .Discount .Discount-box .Discount-list .Discount-list-b {
     width: 100%;
     height: .96rem;
     float: left;
 }
+
 .L-brand-list .Discount .Discount-box .Discount-list .Discount-list-b p {
     width: 100%;
     font-size: .24rem;
@@ -329,27 +428,32 @@
     -webkit-box-orient: vertical;
     padding: .05rem 0;
 }
+
 .L-brand-list .Discount .Discount-box .Discount-list .Discount-list-b span {
     float: left;
     font-size: .24rem;
     color: #f9c017;
 }
+
 .L-brand-list .Discount .Discount-box .Discount-list .Discount-list-b em {
     float: left;
     font-size: .24rem;
     margin: 0 .1rem;
     text-decoration: line-through;
 }
+
 .L-brand-list .hotCommodity {
     width: 100%;
     overflow: hidden;
     zoom: 1;
     background: #fff;
 }
+
 .L-brand-list .hotCommodity .hotCommodity-title {
     width: 100%;
     height: 0.86rem;
 }
+
 .L-brand-list .hotCommodity .hotCommodity-title span {
     float: left;
     margin: 0 .2rem;
@@ -360,34 +464,40 @@
     font-weight: bold;
     color: #f9c017;
 }
+
 .L-brand-list .hotCommodity .hotCommodity-title img {
     height: 0.56rem;
     margin: .15rem 0;
     float: right;
 }
+
 .L-brand-list .hotCommodity .hotCommodity-box {
     width: 100%;
     margin-top: .08rem;
     overflow: hidden;
     zoom: 1;
 }
+
 .L-brand-list .hotCommodity .hotCommodity-box .hotCommodity-list {
     width: 95%;
     float: left;
     margin: .1rem 2.5%;
     border: 1px solid #CCCCCC;
 }
+
 .L-brand-list .hotCommodity .hotCommodity-box .hotCommodity-list .hotCommodity-list-l {
     width: 45%;
     height: 2rem;
     float: left;
     position: relative;
 }
+
 .L-brand-list .hotCommodity .hotCommodity-box .hotCommodity-list .hotCommodity-list-l img {
     width: 80%;
     height: 100%;
     margin-left: 10%;
 }
+
 .L-brand-list .hotCommodity .hotCommodity-box .hotCommodity-list .hotCommodity-list-l .tabtiao {
     width: .92rem;
     height: .35rem;
@@ -395,11 +505,13 @@
     left: -10%;
     top: .1rem;
 }
+
 .L-brand-list .hotCommodity .hotCommodity-box .hotCommodity-list .hotCommodity-list-r {
     width: 55%;
     height: .96rem;
     float: left;
 }
+
 .L-brand-list .hotCommodity .hotCommodity-box .hotCommodity-list .hotCommodity-list-r p {
     width: 100%;
     font-size: .24rem;
@@ -410,6 +522,7 @@
     -webkit-box-orient: vertical;
     padding: .05rem 0;
 }
+
 .L-brand-list .hotCommodity .hotCommodity-box .hotCommodity-list .hotCommodity-list-r b {
     width: 100%;
     font-size: .24rem;
@@ -421,29 +534,34 @@
     padding: .05rem 0;
     color: #CCCCCC;
 }
+
 .L-brand-list .hotCommodity .hotCommodity-box .hotCommodity-list .hotCommodity-list-r span {
     float: left;
     font-size: .24rem;
     color: #f9c017;
     margin: .1rem 0;
 }
+
 .L-brand-list .hotCommodity .hotCommodity-box .hotCommodity-list .hotCommodity-list-r em {
     float: left;
     font-size: .24rem;
     margin: .1rem .1rem;
     text-decoration: line-through;
 }
+
 .L-brand-list .thematicActivities {
     width: 100%;
     overflow: hidden;
     zoom: 1;
     margin: .16rem 0;
 }
+
 .L-brand-list .thematicActivities .thematicActivities-title {
     width: 100%;
     height: 0.86rem;
     background: #fff;
 }
+
 .L-brand-list .thematicActivities .thematicActivities-title span {
     float: left;
     margin: 0 .2rem;
@@ -454,41 +572,49 @@
     font-weight: bold;
     color: #f9c017;
 }
+
 .L-brand-list .thematicActivities .thematicActivities-title img {
     height: 0.56rem;
     margin: .15rem;
     float: right;
 }
+
 .L-brand-list .thematicActivities .thematicActivities-banner {
     width: 100%;
     height: 2rem;
     margin: 1% 0;
 }
+
 .L-brand-list .thematicActivities .thematicActivities-banner img {
     width: 100%;
     height: 100%;
 }
+
 .L-brand-list .thematicActivities .thematicActivities-box {
     width: 100%;
     margin-top: .08rem;
     overflow: hidden;
     zoom: 1;
 }
+
 .L-brand-list .thematicActivities .thematicActivities-box .thematicActivities-list {
     width: 2.5rem;
     float: left;
     margin-bottom: 0.09rem;
 }
+
 .L-brand-list .thematicActivities .thematicActivities-box .thematicActivities-list .thematicActivities-list-t {
     background: #fff;
     width: 100%;
     height: 3rem;
     position: relative;
 }
+
 .L-brand-list .thematicActivities .thematicActivities-box .thematicActivities-list .thematicActivities-list-t img {
     width: 100%;
     height: 100%;
 }
+
 .L-brand-list .thematicActivities .thematicActivities-box .thematicActivities-list .thematicActivities-list-t .fuceng {
     width: .22rem;
     height: .83rem;
@@ -496,11 +622,13 @@
     left: .2rem;
     top: .1rem;
 }
+
 .L-brand-list .thematicActivities .thematicActivities-box .thematicActivities-list .thematicActivities-list-b {
     width: 100%;
     height: .96rem;
     float: left;
 }
+
 .L-brand-list .thematicActivities .thematicActivities-box .thematicActivities-list .thematicActivities-list-b p {
     width: 100%;
     font-size: .24rem;
@@ -511,15 +639,18 @@
     -webkit-box-orient: vertical;
     padding: .05rem 0;
 }
+
 .L-brand-list .thematicActivities .thematicActivities-box .thematicActivities-list .thematicActivities-list-b span {
     float: left;
     font-size: .24rem;
     color: #f9c017;
 }
+
 .L-brand-list .thematicActivities .thematicActivities-box .thematicActivities-list .thematicActivities-list-b em {
     float: left;
     font-size: .24rem;
     margin: 0 .1rem;
     text-decoration: line-through;
 }
+
 /*# sourceMappingURL=index.css.map */
