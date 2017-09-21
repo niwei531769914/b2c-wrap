@@ -11,7 +11,7 @@ import $ from 'jquery';
 import {Header} from 'headerJsx';
 
 //幻灯片
-import {SWiper} from 'swiperJsx';
+import { SWiper } from 'swiperJsx';
 
 class Classify extends Component {
 
@@ -20,8 +20,15 @@ class Classify extends Component {
         header: {
             title: "商品分类",
             name: '保存',
-        }
-
+        },
+        images: [
+            { img: 'https://m.360buyimg.com/mobilecms/s720x322_jfs/t9397/271/1200345489/94160/64367a64/59b61a74Ncb41b29c.jpg'},
+            { img: 'https://m.360buyimg.com/mobilecms/s720x322_jfs/t9397/271/1200345489/94160/64367a64/59b61a74Ncb41b29c.jpg'},
+            { img: 'https://m.360buyimg.com/mobilecms/s720x322_jfs/t9397/271/1200345489/94160/64367a64/59b61a74Ncb41b29c.jpg'},
+            { img: 'https://m.360buyimg.com/mobilecms/s720x322_jfs/t9397/271/1200345489/94160/64367a64/59b61a74Ncb41b29c.jpg'},
+        ],
+        loop: false,
+        time: 500,
     };
 
     constructor(props) {
@@ -38,21 +45,22 @@ class Classify extends Component {
                 {name: '我是7人'},
                 {name: '我是8人'},
                 {name: '我是9人'},
-                {name: '我是10人'},
-                {name: '我是11人'},
-                {name: '我是12人'},
-                {name: '我是7人'},
-                {name: '我是8人'},
                 {name: '我是9人'},
-                {name: '我是10人'},
-                {name: '我是11人'},
-                {name: '我是12人'},
-                {name: '我是7人'},
-                {name: '我是8人'},
                 {name: '我是9人'},
+                {name: '我是9人'},
+                {name: '我是9人'},
+                {name: '我是9人'},
+                {name: '我是9人'},
+                {name: '我是9人'},
+                {name: '我是9人'},
+                {name: '我是9人'},
+                {name: '我是01人'},
+                {name: '我是1人'},
+                {name: '我是00人'},
+                {name: '我是92人'},
+                {name: '我19人'},
                 {name: '我是10人'},
-                {name: '我是11人'},
-                {name: '我是12人'},
+                {name: '我是19人'},
             ]
         };
 
@@ -63,6 +71,8 @@ class Classify extends Component {
     componentDidMount() {
 
         let that = this;
+
+        this._onresize();
 
         that.Scroll = new IScroll('#category',
             {
@@ -125,14 +135,38 @@ class Classify extends Component {
 
     }
 
+    //计算高度
+    _height() {
+        let WindowHeight = document.body.offsetHeight;
+        let HeaderHeight = document.querySelector('header.header').offsetHeight;
+        document.querySelector('#category').style.height = (WindowHeight - HeaderHeight ) + 'px';
+        document.querySelector('#branchScroll').style.height = (WindowHeight - HeaderHeight ) + 'px';
+    }
+
+    //窗口大小改变触发事件
+    _onresize() {
+        let that = this;
+        that._height();
+        window.onresize = function () {
+            that._height();
+        };
+    }
+
+
     render() {
-        const {header, images, loop, time} = this.props;
+        const {header,images ,loop , time} = this.props;
         const {categoryList} = this.state;
         return (
             <div>
-                <Header header={header}/>
+                <Header header={ header }/>
+
+                <div className="less" style={{ width: '100%', height: '3rem', float: 'left', backgroundColor: '#e0e0e0'}}>
+                    <SWiper Images = { images } Loop = { loop }  Time = { time } />
+                </div>
 
                 <div className="category-viewport">
+
+
                     {/*left nameList*/}
                     <div className="hy-category-tab">
                         <div id="category">
@@ -140,13 +174,14 @@ class Classify extends Component {
                                 {
                                     categoryList.map((item, index) => {
                                         return (index == 0 ? <li key={index} className="active"><a
-                                                href="javascript: void (0)">{item.name}</a></li> :
-                                            <li key={index}><a href="javascript: void (0)">{item.name}</a></li>)
+                                            href="javascript: void (0)">{ item.name }</a></li> :
+                                            <li key={index}><a href="javascript: void (0)">{ item.name }</a></li>)
                                     }, this)
                                 }
                             </ul>
                         </div>
                     </div>
+
 
                     {/*right content*/}
                     <div className="hy-category-content">

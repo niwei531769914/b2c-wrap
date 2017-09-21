@@ -90,7 +90,7 @@ class Home extends Component {
                         $(this).find('span').addClass('span_active');
                         let PositionIndex = document.querySelector('#category li[class="active"]');
                         //滚动中间 设为true，顶部设为false
-                        that.Scroll.scrollToElement(PositionIndex, 200, false, false);
+                        that.Scroll.scrollToElement(PositionIndex, 200,  true, true);
 
                         //过渡展示右侧页面
                         document.querySelector('#branchList').style.opacity = '0';

@@ -13,37 +13,45 @@
 	win.addEventListener(resizeEvt, recalc, false);
 	doc.addEventListener('DOMContentLoaded', recalc, false);
 })(document, window);
- 
+
 /*加载iscroll插件*/
 var myScroll;
 
 function loaded() {
 	var TotalLength = parseFloat($('#wrapper ul li').width()) * parseFloat($('#wrapper ul li').length);
-	$('#scroller').css({
+	$('#wrapper ul').css({
 		'width': TotalLength + 'px'
 	});
-	myScroll = new IScroll('#wrapper', {
-		scrollX: true,
-		scrollY: false,
+	setTimeout(function() {
+		myScroll = new IScroll('#wrapper', {
+			scrollX: true,
+			scrollY: false,
+			tap: true,
+			hScroll: true,
+			bounceLock: true,
+			momentum: true,
+			hScrollbar:true,
+		});
+		select();
+	}, 100);
 
-	});
-	select();
+	window.addEventListener("load", loaded, false);
 
 }
 
 function select() {
 	var PositionIndex = document.querySelector('#wrapper li[class="active"]');
 	myScroll.scrollToElement(PositionIndex, 200, true, true);
-	$("#scroller li").find("span").css('display', 'none');
+	$("#wrapper li").find("span").css('display', 'none');
 	$(PositionIndex).find("span").css('display', 'block');
 }
 
-$('#scroller ul li').on('click', function() {
+$('#wrapper ul li').on('tap', function() {
 	var Index = $(this).index();
- 	$('#scroller ul .active').removeClass('active');
-	$('#scroller ul li').eq(Index).addClass('active');
+	$('#wrapper ul .active').removeClass('active');
+	$('#wrapper ul li').eq(Index).addClass('active');
 	var PositionIndex = document.querySelector('#wrapper li[class="active"]');
-	$("#scroller li").find("span").css('display', 'none');
+	$("#wrapper li").find("span").css('display', 'none');
 	$(PositionIndex).find("span").css('display', 'block');
 	myScroll.scrollToElement(PositionIndex, 200, true, true);
 })
