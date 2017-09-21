@@ -14,10 +14,9 @@
 		<link rel="stylesheet" type="text/css" href="../common/css/swiper.min.css" />
 		<link href="../common/css/common.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="css/index.css" />
-
 	</head>
 
-	<body class="nwrapper">
+	<body class="nwrapper" onload="loaded()">
 		<!--top-->
 		<div class="navbar-header">
 			<!--search-->
@@ -26,49 +25,22 @@
 					<span>搜索你想要的商品</span>
 				</div>
 			</header>
-
-			<!--menu-->
-			<div class="navbar-main-menu">
-				<div class="scroll-wrap" id="wrapper">
-					<ul class="equal-table fixed">
-						<li class="nav-current">
-							<a href="javascript:void (0)"><span>推荐</span></a>
-						</li>
-						<li>
-							<a href="javascript:void (0)"><span>推荐1</span></a>
-						</li>
-						<li>
-							<a href="javascript:void (0)"><span>推荐2</span></a>
-						</li>
-						<li>
-							<a href="javascript:void (0)"><span>推荐3</span></a>
-						</li>
-						<li>
-							<a href="javascript:void (0)"><span>推荐4</span></a>
-						</li>
-						<li>
-							<a href="javascript:void (0)"><span>推荐5</span></a>
-						</li>
-						<li>
-							<a href="javascript:void (0)"><span>推荐6</span></a>
-						</li>
-						<li>
-							<a href="javascript:void (0)"><span>推荐7</span></a>
-						</li>
-						<li>
-							<a href="javascript:void (0)"><span>推荐8</span></a>
-						</li>
-						<li>
-							<a href="javascript:void (0)"><span>推荐9</span></a>
-						</li>
-						<li>
-							<a href="javascript:void (0)"><span>推荐10</span></a>
-						</li>
+			<!--nav-->
+			<div id="wrapper">
+				<div id="scroller">
+					<ul>
+						<li class="active">推荐<span style="display: block;"></span></li>
+						<li>母婴<span></span></li>
+						<li>个护<span></span></li>
+						<li>美食<span></span></li>
+						<li>数码<span></span></li>
+						<li>美妆<span></span></li>
+						<li>优惠<span></span></li>
+						<li>签到<span></span></li>
 					</ul>
 				</div>
 			</div>
 		</div>
-
 		<!--content-->
 		<div class="L-brand-list" style="padding-top: 1.6rem">
 			<div class="swiper-container swiper-container-01">

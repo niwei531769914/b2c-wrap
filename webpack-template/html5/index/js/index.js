@@ -13,38 +13,39 @@
 	win.addEventListener(resizeEvt, recalc, false);
 	doc.addEventListener('DOMContentLoaded', recalc, false);
 })(document, window);
-
-let myscroll;
+ 
+/*加载iscroll插件*/
+var myScroll;
 
 function loaded() {
-	myscroll = new IScroll("wrapper", {
-		hScroll: true,
-		vScroll: false,
-		bounce: true,
-		hScrollbar: false,
-		hideScrollbar: true
+	var TotalLength = parseFloat($('#wrapper ul li').width()) * parseFloat($('#wrapper ul li').length);
+	$('#scroller').css({
+		'width': TotalLength + 'px'
+	});
+	myScroll = new IScroll('#wrapper', {
+		scrollX: true,
+		scrollY: false,
+
 	});
 	select();
-}
-window.addEventListener("DOMContentLoaded", loaded, false);
 
-$('.equal-table li').click(function() {
-	let Index = $(this).index();
-	$('.equal-table .nav-current').removeClass('nav-current');
-	$('.equal-table li').eq(Index).addClass('nav-current');
-	let PositionIndex = document.querySelector('#wrapper li[class="nav-current"]');
-	myscroll.scrollToElement(PositionIndex, 200, true, true);
-});
+}
 
 function select() {
-	let PositionIndex = document.querySelector('#wrapper li[class="nav-current"]');
-	myscroll.scrollToElement(PositionIndex, 200, true, true);
+	var PositionIndex = document.querySelector('#wrapper li[class="active"]');
+	myScroll.scrollToElement(PositionIndex, 200, true, true);
+	$("#scroller li").find("span").css('display', 'none');
+	$(PositionIndex).find("span").css('display', 'block');
 }
 
-$(window).ready(function() {
-	$('#wrapper li').click(function() {
-
-	})
+$('#scroller ul li').on('click', function() {
+	var Index = $(this).index();
+ 	$('#scroller ul .active').removeClass('active');
+	$('#scroller ul li').eq(Index).addClass('active');
+	var PositionIndex = document.querySelector('#wrapper li[class="active"]');
+	$("#scroller li").find("span").css('display', 'none');
+	$(PositionIndex).find("span").css('display', 'block');
+	myScroll.scrollToElement(PositionIndex, 200, true, true);
 })
 
 //swiper切换
