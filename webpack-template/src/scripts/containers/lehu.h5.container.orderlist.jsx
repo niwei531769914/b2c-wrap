@@ -8,7 +8,7 @@ import {IsLoading} from 'loadingJsx';
 import {Top} from 'topJsx';
 
 import {encription} from 'query';
-import { Tip } from 'util';
+import {Tip} from 'util';
 
 import {Api} from 'api';
 
@@ -46,7 +46,7 @@ class OrderList extends Component {
 
         //设置userId和token
         this.userId = '187131';
-        this.token = '1cd425494c9d50c78aad428b7ea18395';
+        this.token = 'b83d91b12e0a4c07a1828a7d9dcfb1a7';
 
         //    事件绑定
         this.Alert = this.Alert.bind(this);
@@ -85,7 +85,7 @@ class OrderList extends Component {
 
         //滚动加载初始化
         that.bindScroll();
- 
+
     }
 
     /**
@@ -222,9 +222,9 @@ class OrderList extends Component {
         }
     }
 
-    Alert(){
+    Alert() {
 
-        Tip('你好',2000);
+        Tip('你好', 2000);
 
     }
 
@@ -267,7 +267,7 @@ class OrderList extends Component {
                                     let STATUS = that.judgeStatus(item.status);
 
                                     return (
-                                        <div className="order-item border-1px" key={index}   onClick={this.Alert}>
+                                        <div className="order-item border-1px" key={index} onClick={this.Alert}>
 
                                             <div className="order-item-title">
                                                 <span className="item-store-name">店铺:<em>{item.storeName}</em></span>
@@ -288,15 +288,19 @@ class OrderList extends Component {
                                                                 </div>
                                                                 <div className="item-goods-content">
                                                                     <div className="goods-content-name">
-                                                                        <span className="goods-name">{items.goodsName}</span>
-                                                                        <span className="goods-price"> ￥{items.price}</span>
+                                                                        <span
+                                                                            className="goods-name">{items.goodsName}</span>
+                                                                        <span
+                                                                            className="goods-price"> ￥{items.price}</span>
                                                                     </div>
                                                                     <div className="goods-content-spec">
                                                                         <em>{items.normsValue}</em>
                                                                     </div>
                                                                     <div className="goods-content-fot">
-                                                                        <span className="goods-tax">税费:<em>￥{items.taxPrice}</em></span>
-                                                                        <span className="goods-num">x<em>{items.quantity}</em></span>
+                                                                        <span
+                                                                            className="goods-tax">税费:<em>￥{items.taxPrice}</em></span>
+                                                                        <span
+                                                                            className="goods-num">x<em>{items.quantity}</em></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
