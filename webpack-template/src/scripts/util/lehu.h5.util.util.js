@@ -1,6 +1,6 @@
 
 
-import $ from 'jquery';
+import $ from 'zepto';
 
 //检查邮箱地址
 export const checkEmail = (data) => {
