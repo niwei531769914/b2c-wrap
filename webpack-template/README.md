@@ -68,6 +68,9 @@
 生产环境会对js混淆压缩，对css、html进行压缩，字符替换等处理
 
     $ npm run build-online
+    
+发布到测试服务器    
+    $ npm run deploy
 
 
 ## 本地调试 ##

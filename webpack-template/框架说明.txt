@@ -23,3 +23,12 @@
 6.对状态机的管理store，建议使用中间键redux-saga来处理异步请求数据(倪伟)
 
 7.react中对原生事件的处理方式，获取被点击元素  （target 触发事件的元素。尽管事件是绑定在 li 上的，点 div.item-content 触发的就是 div.item-content。currentTarget 事件绑定的元素。事件绑定在 li 不管你点谁 触发的总是 li）
+
+8.react中对组件设置默认props，用defaultProps用法
+例：
+   static defaultProps = {
+        header: {
+            title: "商品分类",
+            name: '保存',
+        },
+    };

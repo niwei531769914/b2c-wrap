@@ -12,7 +12,7 @@ import {Tip} from 'util';
 
 import {Api} from 'api';
 
-import $ from 'jquery';
+import $ from 'zepto';
 
 import {imgLazyLoad} from 'piclazyLoad';
 
@@ -163,7 +163,7 @@ class OrderList extends Component {
         };
 
         Api(param)
-            .done((data) => {
+            .then((data) => {
 
                 if (data.response.orders == null) {
                     this.setState({
@@ -192,7 +192,7 @@ class OrderList extends Component {
                 $.imgLazyLoad();
 
             })
-            .fail((error) => {
+            .catch((error) => {
                 alert("服务器错误!");
             })
     }

@@ -9,7 +9,7 @@ import {Api} from '../config/api';
 import {parseQueryString} from 'query';
 
 //jquery
-import $ from 'jquery';
+import $ from 'zepto';
 
 //header
 import {Header} from 'headerJsx';
@@ -110,14 +110,32 @@ class EditAd extends Component {
                 return false;
             }
 
-            $(this).nextAll().html("");
+            let $self = $(this);
+            //递归函数实现thunk处理方式
+            function digui($self) {
+                let $next = $self.next();
+                if($next.length > 0){
+                    $next.html("");
+                    digui($next);
+                }
+            }
+            digui($self);
 
             $('.head-address-ul .head-address-li').removeClass('head-address-li');
             $(this).addClass('head-address-li');
             let Index = $(this).index();
 
             //将该索引值之后的p元素removeClass active
-            $('.address-ul').eq(Index).nextAll().find('p.active').removeClass('active');
+            let $selft = $('.address-ul').eq(Index);
+            //递归函数实现thunk处理方式
+            function diguit($selft) {
+                let $nextt = $selft.next();
+                if($nextt.length > 0){
+                    $nextt.find('p.active').removeClass('active');
+                    diguit($nextt);
+                }
+            }
+            diguit($selft);
 
             swiper.slideTo(Index, 300, false);
         });
