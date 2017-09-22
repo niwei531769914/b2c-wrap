@@ -10,8 +10,7 @@ export class Header extends Component {
 
     render() {
         const {header} = this.props;
-        let RightLinker = this.props.header.name ?
-            <a href="javascript:void (0)" className="rightlink">{header.name}</a> : null;
+        let RightLinker = this.props.header.name ? <a href="javascript:void (0)" className="rightlink">{header.name}</a> : null;
         return (
             <header className="header">
                 <a href="javascript:void (0)" className="back"></a>

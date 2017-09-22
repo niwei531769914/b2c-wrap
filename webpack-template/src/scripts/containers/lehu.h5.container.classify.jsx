@@ -7,11 +7,10 @@ import React, {Component} from 'react';
 //引入iScroll插件
 
 import IScroll from 'iscrollJs';
-import $ from 'jquery';
+import $ from 'zepto';
 import {Header} from 'headerJsx';
 
-//幻灯片
-import { SWiper } from 'swiperJsx';
+import 'classifyCss';
 
 class Classify extends Component {
 
@@ -21,14 +20,6 @@ class Classify extends Component {
             title: "商品分类",
             name: '保存',
         },
-        images: [
-            { img: 'https://m.360buyimg.com/mobilecms/s720x322_jfs/t9397/271/1200345489/94160/64367a64/59b61a74Ncb41b29c.jpg'},
-            { img: 'https://m.360buyimg.com/mobilecms/s720x322_jfs/t9397/271/1200345489/94160/64367a64/59b61a74Ncb41b29c.jpg'},
-            { img: 'https://m.360buyimg.com/mobilecms/s720x322_jfs/t9397/271/1200345489/94160/64367a64/59b61a74Ncb41b29c.jpg'},
-            { img: 'https://m.360buyimg.com/mobilecms/s720x322_jfs/t9397/271/1200345489/94160/64367a64/59b61a74Ncb41b29c.jpg'},
-        ],
-        loop: false,
-        time: 500,
     };
 
     constructor(props) {
@@ -76,9 +67,13 @@ class Classify extends Component {
 
         that.Scroll = new IScroll('#category',
             {
+                hScrollbar:false,
+                probeType: 2,
+                vScroll:true,
                 preventDefault: false,
                 tap: true,
                 scrollbars: false,
+                momentum:true,
             });
 
         that.RScroll = new IScroll('#branchScroll',
@@ -121,11 +116,6 @@ class Classify extends Component {
         }, false);
 
 
-        //滚动加载
-        that.RScroll.on('scroll', function () {
-            console.log(1);
-        })
-
     }
 
     componentWillUnmount() {
@@ -159,10 +149,6 @@ class Classify extends Component {
         return (
             <div>
                 <Header header={ header }/>
-
-                <div className="less" style={{ width: '100%', height: '3rem', float: 'left', backgroundColor: '#e0e0e0'}}>
-                    <SWiper Images = { images } Loop = { loop }  Time = { time } />
-                </div>
 
                 <div className="category-viewport">
 
@@ -202,4 +188,4 @@ class Classify extends Component {
 }
 
 
-export {Classify}
+export  { Classify };

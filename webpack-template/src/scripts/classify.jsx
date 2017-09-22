@@ -8,14 +8,9 @@ import ReactDOM , { render } from 'react-dom';
 
 //引入CSS
 import 'commonCss';
-import 'classifyCss';
-
-
-//引入公共JS
-//import 'config';
 
 //引入分支ui组件
-import { Classify } from 'classifyJsx';
+import { Classify } from 'classifyJsx'
 
 //render html
 let classify = document.getElementById('classify');

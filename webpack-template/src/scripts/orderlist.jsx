@@ -11,7 +11,7 @@ import 'orderlistCss';
 
 
 //引入公共JS
-//import 'config';
+import 'rem';
 
 //引入分支ui组件
 import { OrderList } from 'orderlistJsx';
