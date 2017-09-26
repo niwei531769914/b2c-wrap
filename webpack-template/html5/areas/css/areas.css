@@ -1,0 +1,77 @@
+.cmp-nav {
+  position: relative;
+  height: 44px;
+  background: #fff;
+  line-height: 44px;
+  font-size: 14px;
+  border-bottom: 1px solid #dcdcdc;
+}
+.cmp-nav .cmp-nav-title {
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+  color: #353d44;
+}
+.cmp-nav .of {
+  overflow: hidden;
+  white-space: nowrap;
+}
+.overtouch,
+.hy-tab {
+  width: 100%;
+  overflow: hidden;
+}
+.overtouch {
+  position: absolute;
+  top: 44px;
+  bottom: 0;
+}
+.overtouch .wbox {
+  display: -webkit-flex !important;
+  display: -webkit-box;
+}
+.overtouch .choose .hy-tab-nav {
+  height: 44px;
+  background: #fff;
+  line-height: 44px;
+}
+.overtouch .choose .hy-tab-nav li {
+  -webkit-flex: 1!important;
+  -webkit-box-flex: 1;
+  text-align: center;
+  font-size: 12px;
+}
+.overtouch .choose .hy-tab-nav .current {
+  border-bottom: .03rem solid #eda200;
+  color: #f29400;
+  font-size: 14px;
+}
+.overtouch .hy-tab-content {
+  position: absolute;
+  top: 44px;
+  bottom: 0;
+}
+.overtouch .hy-tab-content .hy-tab-box {
+  width: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.overtouch .hy-tab-content .hy-tab-box .city-list {
+  overflow-y: auto;
+  background: #f2f2f2;
+}
+.overtouch .hy-tab-content .hy-tab-box .city-list li {
+  height: 44px;
+  line-height: 44px;
+  color: #000000;
+  font-size: 14px;
+  text-indent: 2em;
+}
+.overtouch .hy-tab-content .hy-tab-box .city-list li.cur {
+  background: #dcdcdc;
+  color: #eda200;
+}
+.overtouch .hy-tab-content .wbox-flex {
+  -webkit-flex: 1!important;
+  -webkit-box-flex: 1;
+}

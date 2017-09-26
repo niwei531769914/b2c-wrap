@@ -4,14 +4,9 @@
 
 import React, {Component} from 'react';
 
-//引入iScroll插件
+import { Area } from 'areasJsx';
 
-import IScroll from 'iscrollJs';
 import $ from 'zepto';
-
-import  Swiper  from 'swiperJs';
-import 'swiper';
-
 
 class Product extends Component {
 
@@ -19,315 +14,220 @@ class Product extends Component {
         super(props);
 
         //数据初始化
-        this.state = {
-            reveal: false,
-        };
-
 
         //事件绑定
-        this.BackTop = this.BackTop.bind(this);
+        this.changeSpec = this.changeSpec.bind(this);
+        this.hideSpec = this.hideSpec.bind(this);
+        this.changeArea = this.changeArea.bind(this);
     }
 
     componentDidMount() {
 
-
-        let that = this;
-
-        //计算content的高度
-        let Windowheight = document.documentElement.clientHeight;
-
-        let Height = () => {
-            $('.scroller-box').height(Windowheight - 91);
-        };
-        Height();
-
-        window.onresize = function () {
-            Windowheight = document.documentElement.clientHeight;
-            Height();
-        };
-
-        //实例化幻灯片
-        that.swiper = new Swiper('.swiper-container', {
-            loop: false,
-            speed: 300,
-            preventClicks: false,
-            onTouchStart: function () {
-                console.log(1);
-            },
-            onTouchMove: function () {
-                console.log(3);
-            },
-            onSlideChangeStart: function () {
-                console.log(1);
-                let $self = that.swiper;
-                $('.hy-header-nav .current').removeClass('current');
-                $('.hy-header-nav a').eq($self.activeIndex).addClass('current');
-                if ($self.activeIndex == 0) {
-                    that.detailScroll.scrollTo(0, 0, 300);
-                }
-                else if ($self.activeIndex == 1) {
-                    that.basicScroll.scrollTo(0, 0, 300);
-                }
-                //判断Top按钮是否消失
-                that.whetherTop();
-            }
-        });
-
-
-        //事件绑定
-        $('.hy-header-nav a').on('click', function () {
-            let Index = $(this).index();
-            that.swiper.slideTo(Index, 300, false);
-            $('.hy-header-nav .current').removeClass('current');
-            $(this).addClass('current');
-            that.basicScroll.scrollTo(0, 0, 300);
-            that.detailScroll.scrollTo(0, 0, 300);
-
-            //判断Top按钮是否消失
-            that.whetherTop();
-
-        });
-
-
-        //实例化iscroll
-        //基本信息
-        that.basicScroll = new IScroll('#hy-basic',
-            {
-                hScrollbar: false,
-                click: false,
-                probeType: 1,
-                vScroll: true,
-                tap: true,
-                scrollbars: false,
-                momentum: true,
-                preventDefault: false,
-            });
-        //详情信息
-        that.detailScroll = new IScroll('#hy-detail',
-            {
-                hScrollbar: false,
-                probeType: 1,
-                vScroll: true,
-                tap: true,
-                click: false,
-                scrollbars: false,
-                momentum: true,
-                preventDefault: false,
-            });
-        //评价信息
-        that.descScroll = new IScroll('#hy-desc',
-            {
-                hScrollbar: false,
-                probeType: 1,
-                vScroll: true,
-                tap: true,
-                click: false,
-                scrollbars: false,
-                momentum: true,
-                preventDefault: false,
-            });
-
-        //基本信息板块上啦切换到下一屏
-
-        let BasicScroll;
-        that.basicScroll.on('scroll', () => {
-            BasicScroll = that.basicScroll.y;
-
-            //判断Top按钮是否消失
-            that.whetherTop();
-
-            if (BasicScroll < that.basicScroll.maxScrollY - 40) {
-                $('.top-scroll').empty().html('释放切换到下一屏');
-            }
-            else {
-                $('.top-scroll').empty().html('继续拖动，查看详情');
-            }
-        });
-
-        that.basicScroll.on('scrollEnd', () => {
-             if (BasicScroll <= that.basicScroll.maxScrollY - 40) {
-                 console.log(44);
-                 that.swiper.slideTo(1, 400, () => {
-                    $('.hy-header-nav .current').removeClass('current');
-                    $('.hy-header-nav a').eq(1).addClass('current');
-                    $('.top-scroll').empty().html('继续拖动，查看详情');
-                    that.detailScroll.scrollTo(0, 0, 300);
-
-                    //判断Top按钮是否消失
-                    that.whetherTop();
-
-                 });
-             }
-        });
-
-        //商品详情板块上啦切换到上一屏
-
-        let DetailScroll;
-        that.detailScroll.on('scroll', () => {
-            DetailScroll = that.detailScroll.y;
-
-            //判断Top按钮是否消失
-            that.whetherTop();
-
-            if (DetailScroll > 60) {
-                $('.last-scroll').empty().html('释放回到基本信息');
-            }
-            else {
-                $('.last-scroll').empty().html('下拉回到基本信息');
-            }
-        });
-
-        that.detailScroll.on('scrollEnd', () => {
-             if (DetailScroll > 60) {
-                 that.swiper.slideTo(0, 400, () => {
-                    $('.hy-header-nav .current').removeClass('current');
-                    $('.hy-header-nav a').eq(0).addClass('current');
-                    $('.last-scroll').empty().html('下拉回到基本信息');
-                    that.basicScroll.scrollTo(0, 0, 300);
-
-                    //判断Top按钮是否消失
-                    that.whetherTop();
-
-                 });
-             }
-        });
-
-
-        that.descScroll.on('scroll', () => {
-            //判断Top按钮是否消失
-            that.whetherTop();
-
-        });
-
-        $('.swiper-slide').on('click',function (e) {
-            e.preventDefault();
-        },false);
-
-
-        //阻止touch默认事件
-        document.querySelector('#scroller').addEventListener('touchmove', function (e) {
-            e.preventDefault();
-        }, false);
-        document.querySelector('#tscroller').addEventListener('touchmove', function (e) {
-            e.preventDefault();
-        }, false);
-        document.querySelector('#thscroller').addEventListener('touchmove', function (e) {
-            e.preventDefault();
-        }, false);
-
     }
-
-    BackTop() {
-
-        //返回顶部
-        this.basicScroll.scrollTo(0, 0, 1000);
-        this.detailScroll.scrollTo(0, 0, 1000);
-        this.descScroll.scrollTo(0, 0, 1000);
-
-        this.whetherTop();
-
-    }
-
-    //监听滚动条高度来判断是否隐藏top按钮
-
-    whetherTop() {
-
-        setTimeout(() => {
-            let that = this;
-
-            if (Math.abs(that.basicScroll.y) > 200 || Math.abs(that.detailScroll.y) > 200 || Math.abs(that.descScroll.y) > 200) {
-                that.setState({
-                    reveal: true,
-                })
-            }
-            else {
-                that.setState({
-                    reveal: false,
-                })
-            }
-        }, 300);
-
-    }
-
 
     componentWillUnmount() {
-        //解除绑定
-        $('.hy-header-nav a').unbind("click");
 
-        //在不需要使用iScoll的时候调用iScroll实例的公共方法destroy()可以释放一些内存。
-        that.basicScroll.destroy();
-        that.basicScroll = null;
+    }
 
-        that.detailScroll.destroy();
-        that.detailScroll = null;
+    //弹出规格窗
+    changeSpec(){
 
-        that.descScroll.destroy();
-        that.descScroll = null;
+        this.ScrollTop = $(window).scrollTop();
+        $('html').addClass('hidescroll');
+        $('body').addClass('hidescroll');
+        $('.cmp-fixed').show().addClass('cover-mask-toggle');
+        $('#fourth_color').addClass('fourth-cover-toggle');
+
+    }
+
+    hideSpec(){
+
+        $('html').removeClass('hidescroll');
+        $('body').removeClass('hidescroll');
+        $('.cmp-fixed').hide().removeClass('cover-mask-toggle');
+        $('#fourth_color').removeClass('fourth-cover-toggle');
+        $('#fourth-area').removeClass('fourth-cover-toggle');
+        $(window).scrollTop(this.ScrollTop);
+
+    }
+
+    changeArea(){
+        this.ScrollTop = $(window).scrollTop();
+        $('html').addClass('hidescroll');
+        $('body').addClass('hidescroll');
+        $('.cmp-fixed').show().addClass('cover-mask-toggle');
+        $('#fourth-area').addClass('fourth-cover-toggle');
 
     }
 
     render() {
 
-        const {reveal} = this.state;
-
         return (
             <div className="page">
 
-                {/*header导航条*/}
-                <div className="header-dom">
-                    <div className="hy-header-warp">
-                        <header className="hy-header-nav">
-                            <a href="javascript: void (0)" className="summary current" data-index={0}>基本信息</a>
-                            <a href="javascript: void (0)" className="desc" data-index={1}>商品详情</a>
-                            <a href="javascript: void (0)" className="review" data-index={2}>评价172</a>
-                        </header>
-                    </div>
-                </div>
-
-
-                {/*content主内容*/}
-                <div id="content" className="content">
-                    <div className="hy-page-scroll swiper-container">
-                        <div className="swiper-wrapper">
-                            <div className="swiper-slide hy-summary">
-                                <div id="hy-basic" className="scroller-box" style={{overflow:'hidden'}}>
-                                    <div id="scroller" className="scroller">
-                                        <div className="top-scroll">继续拖动，查看详情</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="swiper-slide hy-summary">
-                                <div id="hy-detail" className="scroller-box" style={{overflow:'hidden'}}>
-                                    <div id="tscroller" className="scroller">
-                                        2
-                                    </div>
-                                    <div className="last-scroll">下拉回到基本信息</div>
-                                </div>
-                            </div>
-                            <div className="swiper-slide hy-summary">
-                                <div id="hy-desc">
-                                    <div id="thscroller" className="scroller" style={{overflow:'hidden'}}>
-
-                                    </div>
-                                </div>
-                            </div>
+                {/*头部*/}
+                <header className="fourth-header">
+                    <div className="hy-nav">
+                        <div className="hy-nav-back">
+                            <a href="javascript: void (0)"></a>
+                        </div>
+                        <div className="hy-nav-main">
+                            <span>商品详情</span>
+                        </div>
+                        <div className="hy-nav-action">
+                            <a href="javascript: void (0)" className="hy-nav-search"></a>
+                            <a href="javascript: void (0)" className="hy-nav-shopCart"></a>
                         </div>
                     </div>
-                </div>
+                </header>
+
+                
+                {/*主题内容*/}
+                <div className="main-content" style={{paddingBottom: '50px'}}>
+                    <div className="container">
+                        <section className="fourth-banner">
+                            <div className="pic-slider">
+
+                            </div>
+                        </section>
+
+                        <section className="product-main ju-main">
+                            <div className="product-price">
+
+                            </div>
+                        </section>
+
+                        <section className="product-main">
+
+                            <div className="product-title">
+                                <h1 className="name">
+                                    【童年记_多味瓜子 500g】独立小包 休闲零食炒货坚果五 休闲零食炒货 休闲零食炒货 休闲零食炒货 休闲零食炒货香葵瓜子 白瓜子...
+                                </h1>
+                            </div>
+
+                            <div className="product-sale">
+                                <div className="sale-price">
+
+                                </div>
+                                <div className="sale-goods-status">
+                                    <span>海外直邮商品</span>
+                                </div>
+                            </div>
+
+                            <div className="open-member">
+
+                            </div>
+
+                        </section>
+
+                        <section className="additional-info bdr-b">
+
+                            <div className="info-container bdr-b">
+
+                            </div>
+
+                            <div className="info-coupon">
+
+                            </div>
+
+                        </section>
+
+                        <section className="address-colortype selected-colortype" onClick={this.changeSpec}>
+                            <div className="fourth-cells bdr-b bdr-f">
+                                <div className="fourth-cell">
+                                    <span className="cell-tag-hd">已&nbsp;&nbsp;选&nbsp;&nbsp;</span>
+                                    <div className="cell-primary">
+                                        紫色1件
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section className="address-colortype">
+                            <div className="fourth-cells bdr-b bdr-f">
+                                <div className="fourth-cell address-select" onClick={this.changeArea}>
+                                    <span className="cell-tag-hd">送&nbsp;&nbsp;至&nbsp;&nbsp;</span>
+                                    <div className="cell-primary">
+                                        <div className="address-icon-wrap">
+                                            <span className="to-address">上海卢湾区</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="fourth-cells">
+                                <div className="fourth-cell">
+                                    <span className="cell-tag-hd">运&nbsp;&nbsp;费&nbsp;&nbsp;</span>
+                                    <div className="cell-primary">
+                                        <span className="pur-tips">免运费</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
 
 
-                {/*foot底部按钮*/}
-                <div className="hy-actionBar-container">
-                    <div className="action-bar-wrap">
-                        <ul className="action-other">
-                            <li className="item service"></li>
-                            <li className="item favourite"></li>
-                            <li className="item shop"></li>
-                        </ul>
-                        <a href="javascript: void (0)" className="item addtocart">立即购买</a>
-                        <a href="javascript: void (0)" className="item buy">加入购物车</a>
+                        <section className="product-evaluate">
+                            <div className="fourth-cells">
+                                <div className="fourth-cell">
+                                    <div className="cell-primary">评价(1500+)</div>
+                                </div>
+                            </div>
+
+                            <div className="evaluate-content bdr-f bdr-b">
+                                <ul className="evaluate-list">
+                                    <li className="evaluate-item"></li>
+                                </ul>
+                            </div>
+
+                        </section>
+
                     </div>
+
+                    <div className="pull-detail"></div>
                 </div>
+
+
+                {/*弹窗规格*/}
+                <section className="fourth-cover" id="fourth_color">
+
+                    <header className="cover-head">
+
+                    </header>
+
+                    <div className="cover-body">
+                        <div className="slider">
+
+                        </div>
+                    </div>
+
+                    <div className="cover-action">
+                        <a href="javascript: void (0)" className="addtocart">立即购买</a>
+                        <a href="javascript: void (0)" className="buy">加入购物车</a>
+                    </div>
+
+                </section>
+
+                {/*弹出地址选择窗口*/}
+                <section className="fourth-cover" id="fourth-area">
+
+                </section>
+
+                {/*弹出阴影层*/}
+                <section className="cmp-fixed" onClick={this.hideSpec}>
+
+                </section>
+                
+                {/*底部购买*/}
+                <section className="action-bar">
+                    <div className="action-list">
+                        <ul className="action-other">
+                            <li className="item server"></li>
+                            <li className="item favourite"></li>
+                        </ul>
+                        <a className="item addtocart" href="javascript: void (0)">立即购买</a>
+                        <a className="item buy" href="javascript: void (0)">加入购物车</a>
+                    </div>
+                </section>
 
             </div>
         )

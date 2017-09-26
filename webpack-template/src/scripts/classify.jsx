@@ -8,7 +8,7 @@ import ReactDOM , { render } from 'react-dom';
 
 //引入CSS
 import 'commonCss';
-
+import 'rem';
 //引入分支ui组件
 import { Classify } from 'classifyJsx'
 

@@ -46,7 +46,7 @@ class OrderList extends Component {
 
         //设置userId和token
         this.userId = '187131';
-        this.token = '1cd425494c9d50c78aad428b7ea18395';
+        this.token = '74847679e89848f50b298822c7c36fb5';
 
         //    事件绑定
         this.Alert = this.Alert.bind(this);

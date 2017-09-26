@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>购物车</title>
+    <title>商品详情</title>
     <meta name="description" content="">
     <meta name="Keywords" content="">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
@@ -19,176 +19,208 @@
 </head>
 <body>
 
-<div class="page">
-    <div class="header-dom">
-        <div class="hy-header-warp">
-            <header class="hy-header-nav">
-                <a href="javascript: void (0)" class="summary current">基本信息</a>
-                <a href="javascript: void (0)" class="desc">商品详情</a>
-                <a href="javascript: void (0)" class="review">评价172</a>
-            </header>
+<header class="fourth-header">
+    <div class="hy-nav">
+        <div class="hy-nav-back">
+            <a href="javascript: void (0)"></a>
+        </div>
+        <div class="hy-nav-main">
+            <span>商品详情</span>
+        </div>
+        <div class="hy-nav-action">
+            <a href="javascript: void (0)" class="hy-nav-search"></a>
+            <a href="javascript: void (0)" class="hy-nav-shopCart"></a>
         </div>
     </div>
+</header>
 
-    <div id="content" class="content">
-        <div class="hy-page-scroll swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide hy-summary" id="hy-basic" style="transform: translateY(0px) ; overflow: auto">
-                    <div id="scroller">
-                        1
-                        <div class="top-scroll">继续拖动，查看详情</div>
-                    </div>
+
+<!--主题内容-->
+<div class="main-content" style="padding-bottom: 50px">
+    <!--商品内容-->
+    <div class="container">
+        <section class="fourth-banner">
+            <div class="pic-slider">
+
+            </div>
+        </section>
+
+        <!--限时折扣-->
+        <section class="product-main ju-main">
+            <div class="product-price">
+
+            </div>
+        </section>
+
+        <!--标题-->
+        <section class="product-main">
+
+            <!--name-->
+            <div class="product-title">
+                <h1 class="name">
+                    【童年记_多味瓜子 500g】独立小包 休闲零食炒货坚果五 休闲零食炒货 休闲零食炒货 休闲零食炒货 休闲零食炒货香葵瓜子 白瓜子...
+                </h1>
+            </div>
+
+            <!--price-->
+            <div class="product-sale">
+                <!--加个展示-->
+                <div class="sale-price">
 
                 </div>
-                <div class="swiper-slide hy-summary" style="overflow: auto">
-                    <div class="last-scroll">下拉回到基本信息</div>
-                    <div id="tscroller">
-
-                    </div>
+                <!--商品状态展示-->
+                <div class="sale-goods-status">
+                    <span>海外直邮商品</span>
                 </div>
-                <div class="swiper-slide hy-summary" style="overflow: auto">
-                    <div id="thscroller">
+            </div>
 
+            <!--开通会员-->
+            <div class="open-member">
+
+            </div>
+
+        </section>
+
+        <!--宣传加领券-->
+        <section class="additional-info bdr-b">
+
+            <!--宣传-->
+            <div class="info-container bdr-b">
+
+            </div>
+
+            <div class="info-coupon">
+
+            </div>
+
+        </section>
+
+        <!--规格选择-->
+        <section class="address-colortype selected-colortype">
+            <div class="fourth-cells bdr-b bdr-f">
+                <div class="fourth-cell">
+                    <span class="cell-tag-hd">已&nbsp;&nbsp;选&nbsp;&nbsp;</span>
+                    <div class="cell-primary">
+                        紫色1件
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!--地址-->
+        <section class="address-colortype">
+            <!--地址选择-->
+            <div class="fourth-cells bdr-b bdr-f">
+                <div class="fourth-cell address-select">
+                    <span class="cell-tag-hd">送&nbsp;&nbsp;至&nbsp;&nbsp;</span>
+                    <div class="cell-primary">
+                        <div class="address-icon-wrap">
+                            <span class="to-address">上海卢湾区</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--运费状态-->
+            <div class="fourth-cells">
+                <div class="fourth-cell">
+                    <span class="cell-tag-hd">运&nbsp;&nbsp;费&nbsp;&nbsp;</span>
+                    <div class="cell-primary">
+                        <span class="pur-tips">免运费</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!--评价-->
+        <section class="product-evaluate">
+            <!--评价头-->
+            <div class="fourth-cells">
+                <div class="fourth-cell">
+                    <div class="cell-primary">评价(1500+)</div>
+                </div>
+            </div>
+
+            <!--评价内容-->
+            <div class="evaluate-content bdr-f bdr-b">
+                <ul class="evaluate-list">
+                    <li class="evaluate-item"></li>
+                </ul>
+            </div>
+
+        </section>
+
     </div>
 
-
-    <!--底部按钮-->
-    <div class="hy-actionBar-container">
-        <div class="action-bar-wrap">
-            <ul class="action-other">
-                <li class="item service"></li>
-                <li class="item favourite"></li>
-                <li class="item shop"></li>
-            </ul>
-            <a href="javascript: void (0)" class="item addtocart">立即购买</a>
-            <a href="javascript: void (0)" class="item buy">加入购物车</a>
-        </div>
-    </div>
-
+    <!--商品详情-->
+    <div class="pull-detail"></div>
 </div>
+
+
+<!--弹窗规格选择-->
+<section class="fourth-cover" id="fourth_color">
+
+    <!--title-->
+    <header class="cover-head">
+
+    </header>
+
+    <div class="cover-body">
+        <div class="slider">
+
+        </div>
+    </div>
+
+    <!--action-->
+    <div class="cover-action">
+        <a href="javascript: void (0)" class="addtocart">立即购买</a>
+        <a href="javascript: void (0)" class="buy">加入购物车</a>
+    </div>
+
+</section>
+
+
+<!--弹出阴影层-->
+<section class="cmp-fixed">
+
+</section>
+
+<!--底部-->
+<section class="action-bar">
+    <div class="action-list">
+        <ul class="action-other">
+            <li class="item server"></li>
+            <li class="item favourite"></li>
+        </ul>
+        <a class="item addtocart" href="javascript: void (0)">立即购买</a>
+        <a class="item buy" href="javascript: void (0)">加入购物车</a>
+    </div>
+</section>
 
 
 </body>
 <script type="text/javascript">
     window.onload = function () {
 
-        document.getElementById('scroller').scrollTop = 50;
+        let ScrollTop;
 
-        //计算content的高度
-        function Height() {
-            let Windowheight =  document.documentElement.clientHeight ;
-
-            document.getElementById('content').style.height = (Windowheight - 91) + 'px';
-
-            $('.swiper-slide').height(Windowheight - 91);
-        }
-
-        Height();
+        $('.selected-colortype').click(function () {
+            ScrollTop = $(window).scrollTop();
+            $('html').addClass('hidescroll');
+            $('body').addClass('hidescroll');
+            $('.cmp-fixed').show().addClass('cover-mask-toggle');
+            $('.fourth-cover').addClass('fourth-cover-toggle');
+        });
         
-        let swiper = new Swiper('.swiper-container', {
-            visibilityFullFit: true,
-            loop: false,
-            speed: 300,
-            onSlideChangeStart: function () {
-                $('.hy-header-nav .current').removeClass('current');
-                $('.hy-header-nav a').eq(swiper.activeIndex).addClass('current');
-                $(window).scrollTop(0);
-            }
+        $('.cmp-fixed').click(function () {
+            $('html').removeClass('hidescroll');
+            $('body').removeClass('hidescroll');
+            $(this).hide().removeClass('cover-mask-toggle');
+            $('.fourth-cover').removeClass('fourth-cover-toggle');
+            $(window).scrollTop(ScrollTop);
         });
 
-        $('.hy-header-nav a').click(function () {
-            let Index = $(this).index();
-            swiper.slideTo(Index, 300, false);
-            $('.hy-header-nav .current').removeClass('current');
-            $(this).addClass('current');
-            $(window).scrollTop(0);
-        });
-
-
-        let Iscroll = function (dom) {
-            //初始化数据
-            let init = {
-                startY: 0,
-                touchY: 0,
-                pax: 0,
-                scrollY: 0,
-                juli: 0,
-                widthY: 0,
-                Docheight: 0,
-                Windowheight: 0,
-                ScrollTop: 0
-            };
-
-            dom.addEventListener('touchstart', (event) => {
-
-                //初始化滚动距离
-                init.scrollY = 0;
-
-                init.Docheight = dom.clientHeight;
-                init.Windowheight =  document.documentElement.clientHeight ;
-
-                //touch中touchstrat开始获取滚动条高度
-                init.ScrollTop = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop;
-                init.startY = event.targetTouches[0].pageY;
-                let le = dom.style.transform || dom.style.webkitTransform;
-                dom.style.transition = '';
-                init.pax = parseFloat(le.substr(11));
-            }, false);
-
-            dom.addEventListener('touchmove', (event) => {
-
-                //touch中监听滚动条高度
-                init.ScrollTop = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop;
-                init.touchY = event.targetTouches[0].pageY;
-                init.juli = parseFloat(init.startY) - parseFloat(init.touchY);
-                init.scrollY = -init.juli + init.pax;
-                dom.style.transition = 'none';
-                if (init.ScrollTop == 0) {
-                    if (init.juli < 0) {
-                        //顶部不能回弹
-                        if (init.scrollY >= 0) {
-                            dom.style.transform = 'translateY(0px)';
-                            return false;
-                        }
-                    }
-                }
-                if ((init.Docheight - init.Windowheight) ==  (init.ScrollTop - 91) ) {
-
-                    if (init.juli > 0) {
-
-                        event.preventDefault();//阻止触摸时浏览器的缩放、滚动条滚动
-                        dom.style.transform = 'translateY(' + init.scrollY + 'px)';
-
-                    }
-
-                }
-            }, false);
-
-            dom.addEventListener('touchend', () => {
-                if ((init.Docheight - init.Windowheight) ==  (init.ScrollTop - 91) ) {
-                    if (-init.scrollY > 80) {
-                        dom.style.transform = 'translateY(0px)';
-                        dom.style.transition = '-webkit-transform 0.3s cubic-bezier(0.333333, 0.666667, 0.666667, 1)';
-                        swiper.slideTo(1, 300, false);
-                        $('.hy-header-nav .current').removeClass('current');
-                        $('.hy-header-nav a').eq(1).addClass('current');
-                        $(window).scrollTop(0);
-                        return false;
-                    }
-                }
-                dom.style.transform = 'translateY(0px)';
-                dom.style.transition = '-webkit-transform 0.3s cubic-bezier(0.333333, 0.666667, 0.666667, 1)';
-
-            }, false)
-        };
-
-        let DOM = document.getElementById('hy-basic');
-
-        new Iscroll(DOM);
     }
 </script>
 </html>

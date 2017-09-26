@@ -20,6 +20,7 @@
 
   "editadCss":"css/editad.css",
   "areaCss":"css/area.css",
+  "areasCss":"css/areas.css",
   "orderlistCss":"css/orderlist.css",
   "classifyCss":"css/classify.css",
   "productCss":"css/product.css",
@@ -27,6 +28,7 @@
 
   "editadJsx":"scripts/components/lehu.h5.component.editad.jsx",
   "swiperJsx":"scripts/components/lehu.h5.component.swiper.jsx",
+  "areasJsx":"scripts/components/lehu.h5.component.areas.jsx",
 
 
   "orderlistJsx":"scripts/containers/lehu.h5.container.orderlist.jsx",
@@ -40,8 +42,6 @@
   "topJsx":"scripts/commonViews/lehu.h5.commonviews.top.jsx",
   "footerJsx":"scripts/commonViews/lehu.h5.commonviews.footer.jsx",
 
-
-  "router":"scripts/router/Router.jsx",
 
 
   "util":"scripts/util/lehu.h5.util.util.js",

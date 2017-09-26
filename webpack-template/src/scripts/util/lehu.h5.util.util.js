@@ -109,7 +109,7 @@ export const Tip =  (message,time) => {
 export const HTTP = () =>{
     let HOST = window.location.host;
     if(HOST.indexOf("http://") == -1){
-        HOST = "https://" + HOST;
+        HOST = "http://" + HOST;
     }
     return HOST;
 };

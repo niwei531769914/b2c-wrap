@@ -9,6 +9,7 @@ import React, {Component} from 'react';
 import IScroll from 'iscrollJs';
 import $ from 'zepto';
 import {Header} from 'headerJsx';
+import { Footer } from 'footerJsx'
 
 import 'classifyCss';
 
@@ -20,6 +21,7 @@ class Classify extends Component {
             title: "商品分类",
             name: '保存',
         },
+        Routers: [1,0,1,1,1],
     };
 
     constructor(props) {
@@ -129,8 +131,9 @@ class Classify extends Component {
     _height() {
         let WindowHeight = document.body.offsetHeight;
         let HeaderHeight = document.querySelector('header.header').offsetHeight;
-        document.querySelector('#category').style.height = (WindowHeight - HeaderHeight ) + 'px';
-        document.querySelector('#branchScroll').style.height = (WindowHeight - HeaderHeight ) + 'px';
+        let FooterHeight = document.querySelector('div.floor').offsetHeight;
+        document.querySelector('#category').style.height = (WindowHeight - HeaderHeight - FooterHeight ) + 'px';
+        document.querySelector('#branchScroll').style.height = (WindowHeight - HeaderHeight - FooterHeight ) + 'px';
     }
 
     //窗口大小改变触发事件
@@ -142,16 +145,14 @@ class Classify extends Component {
         };
     }
 
-
     render() {
-        const {header,images ,loop , time} = this.props;
+        const {header, Routers} = this.props;
         const {categoryList} = this.state;
         return (
             <div>
                 <Header header={ header }/>
 
                 <div className="category-viewport">
-
 
                     {/*left nameList*/}
                     <div className="hy-category-tab">
@@ -168,7 +169,6 @@ class Classify extends Component {
                         </div>
                     </div>
 
-
                     {/*right content*/}
                     <div className="hy-category-content">
                         <div id="branchScroll" className="hy-category-content-wrapper">
@@ -181,6 +181,9 @@ class Classify extends Component {
                     </div>
 
                 </div>
+
+                {/*底部导航*/}
+                <Footer  router = { Routers } />
             </div>
         )
     }
