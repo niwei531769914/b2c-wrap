@@ -1,5 +1,7 @@
 {
+
   "jquery": "scripts/lib/jquery.min.js",
+
   "zepto": "scripts/lib/zepto.min.js",
   "fastclick":"scripts/lib/fastclick.js",
   "config":"scripts/config/config.js",
@@ -12,12 +14,14 @@
 
   "commonCss":"css/common/common.css",
   "headerCss":"css/common/header.css",
+  "searchCss": "css/common/search.css",
   "isloadingCss":"css/common/isloading.css",
   "topCss":"css/common/top.css",
   "swiper":"css/swiper.min.css",
   "footerCss":"css/common/footer.css",
 
-
+  "homeCss": "css/home.css",
+  "managementCss": "css/management.css",
   "editadCss":"css/editad.css",
   "areaCss":"css/area.css",
   "areasCss":"css/areas.css",
@@ -28,15 +32,19 @@
 
   "editadJsx":"scripts/components/lehu.h5.component.editad.jsx",
   "swiperJsx":"scripts/components/lehu.h5.component.swiper.jsx",
+<<<<<<< HEAD
   "areasJsx":"scripts/components/lehu.h5.component.areas.jsx",
+=======
+  "managementJsx": "scripts/components/lehu.h5.component.management.jsx",
+>>>>>>> e29b7e8a5c851c54541814aea1df9cd88b52397d
 
-
+"homeJsx": "scripts/containers/lehu.h5.container.home.jsx",
   "orderlistJsx":"scripts/containers/lehu.h5.container.orderlist.jsx",
   "classifyJsx":"scripts/containers/lehu.h5.container.classify.jsx",
   "productJsx":"scripts/containers/lehu.h5.container.product.jsx",
   "indexJsx":"scripts/containers/lehu.h5.container.index.jsx",
 
-
+"searchJsx": "scripts/commonViews/lehu.h5.commonviews.search.jsx",
   "headerJsx":"scripts/commonViews/lehu.h5.commonviews.header.jsx",
   "loadingJsx":"scripts/commonViews/lehu.h5.commonviews.loading.jsx",
   "topJsx":"scripts/commonViews/lehu.h5.commonviews.top.jsx",
@@ -48,3 +56,5 @@
   "query":"scripts/util/lehu.h5.util.query.js"
 
 }
+ 
+ 

@@ -17,7 +17,10 @@ import 'rem';
 import { EditAd } from 'editadJsx';
 
 //render html
-let editAd = document.getElementById('editad');
-render(<EditAd/>,
-    editAd
+ 
+//let editAd = document.getElementById('editad');
+ReactDOM.render(
+	<EditAd/>,
+   	document.getElementById('editad')
+ 
 );

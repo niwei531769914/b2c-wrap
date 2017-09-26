@@ -1,12 +1,7 @@
 //jsx语法
-
-
 import $ from 'zepto';
 
-
 let env_url = 'http://121.196.208.98:28080'; //测试环境
-
-
 let Api = function (params) {
 
     return new Promise((resolve, reject) => {
@@ -23,9 +18,8 @@ let Api = function (params) {
             }
         })
     });
-
 };
 
+export {Api};
 
-export  {Api};
-
+ 
