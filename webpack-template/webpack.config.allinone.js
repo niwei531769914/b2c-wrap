@@ -24,6 +24,8 @@ let UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 let autoprefixer = require('autoprefixer');
 let ImageminPlugin = require('imagemin-webpack-plugin').default;
 
+console.log(1);
+
 //入口文件定义
 let entries = function () {
     let jsDir = path.resolve(srcDir, 'scripts');
@@ -120,7 +122,6 @@ module.exports = function(options){
 
     //config
     let config = {
-
         entry: Object.assign(entries(), {
             // 用到什么公共lib（例如zepto.js），就把它加进vendor去，目的是将公用库单独提取打包
             'common': ['zepto','react','react-dom','config']

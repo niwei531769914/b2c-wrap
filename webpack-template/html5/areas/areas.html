@@ -177,12 +177,13 @@
             }
             if (Index == 1) {
                 $('.area').html("");
-                $('.hy-tab-nav li').eq(Index).empty().html(areaName).removeClass('current');
-                $('.hy-tab-nav li').eq(Index + 1).empty().html('请选择').addClass('current');
+
                 if(City[PageIndex].areaList.length == 0){
                     bianli();
                     return false;
                 }
+                $('.hy-tab-nav li').eq(Index).empty().html(areaName).removeClass('current');
+                $('.hy-tab-nav li').eq(Index + 1).empty().html('请选择').addClass('current');
                 let html = '';
                 let AreaList = City[PageIndex].areaList;
                 for (let i = 0; i < AreaList.length; i++) {

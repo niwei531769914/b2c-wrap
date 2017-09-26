@@ -10,7 +10,6 @@ import ReactDOM , { render } from 'react-dom';
 import 'commonCss';
 import 'productCss';
 
-
 //引入分支ui组件
 import { Product } from 'productJsx';
 

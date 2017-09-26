@@ -45,7 +45,6 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 
 /*弹窗样式*/
 .dialog-cart {
-    max-width: 750px;
     position: fixed;
     top: 50%;
     width: 100%;
@@ -56,21 +55,20 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
     background: rgba(0, 0, 0, 0.7);
     position: relative;
     overflow: hidden;
-    width: 5.6rem;
+    width: 270px;
     height: auto;
     margin: 0 auto;
-    padding: .2rem;
+    padding: 10px;
     border-radius: 6px;
-    top: -1.7rem;
 }
 .dialog-cart .dialog-cart-inner span {
-    width: 5.6rem;
+    width: 270px;
     height: auto;
     float: left;
-    font-size: .32rem;
+    font-size: 16px;
     overflow: hidden;
     color: #ffffff;
-    line-height: .54rem;
+    line-height: 24px;
     text-align: center;
 }
 

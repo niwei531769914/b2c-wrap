@@ -1,9 +1,9 @@
 .bottom-to-top {
-    width: .8rem;
-    height: .8rem;
+    width: 38px;
+    height: 38px;
     position: fixed;
-    bottom: 1rem;
-    right: .3rem;
+    bottom: 62px;
+    right: 9px;
     z-index: 888;
     display: none;
 }

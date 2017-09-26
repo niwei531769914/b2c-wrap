@@ -4,16 +4,45 @@
 
 import React, {Component} from 'react';
 
-import { Area } from 'areasJsx';
+import {Area} from 'areasJsx';
+import {Top} from 'topJsx';
 
 import $ from 'zepto';
 
+import {Api} from 'api';
+import {Tip} from 'util';
+import Swiper from 'swiperJs';
+import 'swiper';
+
+import {encription} from 'query';
+
 class Product extends Component {
+
+    static defaultProps = {
+        Address: [
+            {name: '四川'},
+            {name: '成都市'},
+            {name: '锦江区'}
+        ]
+
+    };
 
     constructor(props) {
         super(props);
 
         //数据初始化
+        this.state = {
+            goods: {
+                addressFreight: {},
+                evaInfo: {},
+                goodsInfo: {},
+                promotionInfo: {},
+                focuStatus: null,
+            }
+        };
+
+        //时间戳
+        this.timeStamp = Date.parse(new Date());
 
         //事件绑定
         this.changeSpec = this.changeSpec.bind(this);
@@ -23,6 +52,66 @@ class Product extends Component {
 
     componentDidMount() {
 
+        let that = this;
+
+        let data = {
+            "goodsId": "3142",
+            "goodsItemId": "3153",
+            "userId": 187131,
+            "cityId": 0,
+            "areaId": 0,
+            "timeStamp": that.timeStamp
+        };
+
+        let param = {
+            url: "/mobile-web-trade/ws/mobile/v1/goods/goodsInfo?sign=" + encription(data),
+            method: "post",
+            params: JSON.stringify(data)
+        };
+
+        Api(param)
+            .then((data) => {
+                this.setState({
+                    goods: data.response.goods,
+                });
+
+                let swiper = new Swiper('.pic-slider', {
+                    loop: false,
+                    pagination: '.pagination',
+                    paginationType:'fraction',
+                    speed: 500,
+                });
+
+            })
+            .catch((error) => {
+                Tip('服务器错误');
+            });
+
+        this.ImageText();
+
+    }
+
+    ImageText() {
+
+        let data = {
+            goodsId: '3142'
+        };
+
+        let param = {
+            url: "/mobile-web-trade/ws/mobile/v1/goods/goodsDetail",
+            method: "post",
+            params: JSON.stringify(data)
+        };
+        Api(param)
+            .then((data) => {
+                let CONTENT = data.response.goodsDetail;
+                $('.pull-detail').append(CONTENT.goodsDesc);
+                $('.pull-detail').append(CONTENT.serviceDesc);
+            })
+            .catch((error) => {
+                Tip('服务器错误');
+            })
+
     }
 
     componentWillUnmount() {
@@ -30,7 +119,7 @@ class Product extends Component {
     }
 
     //弹出规格窗
-    changeSpec(){
+    changeSpec() {
 
         this.ScrollTop = $(window).scrollTop();
         $('html').addClass('hidescroll');
@@ -40,7 +129,7 @@ class Product extends Component {
 
     }
 
-    hideSpec(){
+    hideSpec() {
 
         $('html').removeClass('hidescroll');
         $('body').removeClass('hidescroll');
@@ -51,7 +140,7 @@ class Product extends Component {
 
     }
 
-    changeArea(){
+    changeArea() {
         this.ScrollTop = $(window).scrollTop();
         $('html').addClass('hidescroll');
         $('body').addClass('hidescroll');
@@ -61,6 +150,9 @@ class Product extends Component {
     }
 
     render() {
+
+        const {Address} = this.props;
+        const {goods} = this.state;
 
         return (
             <div className="page">
@@ -81,16 +173,36 @@ class Product extends Component {
                     </div>
                 </header>
 
-                
+
                 {/*主题内容*/}
                 <div className="main-content" style={{paddingBottom: '50px'}}>
                     <div className="container">
-                        <section className="fourth-banner">
-                            <div className="pic-slider">
+                        <section className="fourth-banner" style={{height:'225px'}}>
+                            {/*幻灯片*/}
+                            {
+                                goods.goodsInfo.goodsImg ? <div className="pic-slider swiper-container">
+                                    <div className="swiper-wrapper">
 
-                            </div>
+                                        {
+                                            goods.goodsInfo.goodsImg.split(',').map((item, index) => {
+                                                return (
+                                                    <div className="swiper-slide" key={index}>
+                                                        <img style={{
+                                                            width: 'auto',
+                                                            height: '100%',
+                                                            overflow: 'hidden',
+                                                            maxWidth: '320px',
+                                                            margin: '0 auto'
+                                                        }} src={item}/>
+                                                    </div>
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                    <div className="pagination"></div>
+                                </div> : null
+                            }
                         </section>
-
                         <section className="product-main ju-main">
                             <div className="product-price">
 
@@ -99,10 +211,17 @@ class Product extends Component {
 
                         <section className="product-main">
 
+                            {/*商品名*/}
                             <div className="product-title">
-                                <h1 className="name">
-                                    【童年记_多味瓜子 500g】独立小包 休闲零食炒货坚果五 休闲零食炒货 休闲零食炒货 休闲零食炒货 休闲零食炒货香葵瓜子 白瓜子...
-                                </h1>
+                                {
+                                    goods.goodsInfo.goodsName ?
+                                        <p className="name">{goods.goodsInfo.goodsName}</p> : null
+                                }
+
+                                {
+                                    goods.goodsInfo.goodsSubtitle ?
+                                        <p className="subhead">{goods.goodsInfo.goodsSubtitle}</p> : null
+                                }
                             </div>
 
                             <div className="product-sale">
@@ -144,6 +263,7 @@ class Product extends Component {
                         </section>
 
                         <section className="address-colortype">
+
                             <div className="fourth-cells bdr-b bdr-f">
                                 <div className="fourth-cell address-select" onClick={this.changeArea}>
                                     <span className="cell-tag-hd">送&nbsp;&nbsp;至&nbsp;&nbsp;</span>
@@ -183,7 +303,10 @@ class Product extends Component {
 
                     </div>
 
-                    <div className="pull-detail"></div>
+                    {/*图文详情*/}
+                    <div className="pull-detail">
+
+                    </div>
                 </div>
 
 
@@ -210,13 +333,15 @@ class Product extends Component {
                 {/*弹出地址选择窗口*/}
                 <section className="fourth-cover" id="fourth-area">
 
+                    <Area address={ Address }/>
+
                 </section>
 
                 {/*弹出阴影层*/}
                 <section className="cmp-fixed" onClick={this.hideSpec}>
 
                 </section>
-                
+
                 {/*底部购买*/}
                 <section className="action-bar">
                     <div className="action-list">
@@ -229,6 +354,9 @@ class Product extends Component {
                     </div>
                 </section>
 
+
+                {/*返回顶部*/}
+                <Top/>
             </div>
         )
     }

@@ -74,6 +74,7 @@ gulp.task('imgagemin',['clean'], function () {
 
 //run webpack pack
 gulp.task('pack', ['imgagemin'], function (done) {
+    console.log(2);
     let _conf = options.env === 'production' ? webpackConf : webpackConfDev;
     webpack(_conf, function (err, stats) {
         if (err) throw new gutil.PluginError('webpack', err);
