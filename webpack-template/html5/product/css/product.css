@@ -13,6 +13,18 @@
   -webkit-transform: scaleY(0.5);
   transform: scaleY(0.5);
 }
+.cell-point-ft:after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  right: -15px;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: solid #999;
+  border-width: 0 1px 1px 0;
+  -webkit-transform: rotate(-45deg);
+}
 body {
   background-color: #f2f2f2;
 }
@@ -301,6 +313,14 @@ body {
   -webkit-box-flex: 1;
   flex: 1;
   font-size: 14px;
+}
+.main-content .container .address-colortype .fourth-cells .fourth-cell .cell-ft,
+.main-content .container .product-evaluate .fourth-cells .fourth-cell .cell-ft {
+  text-align: right;
+  color: #f60;
+  margin-right: 16px;
+  font-size: 14px;
+  position: relative;
 }
 .main-content .container .selected-colortype {
   width: 100%;

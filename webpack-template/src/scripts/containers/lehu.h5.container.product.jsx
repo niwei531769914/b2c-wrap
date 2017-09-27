@@ -18,15 +18,6 @@ import {encription} from 'query';
 
 class Product extends Component {
 
-    static defaultProps = {
-        Address: [
-            {name: '四川'},
-            {name: '成都市'},
-            {name: '锦江区'}
-        ]
-
-    };
-
     constructor(props) {
         super(props);
 
@@ -48,6 +39,7 @@ class Product extends Component {
         this.changeSpec = this.changeSpec.bind(this);
         this.hideSpec = this.hideSpec.bind(this);
         this.changeArea = this.changeArea.bind(this);
+        this.BtnArea = this.BtnArea.bind(this);
     }
 
     componentDidMount() {
@@ -68,9 +60,8 @@ class Product extends Component {
             method: "post",
             params: JSON.stringify(data)
         };
-
         Api(param)
-            .then((data) => {
+            .done((data) => {
                 this.setState({
                     goods: data.response.goods,
                 });
@@ -78,12 +69,12 @@ class Product extends Component {
                 let swiper = new Swiper('.pic-slider', {
                     loop: false,
                     pagination: '.pagination',
-                    paginationType:'fraction',
+                    paginationType: 'fraction',
                     speed: 500,
                 });
 
             })
-            .catch((error) => {
+            .fail((error) => {
                 Tip('服务器错误');
             });
 
@@ -103,12 +94,12 @@ class Product extends Component {
             params: JSON.stringify(data)
         };
         Api(param)
-            .then((data) => {
+            .done((data) => {
                 let CONTENT = data.response.goodsDetail;
                 $('.pull-detail').append(CONTENT.goodsDesc);
                 $('.pull-detail').append(CONTENT.serviceDesc);
             })
-            .catch((error) => {
+            .fail((error) => {
                 Tip('服务器错误');
             })
 
@@ -140,18 +131,30 @@ class Product extends Component {
 
     }
 
-    changeArea() {
+    //弹出地址栏
+    changeArea(event) {
+
         this.ScrollTop = $(window).scrollTop();
         $('html').addClass('hidescroll');
         $('body').addClass('hidescroll');
         $('.cmp-fixed').show().addClass('cover-mask-toggle');
         $('#fourth-area').addClass('fourth-cover-toggle');
 
+        this.refs['child'].changeArea();
+
+    }
+
+    BtnArea(arg) {
+        let  { goods } = this.state;
+        this.hideSpec();
+        goods.addressFreight.address = arg;
+
+        this.setState(goods);
+
     }
 
     render() {
 
-        const {Address} = this.props;
         const {goods} = this.state;
 
         return (
@@ -177,7 +180,7 @@ class Product extends Component {
                 {/*主题内容*/}
                 <div className="main-content" style={{paddingBottom: '50px'}}>
                     <div className="container">
-                        <section className="fourth-banner" style={{height:'225px'}}>
+                        <section className="fourth-banner" style={{height: '225px'}}>
                             {/*幻灯片*/}
                             {
                                 goods.goodsInfo.goodsImg ? <div className="pic-slider swiper-container">
@@ -262,29 +265,34 @@ class Product extends Component {
                             </div>
                         </section>
 
-                        <section className="address-colortype">
+                        {
+                            goods.addressFreight ? <section className="address-colortype">
 
-                            <div className="fourth-cells bdr-b bdr-f">
-                                <div className="fourth-cell address-select" onClick={this.changeArea}>
-                                    <span className="cell-tag-hd">送&nbsp;&nbsp;至&nbsp;&nbsp;</span>
-                                    <div className="cell-primary">
-                                        <div className="address-icon-wrap">
-                                            <span className="to-address">上海卢湾区</span>
+                                <div className="fourth-cells bdr-b bdr-f">
+                                    <div className="fourth-cell address-select" onClick={this.changeArea}
+                                         data-cityid={ goods.addressFreight.cityId }
+                                         data-addressid={ goods.addressFreight.addressId  }>
+                                        <span className="cell-tag-hd">送&nbsp;&nbsp;至&nbsp;&nbsp;</span>
+                                        <div className="cell-primary">
+                                            <div className="address-icon-wrap">
+                                                <span className="to-address">{goods.addressFreight.address}</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div className="fourth-cells">
-                                <div className="fourth-cell">
-                                    <span className="cell-tag-hd">运&nbsp;&nbsp;费&nbsp;&nbsp;</span>
-                                    <div className="cell-primary">
-                                        <span className="pur-tips">免运费</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
+                                {
+                                    goods.addressFreight.freightInfo ? <div className="fourth-cells">
+                                        <div className="fourth-cell">
+                                            <span className="cell-tag-hd">运&nbsp;&nbsp;费&nbsp;&nbsp;</span>
+                                            <div className="cell-primary">
+                                                <span
+                                                    className="pur-tips">{goods.addressFreight.freightInfo}</span>
+                                            </div>
+                                        </div>
+                                    </div> : null
+                                }
+                            </section> : null
+                        }
 
                         <section className="product-evaluate">
                             <div className="fourth-cells">
@@ -292,7 +300,6 @@ class Product extends Component {
                                     <div className="cell-primary">评价(1500+)</div>
                                 </div>
                             </div>
-
                             <div className="evaluate-content bdr-f bdr-b">
                                 <ul className="evaluate-list">
                                     <li className="evaluate-item"></li>
@@ -333,7 +340,7 @@ class Product extends Component {
                 {/*弹出地址选择窗口*/}
                 <section className="fourth-cover" id="fourth-area">
 
-                    <Area address={ Address }/>
+                    <Area ref="child" btnarea={ this.BtnArea }/>
 
                 </section>
 

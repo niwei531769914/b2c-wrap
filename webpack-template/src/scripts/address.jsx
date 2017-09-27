@@ -7,17 +7,17 @@ import ReactDOM , { render } from 'react-dom';
 
 //引入CSS
 import 'commonCss';
-import '../css/editad.css';
+import 'addressCss';
 
 
 //引入公共JS
 import 'rem';
 
 //引入分支ui组件
-import { EditAd } from 'editadJsx';
+import { Address } from 'addressJsx';
 
 //render html
-let editAd = document.getElementById('editad');
-render(<EditAd/>,
-    editAd
+let address = document.getElementById('address');
+render(<Address/>,
+    address
 );

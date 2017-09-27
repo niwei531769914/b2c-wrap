@@ -16,6 +16,22 @@
   overflow: hidden;
   white-space: nowrap;
 }
+.cmp-nav .btn-confirm {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 333;
+  font-size: 12px;
+  height: 32px;
+  width: auto;
+  line-height: 32px;
+  padding: 0 6px;
+  background: #eda200;
+  color: #ffffff;
+  margin-right: 10px;
+  margin-top: 6px;
+  border-radius: 6px;
+}
 .overtouch,
 .hy-tab {
   width: 100%;

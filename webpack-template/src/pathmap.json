@@ -18,7 +18,7 @@
   "footerCss":"css/common/footer.css",
 
 
-  "editadCss":"css/editad.css",
+  "addressCss":"css/address.css",
   "areaCss":"css/area.css",
   "areasCss":"css/areas.css",
   "orderlistCss":"css/orderlist.css",
@@ -26,7 +26,7 @@
   "productCss":"css/product.css",
 
 
-  "editadJsx":"scripts/components/lehu.h5.component.editad.jsx",
+  "addressJsx":"scripts/components/lehu.h5.component.address.jsx",
   "swiperJsx":"scripts/components/lehu.h5.component.swiper.jsx",
   "areasJsx":"scripts/components/lehu.h5.component.areas.jsx",
 

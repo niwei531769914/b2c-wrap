@@ -1,12 +1,13 @@
 
-//把url的参数部分转化成json对象
-
 import md5 from 'md5';
 
+
+//把url的参数部分转化成json对象
 export const  parseQueryString = (url) =>{
     let reg_url = /^[^\?]+\?([\w\W]+)$/,
         reg_para = /([^&=]+)=([\w\W]*?)(&|$|#)/g,
-        arr_url = reg_url.exec(url),
+        Url = decodeURI(url),
+        arr_url = reg_url.exec(Url),
         ret = {};
     if (arr_url && arr_url[1]) {
         let str_para = arr_url[1], result;

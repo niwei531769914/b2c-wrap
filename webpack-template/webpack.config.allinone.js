@@ -80,7 +80,6 @@ module.exports = function(options){
     let cssLoader;
     let lessLoader;
 
-
     plugins.push(new CommonsChunkPlugin({
         name: 'common',
         minChunks: Infinity

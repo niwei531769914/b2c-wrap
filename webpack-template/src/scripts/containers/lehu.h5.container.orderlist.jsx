@@ -8,7 +8,7 @@ import {Header} from 'headerJsx';
 import {IsLoading} from 'loadingJsx';
 import {Top} from 'topJsx'
 
-import {encription} from 'query';
+import { encription , parseQueryString } from 'query';
 import { Tip } from 'util';
 
 import {Api} from 'api';
@@ -56,6 +56,8 @@ class OrderList extends Component {
     componentDidMount() {
 
         let that = this;
+
+        console.log(2);
 
         //页面初始化数据 显示状态100
         this.apiRequest();
@@ -163,7 +165,7 @@ class OrderList extends Component {
         };
 
         Api(param)
-            .then((data) => {
+            .done((data) => {
 
                 if (data.response.orders == null) {
                     this.setState({
@@ -189,7 +191,7 @@ class OrderList extends Component {
 
 
             })
-            .catch((error) => {
+            .fail((error) => {
                 alert("服务器错误!");
             })
     }
