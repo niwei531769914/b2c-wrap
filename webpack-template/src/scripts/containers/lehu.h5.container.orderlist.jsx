@@ -18,9 +18,7 @@ import $ from 'zepto';
 class OrderList extends Component {
 
     static defaultProps = {
-        header: {
-            title: "我的订单",
-        },
+        header: '我的订单'
     };
 
     constructor(props) {
@@ -56,8 +54,6 @@ class OrderList extends Component {
     componentDidMount() {
 
         let that = this;
-
-        console.log(2);
 
         //页面初始化数据 显示状态100
         this.apiRequest();
@@ -238,7 +234,7 @@ class OrderList extends Component {
 
     render() {
         let that = this;
-        const {header} = this.props;
+        const { header } = this.props;
         const {orderList} = this.state;
         return (
             <div>

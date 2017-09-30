@@ -7,57 +7,45 @@ import React, {Component} from 'react';
 //引入iScroll插件
 
 import IScroll from 'iscrollJs';
-import $ from 'zepto';
-import {Header} from 'headerJsx';
-import { Footer } from 'footerJsx'
+import {Nav} from 'navJsx';
+import {Footer} from 'footerJsx'
+import {MaskLoading} from 'maskloadingJsx'
 
+import {Api} from 'api';
+import {encription} from 'query';
+import {Tip} from 'util';
 import 'classifyCss';
 
 class Classify extends Component {
 
-
+    //初始化子组件展示
     static defaultProps = {
-        header: {
-            title: "商品分类",
-            name: '保存',
+        setNav: {
+            Location: true,
+            home: true,
+            title: '全部分类',
+            search: true,
+            shopping: true,
         },
-        Routers: [1,0,1,1,1],
+        Routers: [1, 0, 1, 1, 1],
     };
 
     constructor(props) {
         super(props);
 
         this.state = {
-            categoryList: [
-                {name: '我是1'},
-                {name: '我是2人'},
-                {name: '我是3人'},
-                {name: '我是4人'},
-                {name: '我是5人'},
-                {name: '我是6人'},
-                {name: '我是7人'},
-                {name: '我是8人'},
-                {name: '我是9人'},
-                {name: '我是9人'},
-                {name: '我是9人'},
-                {name: '我是9人'},
-                {name: '我是9人'},
-                {name: '我是9人'},
-                {name: '我是9人'},
-                {name: '我是9人'},
-                {name: '我是9人'},
-                {name: '我是9人'},
-                {name: '我是01人'},
-                {name: '我是1人'},
-                {name: '我是00人'},
-                {name: '我是92人'},
-                {name: '我19人'},
-                {name: '我是10人'},
-                {name: '我是19人'},
-            ]
+            active: 0,
+            show: true,
+            categoryList: [],
+            categoryItems: [],
         };
 
+        //时间戳
+        this.timeStamp = Date.parse(new Date());
+
         //事件绑定
+        this.changeTab = this.changeTab.bind(this);
+        this.TabRequest = this.TabRequest.bind(this);
 
     }
 
@@ -65,75 +53,100 @@ class Classify extends Component {
 
         let that = this;
 
+        //监听页面尺寸是否改变
         this._onresize();
 
-        that.Scroll = new IScroll('#category',
+        //初始化类目滚动
+        this.Scroll = new IScroll('#category',
             {
-                hScrollbar:false,
+                hScrollbar: false,
                 probeType: 2,
-                vScroll:true,
+                vScroll: true,
                 preventDefault: false,
                 tap: true,
                 scrollbars: false,
-                momentum:true,
+                momentum: true,
             });
 
-        that.RScroll = new IScroll('#branchScroll',
-            {
-                preventDefault: false,
-                tap: true,
-                scrollbars: false,
-            });
-
-        //绑定事件
-        $('#category ul li').on('tap', function () {
-
-            if ($(this).hasClass('active')) {
-                return false;
-            }
-
-            $('#category ul li').removeClass('active');
-            $(this).addClass('active');
-            let PositionIndex = document.querySelector('#category li[class="active"]');
-            //滚动中间 设为true，顶部设为false
-            that.Scroll.scrollToElement(PositionIndex, 200, false, false);
-
-            //过渡展示右侧页面
-            document.querySelector('#branchList').style.opacity = '0';
-            document.querySelector('#branchList').style.transition = 'opacity .3s linear 0s';
-            setTimeout(function () {
-                document.querySelector('#branchList').style.opacity = '1';
-                setTimeout(function () {
-                    document.querySelector('#branchList').setAttribute('style', 'transform: translate(0px, 0px);');
-                }, 300)
-            }, 300);
-
-        });
-
+        //阻止滚动
         document.querySelector('#category').addEventListener('touchmove', function (e) {
             e.preventDefault();
         }, false);
-        document.querySelector('#branchScroll').addEventListener('touchmove', function (e) {
-            e.preventDefault();
-        }, false);
 
 
+        //初始化数据
+        let data = {
+            catId: 0,
+            timeStamp: that.timeStamp,
+            strUserId: 0,
+            strToken: 0,
+        };
+
+        let params = {
+            url: '/mobile-web-trade/ws/mobile/v1/goods/catList?sign=' + encription(data),
+            method: 'post',
+            params: JSON.stringify(data),
+        };
+
+        Api(params)
+            .done((data) => {
+                let firstCatId = data.response.category[0].catId;
+                that.setState({
+                    categoryList: data.response.category,
+                });
+                that.TabRequest(firstCatId);
+            })
+            .fail((error) => {
+                Tip('服务器错误，程序员正在拖出去问斩');
+            })
     }
 
     componentWillUnmount() {
 
         //移除事件 避免内存泄漏
-        $('#category ul li').unbind("tap");
+        document.querySelector('#category').removeEventListener('touchmove', false);
+
+    }
+
+    TabRequest(carId) {
+        let that = this;
+        let data = {
+            catId: carId,
+            timeStamp: that.timeStamp,
+            strUserId: 0,
+            strToken: 0,
+        };
+
+        let params = {
+            url: '/mobile-web-trade/ws/mobile/v1/goods/catList?sign=' + encription(data),
+            method: 'post',
+            params: JSON.stringify(data),
+        };
+
+        Api(params)
+            .done((data) => {
+                setTimeout(() => {
+                    that.setState({
+                        show: false,
+                        categoryItems: data.response.category,
+                    });
+                    document.querySelector('#branchList').style.opacity = '1';
+                },300);
+            })
+            .fail((error) => {
+                Tip('服务器错误，程序员正在拖出去问斩');
+            });
 
     }
 
     //计算高度
     _height() {
-        let WindowHeight = document.body.offsetHeight;
-        let HeaderHeight = document.querySelector('header.header').offsetHeight;
+        let WindowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+        ;
+        let HeaderHeight = document.querySelector('div.hy-nav-block').offsetHeight;
         let FooterHeight = document.querySelector('div.floor').offsetHeight;
-        document.querySelector('#category').style.height = (WindowHeight - HeaderHeight - FooterHeight ) + 'px';
-        document.querySelector('#branchScroll').style.height = (WindowHeight - HeaderHeight - FooterHeight ) + 'px';
+        document.querySelector('#category').style.height = (WindowHeight - HeaderHeight - FooterHeight) + 'px';
+        document.querySelector('div.category-viewport').style.paddingTop = HeaderHeight + 'px';
     }
 
     //窗口大小改变触发事件
@@ -145,12 +158,40 @@ class Classify extends Component {
         };
     }
 
+    //切换tab
+    changeTab(event) {
+        let dataItem = event.currentTarget.getAttribute('data-item');
+        let catId = event.currentTarget.getAttribute('data-catId');
+        let ClassName = event.currentTarget.className;
+
+        if (ClassName == 'active') {
+            return false;
+        }
+
+        this.setState({
+            active: dataItem
+        }, () => {
+
+            let PositionIndex = document.querySelector('#category li[class="active"]');
+            //滚动中间 设为true，顶部设为false
+            this.Scroll.scrollToElement(PositionIndex, 200, false, false);
+
+            //过渡展示右侧页面
+            document.querySelector('#branchList').style.opacity = '0';
+            document.querySelector('#branchList').style.transition = 'opacity .3s linear 0s';
+
+        });
+
+        this.TabRequest(catId);
+
+    }
+
     render() {
-        const {header, Routers} = this.props;
-        const {categoryList} = this.state;
+        const {Routers, setNav} = this.props;
+        const {categoryList, categoryItems, active, show,} = this.state;
         return (
-            <div>
-                <Header header={ header }/>
+            <div className="page">
+                <Nav nav={ setNav }/>
 
                 <div className="category-viewport">
 
@@ -160,9 +201,10 @@ class Classify extends Component {
                             <ul>
                                 {
                                     categoryList.map((item, index) => {
-                                        return (index == 0 ? <li key={index} className="active"><a
-                                            href="javascript: void (0)">{ item.name }</a></li> :
-                                            <li key={index}><a href="javascript: void (0)">{ item.name }</a></li>)
+                                        return <li data-catId={ item.catId } data-item={index} key={index}
+                                                   onClick={ this.changeTab }
+                                                   className={`${ active == index ? 'active' : ''}`}><a
+                                            href="javascript: void (0)">{ item.catName }</a></li>
                                     }, this)
                                 }
                             </ul>
@@ -173,8 +215,18 @@ class Classify extends Component {
                     <div className="hy-category-content">
                         <div id="branchScroll" className="hy-category-content-wrapper">
                             <div id="branchList">
-                                <div style={{height: '1000px', backgroundColor: 'red', width: '100%'}} className="">
-                                    22
+                                <div style={{height: '1000px', width: '100%'}} className="">
+                                    {
+                                        categoryItems && categoryItems.length > 0 ? categoryItems.map((item, index) => {
+
+                                            return item && item.category.length > 0 ? item.category.map((itemt, indext) => {
+                                                return (
+                                                    <span data-catId={ itemt.catId } key={indext}>{itemt.catName}</span>
+                                                )
+                                            }) : null
+
+                                        }) : null
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -183,7 +235,14 @@ class Classify extends Component {
                 </div>
 
                 {/*底部导航*/}
-                <Footer  router = { Routers } />
+                <Footer router={ Routers }/>
+
+
+                {/*页面加载中*/}
+                {
+                    show ? <MaskLoading/> : null
+                }
+
             </div>
         )
     }
@@ -191,4 +250,4 @@ class Classify extends Component {
 }
 
 
-export  { Classify };
+export  {Classify};

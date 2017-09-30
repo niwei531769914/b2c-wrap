@@ -23,6 +23,8 @@ class Product extends Component {
 
         //数据初始化
         this.state = {
+            adshow: false,
+            reshow: false,
             goods: {
                 addressFreight: {},
                 evaInfo: {},
@@ -40,6 +42,7 @@ class Product extends Component {
         this.hideSpec = this.hideSpec.bind(this);
         this.changeArea = this.changeArea.bind(this);
         this.BtnArea = this.BtnArea.bind(this);
+        this.toSkip = this.toSkip.bind(this);
     }
 
     componentDidMount() {
@@ -102,7 +105,6 @@ class Product extends Component {
             .fail((error) => {
                 Tip('服务器错误');
             })
-
     }
 
     componentWillUnmount() {
@@ -113,49 +115,57 @@ class Product extends Component {
     changeSpec() {
 
         this.ScrollTop = $(window).scrollTop();
-        $('html').addClass('hidescroll');
-        $('body').addClass('hidescroll');
-        $('.cmp-fixed').show().addClass('cover-mask-toggle');
-        $('#fourth_color').addClass('fourth-cover-toggle');
-
+        document.querySelector('html').setAttribute('class','hidescroll');
+        document.querySelector('body').setAttribute('class','hidescroll');
+        this.setState({
+            reshow : !this.state.reshow
+        })
     }
 
     hideSpec() {
-
-        $('html').removeClass('hidescroll');
-        $('body').removeClass('hidescroll');
-        $('.cmp-fixed').hide().removeClass('cover-mask-toggle');
-        $('#fourth_color').removeClass('fourth-cover-toggle');
-        $('#fourth-area').removeClass('fourth-cover-toggle');
+        document.querySelector('html').removeAttribute('class');
+        document.querySelector('body').removeAttribute('class');
+        //规格
+        if(document.getElementById('fourth_color').getAttribute('class').indexOf('fourth-cover-toggle') > -1){
+            this.setState({
+                reshow : !this.state.reshow,
+            });
+        }
+        //地址
+        if(document.getElementById('fourth_area').getAttribute('class').indexOf('fourth-cover-toggle') > -1){
+            this.setState({
+                adshow : !this.state.adshow,
+            });
+        }
         $(window).scrollTop(this.ScrollTop);
-
     }
 
     //弹出地址栏
     changeArea(event) {
-
         this.ScrollTop = $(window).scrollTop();
-        $('html').addClass('hidescroll');
-        $('body').addClass('hidescroll');
-        $('.cmp-fixed').show().addClass('cover-mask-toggle');
-        $('#fourth-area').addClass('fourth-cover-toggle');
-
+        document.querySelector('html').setAttribute('class','hidescroll');
+        document.querySelector('body').setAttribute('class','hidescroll');
+        this.setState({
+            adshow : !this.state.adshow
+        });
         this.refs['child'].changeArea();
-
     }
 
-    BtnArea(arg) {
+    BtnArea(...arg) {
         let  { goods } = this.state;
         this.hideSpec();
-        goods.addressFreight.address = arg;
-
+        goods.addressFreight.address = arg[0] + arg[1] + arg[2];
         this.setState(goods);
+    }
 
+    //跳转
+    toSkip(){
+        window.location.href = 'comment.html?' + escape('sign=我22sss&goodsitemid=11462');
     }
 
     render() {
 
-        const {goods} = this.state;
+        const { goods, reshow, adshow } = this.state;
 
         return (
             <div className="page">
@@ -294,7 +304,7 @@ class Product extends Component {
                             </section> : null
                         }
 
-                        <section className="product-evaluate">
+                        <section className="product-evaluate" onClick={this.toSkip}>
                             <div className="fourth-cells">
                                 <div className="fourth-cell">
                                     <div className="cell-primary">评价(1500+)</div>
@@ -318,7 +328,7 @@ class Product extends Component {
 
 
                 {/*弹窗规格*/}
-                <section className="fourth-cover" id="fourth_color">
+                <section className={`fourth-cover${ reshow ? ' fourth-cover-toggle' : '' }`} id="fourth_color">
 
                     <header className="cover-head">
 
@@ -338,14 +348,14 @@ class Product extends Component {
                 </section>
 
                 {/*弹出地址选择窗口*/}
-                <section className="fourth-cover" id="fourth-area">
+                <section className={`fourth-cover${ adshow ? ' fourth-cover-toggle' : '' }`} id="fourth_area">
 
                     <Area ref="child" btnarea={ this.BtnArea }/>
 
                 </section>
 
                 {/*弹出阴影层*/}
-                <section className="cmp-fixed" onClick={this.hideSpec}>
+                <section className={`cmp-fixed${ adshow || reshow ? ' cover-mask-toggle':'' }`} onClick={this.hideSpec}>
 
                 </section>
 

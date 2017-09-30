@@ -104,6 +104,10 @@ export const Tip =  (message,time) => {
     }, time || "3000");
 };
 
+//检查电话号码首字符是否为1,且输入字符只能是数字
+export const CheckPhone = (phone) => {
+    return /^1\d{10}$/.test(phone);
+};
 
 //动态获取host
 export const HTTP = () =>{

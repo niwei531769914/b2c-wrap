@@ -1,0 +1,189 @@
+.page{
+  width: 100%;
+  height: auto;
+  .comment-tab{
+    position: relative;
+    width: 100%;
+    height: auto;
+    //好评率
+    .comments-rate{
+      display: flex;
+      flex-flow: row nowrap;
+      padding: .4rem .3rem 0;
+      align-items: center;
+      .comment-score{
+        font-size: .3rem;
+        color: #7f7f7f;
+        margin-right: .2rem;
+      }
+      ul{
+        width: auto;
+        height: auto;
+
+        li{
+          width: .5rem;
+          height: .5rem;
+          background: yellow;
+          display: inline-block;
+          float: left;
+          margin-right: .15rem;
+        }
+      }
+      .comment-sign{
+        font-size: .3rem;
+        color: #7f7f7f;
+      }
+    }
+
+    //评论差别
+    .comments-tag-list{
+      display: flex;
+      flex-flow: row wrap;
+      position: relative;
+      padding: .20667rem 0 .3rem .3rem;
+      ul{
+        width: auto;
+        height: auto;
+        li{
+          float: left;
+          box-sizing: border-box;
+          font-size: .26rem;
+          padding: .10667rem .11333rem .14667rem;
+          margin: .3rem .3rem 0 0;
+          border:  solid #7F7F7F;
+          border-radius: .05333rem;
+          border-width: thin;
+        }
+        .active{
+          color: #b4282d;
+          border-color: #b4282d;
+        }
+      }
+    }
+    .comments-tag-list:after{
+      content: '';
+      position: absolute;
+      background-color: #d9d9d9;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      -webkit-transform-origin: 50% 100% 0;
+      transform-origin: 50% 100% 0;
+      bottom: 0;
+    }
+
+
+
+
+  }
+}
+
+//评论列表展示
+.comments-list{
+  width: 100%;
+  height: auto;
+  ul{
+    width: auto;
+    height: auto;
+    margin-left: .3rem;
+    li{
+      margin-right: .3rem;
+      border-bottom: 1px solid #d9d9d9;
+      .m-comment{
+        margin-bottom: .2rem;
+        .m-comment-header{
+          display: flex;
+          flex-flow: row nowrap;
+          justify-content: space-between;
+          align-items: center;
+          padding: .2rem 0 .05333rem;
+          overflow: hidden;
+          .left{
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+            -webkit-box-align: center;
+            font-size: .26rem;
+            color: #000000;
+            em{
+              width: .44rem;
+              height: .44rem;
+              background: #f53828;
+              margin-right: .2rem;
+            }
+            span{
+              margin-right: .2rem;
+            }
+          }
+          .right{
+            display: flex;
+            width: auto;
+            height: .5rem;
+            align-items: center;
+            ul{
+              width: auto;
+              height: auto;
+              margin-left: 0;
+              li{
+                width: .24rem;
+                height: .24rem;
+                background: #333333;
+                float: left;
+                margin-right: .15rem;
+              }
+            }
+          }
+        }
+        .m-comment-time{
+          display: block;
+          font-size: .24rem;
+          color: #999;
+          margin: .15rem 0 0;
+        }
+        .m-comment-info{
+          margin-top: .15rem;
+          margin-right: .3rem;
+          .inner{
+            font-size: .28rem;
+            color: #555;
+            line-height: .4rem;
+          }
+        }
+        .m-comment-pic{
+          margin: .1rem 0 .08rem;
+          display: flex;
+          flex-flow: row wrap;
+          span{
+            width: 1.6rem;
+            height: 1.6rem;
+            display: block;
+            background: #7a7a7a;
+            margin-right: .12rem;
+            margin-top: .12rem;
+          }
+        }
+        .m-comment-footer{
+          display: flex;
+          flex-flow: wrap row;
+          align-items: center;
+          justify-content: center;
+          -webkit-box-pack: center;
+          .comment-service{
+            margin: .32rem 0 0;
+            background-color: rgba(0,0,0,.03);
+            border-radius: 4px;
+            padding: .26667rem;
+            width: 100%;
+            font-weight: 400;
+            font-size: .26rem;
+            line-height: .4rem;
+            color: #7f7f7f;
+            .comment-service-title{
+              color: #333;
+            }
+          }
+        }
+      }
+    }
+  }
+}

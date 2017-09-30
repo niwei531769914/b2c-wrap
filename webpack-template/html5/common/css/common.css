@@ -34,7 +34,7 @@ textarea.fixAndroidKeyboard:focus, input.fixAKeyboard:focus {-webkit-tap-highlig
 .noscroll {position: absolute;width: 100%;height: 100%;overflow: hidden;}
 .hidden {display: none;}
 
-html, body {line-height: 1;width: 100%;font-family: "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft Yahei", "微软雅黑", Tahoma, Arial, STHeiti, sans-serif;-webkit-text-size-adjust: none;  }
+html, body {line-height: 1;width: 100%;font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;-webkit-text-size-adjust: none;  }
 
 .nwrapper{width: 100%;position: relative;max-width: 750px;min-width: 320px;margin: 0 auto;}
 

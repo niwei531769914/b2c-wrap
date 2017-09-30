@@ -10,6 +10,7 @@
   height: auto;
   overflow-y: auto;
   min-height: 100%;
+  position: fixed;
 }
 .category-viewport .hy-category-tab #category {
   overflow: hidden;
@@ -98,5 +99,5 @@
 }
 .category-viewport .hy-category-content .hy-category-content-wrapper {
   margin-left: 76px;
-  overflow: hidden;
+  overflow: auto;
 }

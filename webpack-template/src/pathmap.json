@@ -12,10 +12,13 @@
 
   "commonCss":"css/common/common.css",
   "headerCss":"css/common/header.css",
+  "navCss":"css/common/nav.css",
   "isloadingCss":"css/common/isloading.css",
+  "maskloadingCss":"css/common/maskloading.css",
   "topCss":"css/common/top.css",
   "swiper":"css/swiper.min.css",
   "footerCss":"css/common/footer.css",
+  "reviewCss":"css/common/review.css",
 
 
   "addressCss":"css/address.css",
@@ -24,21 +27,29 @@
   "orderlistCss":"css/orderlist.css",
   "classifyCss":"css/classify.css",
   "productCss":"css/product.css",
+  "cartadCss":"css/cartad.css",
+  "commentCss":"css/comment.css",
 
 
-  "addressJsx":"scripts/components/lehu.h5.component.address.jsx",
+  "adlistJsx":"scripts/components/lehu.h5.component.adlist.jsx",
   "swiperJsx":"scripts/components/lehu.h5.component.swiper.jsx",
   "areasJsx":"scripts/components/lehu.h5.component.areas.jsx",
+  "reviewJsx":"scripts/components/lehu.h5.component.review.jsx",
 
 
   "orderlistJsx":"scripts/containers/lehu.h5.container.orderlist.jsx",
   "classifyJsx":"scripts/containers/lehu.h5.container.classify.jsx",
   "productJsx":"scripts/containers/lehu.h5.container.product.jsx",
   "indexJsx":"scripts/containers/lehu.h5.container.index.jsx",
+  "addressJsx":"scripts/containers/lehu.h5.container.address.jsx",
+  "cartadJsx":"scripts/containers/lehu.h5.container.cartad.jsx",
+  "commentJsx":"scripts/containers/lehu.h5.container.comment.jsx",
 
 
   "headerJsx":"scripts/commonViews/lehu.h5.commonviews.header.jsx",
+  "navJsx":"scripts/commonViews/lehu.h5.commonviews.nav.jsx",
   "loadingJsx":"scripts/commonViews/lehu.h5.commonviews.loading.jsx",
+  "maskloadingJsx":"scripts/commonViews/lehu.h5.commonviews.maskloading.jsx",
   "topJsx":"scripts/commonViews/lehu.h5.commonviews.top.jsx",
   "footerJsx":"scripts/commonViews/lehu.h5.commonviews.footer.jsx",
 

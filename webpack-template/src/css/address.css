@@ -1,150 +1,44 @@
-body {
-	background: #F5F5F5;
+body{
+	background: #f2f2f2;
 }
-
-/*!* 头部 *!*/
-
-#Middle,
-.identity,
-.default{
-	margin: .16rem 0;
-	overflow: auto;
-	zoom: 1;
-	background: #FFFFFF;
-}
-
-#Middle input {
-	width: 92%;
-	height: .94rem;
-	line-height: .94rem;
-	float: left;
-	font-size: .28rem;
-	padding: 0 4%;
-	border-bottom: .002rem solid #F5F5F5;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-#Middle .Address{
-	width: 92%;
-	height: .94rem;
-	line-height: .94rem;
-	float: left;
-	font-size: .28rem;
-	padding: 0 4%;
-	border-bottom: .002rem solid #F5F5F5;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-.Address .Address-title {
-	float: left;
-	margin-right: .2rem;
-}
-
-.Address .Address-title em{
-	margin-right: .1rem;
-}
-
-.Address .Address-tab{
-	float: right;
-}
-
-.Address .Address-tab img {
-	width: .64rem;
-	height: .64rem;
-
-}
-
-.identity-Serial {
-	width: 92%;
-	height: .96rem;
-	line-height: .96rem;
-	padding: 0 4%;
-	font-size: .28rem;
-	border-bottom: .02rem solid #F5F5F5;
-	float: left;
-}
-
-.identity-content {
-	float: left;
-}
-
-.identity-upload {
-	width: 100%;
-	height: .96rem;
-	line-height: .96rem;
-	font-size: .28rem;
-	text-indent: .32rem;
-	display: inline-block;
-	float: left;
-}
-
-.identity-picture {
+.cart-page {
 	width: 100%;
 	height: auto;
-	float: left;
+	color: #333;
 }
-
-.identity-picture>a {
-	width: 2.36rem;
-	height: 1.4rem;
-	display: inline-block;
-	float: left;
-	margin: 0 .32rem .32rem;
-}
-
-.identity-picture>a>img {
-	width: 100%;
-	height: 100%;
-	float: left;
-}
-
-.default {
-	width: 92%;
-	padding: 0 4%;
-	height: .96rem;
-	float: left;
-	margin-bottom: .32rem;
-}
-
-.default .check {
-	width: auto;
-	height: .96rem;
-	padding-left: .38rem;
+.cart-page h1 {
+	display: -webkit-box;
+	height: .88rem;
+	line-height: .88rem;
+	font-weight: 400;
+	padding: 0 .2rem;
 	font-size: .24rem;
-	line-height: .96rem;
-	background: url(../images/editad/ic_check_box_outline.png) no-repeat 0 .32rem;
-	background-size: .28rem;
+	background-color: #dbd0ca;
 }
-
-.default .check.active{
-	background: url(../images/editad/ic_check_box.png) no-repeat 0 .32rem;
-	background-size: .28rem;
+.cart-page h1 p {
+	display: block;
+	-webkit-box-flex: 1;
+	text-align: right;
 }
-
-
-
-.delete {
+.cart-page ul {
 	width: 100%;
-	height: .96rem;
-	float: left;
+	height: auto;
 }
-
-.delete>a {
-	width: 2rem;
-	height: .72rem;
-	line-height: .72rem;
-	margin: .12rem 0;
-	float: right;
-	margin-right: .32rem;
-	color: #FFFFFF;
-	text-align: center;
-	font-size: .32rem;
-	background: url(../images/editad/bg_person.png) no-repeat;
-	background-size: 100%;
-	border-radius: .06rem;
-	 	
+.cart-page ul li {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	padding: .3rem .2rem 0;
+	margin-left: 0;
+	border-bottom: 1px solid #d0d0d0;
+	background-color: #fff;
+	margin-bottom: .2rem;
+}
+.cart-page ul li .info {
+	width: 100%;
+	height: 50px;
+	border-bottom: 1px dashed #e0e0e0;
+}
+.cart-page ul li .edit {
+	width: 100%;
+	height: 30px;
 }

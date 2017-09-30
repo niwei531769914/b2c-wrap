@@ -6,7 +6,7 @@ import md5 from 'md5';
 export const  parseQueryString = (url) =>{
     let reg_url = /^[^\?]+\?([\w\W]+)$/,
         reg_para = /([^&=]+)=([\w\W]*?)(&|$|#)/g,
-        Url = decodeURI(url),
+        Url = unescape(url),
         arr_url = reg_url.exec(Url),
         ret = {};
     if (arr_url && arr_url[1]) {

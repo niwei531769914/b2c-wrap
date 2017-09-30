@@ -1,0 +1,43 @@
+.mask-loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(30, 30, 30, .4);
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+.mask-loading .loading-mask{
+    width: 36px;
+    height: 36px;
+    background: rgba(0,0,0,.3);
+    border-radius: 4px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.mask-loading .loading-mask i {
+    width: 20px;
+    height: 20px;
+    display: block;
+    animation: rotate .7s infinite;
+    background: url(../../images/loading.png) no-repeat;
+    background-size: 100%;
+    animation-timing-function: linear
+}
+
+@keyframes rotate {
+    0% {
+        -webkit-transform: rotate(0)
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg)
+    }
+}

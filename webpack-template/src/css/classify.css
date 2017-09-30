@@ -1,8 +1,8 @@
-body{
-  position: fixed !important;
-  width: 100%;
-  height: 100%;
-}
+/*body{*/
+  /*position: fixed !important;*/
+  /*width: 100%;*/
+  /*height: 100%;*/
+/*}*/
 .category-viewport {
   width: 100%;
   height: auto;
@@ -16,6 +16,7 @@ body{
   overflow-y: auto;
   min-height: 100%;
   background-color: #ffffff;
+  position: fixed;
 }
 .category-viewport .hy-category-tab #category {
   overflow: hidden;
@@ -104,5 +105,5 @@ body{
 }
 .category-viewport .hy-category-content .hy-category-content-wrapper {
   margin-left: 76px;
-  overflow: hidden;
+  overflow: auto;
 }

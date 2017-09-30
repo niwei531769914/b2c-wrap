@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>汇银乐虎-编辑地址</title>
+    <meta name="description" content="">
+    <meta name="Keywords" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no,email=no">
+
+    <link href="../common/css/common.css" rel="stylesheet">
+    <script src="../common/js/zepto.min.js"></script>
+    <script src="js/Address.js"></script>
+    <link href="css/editAddress.css" rel="stylesheet" >
+
+</head>
+<body class="nwrapper">
+<div class="hy-mask">
+
+    <!--主体内容-->
+    <section class="cart-page">
+
+        <ul class="cart-list">
+            <li class="cart-list-item">
+                <label class="form-input-label">
+                    收货人
+                </label>
+                <div class="form-input">
+                    <input type="text" name="username" maxlength="20" placeholder="收货人姓名">
+                    <em class="clr-transition"></em>
+                </div>
+            </li>
+            <li class="cart-list-item">
+                <label class="form-input-label">
+                    联系方式
+                </label>
+                <div class="form-input">
+                    <input type="text" name="username" maxlength="20" placeholder="收货人手机号码">
+                    <em class="clr-transition" style="display: none"></em>
+                </div>
+            </li>
+            <li class="cart-list-item">
+                <label class="form-input-label">
+                    所在地区
+                </label>
+                <div class="form-href">
+                    <div class="">江苏省南京市江宁区全区</div>
+                </div>
+            </li>
+            <li class="cart-list-item">
+                <label class="form-input-label">
+                    详细地址
+                </label>
+                <div class="form-input">
+                    <input type="text" name="username" maxlength="20" placeholder="街道详细地址">
+                    <em class="clr-transition" style="display: none"></em>
+                </div>
+            </li>
+            <li class="cart-list-item">
+                <label class="form-input-label">
+                    设置为默认地址
+                </label>
+                <input type="checkbox" class="input-reset hy-checkbox">
+            </li>
+        </ul>
+
+        <!--按钮-->
+        <a href="javascript: void (0)" class="hy-btn hy-btn-block">
+            保存并使用
+        </a>
+
+    </section>
+
+    <!--弹出地址-->
+    <section class="fourth-cover">
+
+    </section>
+
+</div>
+</body>
+<script type="text/javascript">
+    window.onload = function () {
+        $('.form-href').click(function () {
+            if($('.fourth-cover').hasClass('fourth-cover-toggle')){
+                $('.fourth-cover').removeClass(('fourth-cover-toggle'));
+                return false;
+            }
+            $('.fourth-cover').addClass(('fourth-cover-toggle'));
+        })
+    }
+</script>
+</html>

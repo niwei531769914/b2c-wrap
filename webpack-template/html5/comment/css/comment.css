@@ -1,0 +1,179 @@
+.page {
+  width: 100%;
+  height: auto;
+}
+.page .comment-tab {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+.page .comment-tab .comments-rate {
+  display: flex;
+  flex-flow: row nowrap;
+  padding: .4rem .3rem 0;
+  align-items: center;
+}
+.page .comment-tab .comments-rate .comment-score {
+  font-size: .3rem;
+  color: #7f7f7f;
+  margin-right: .2rem;
+}
+.page .comment-tab .comments-rate ul {
+  width: auto;
+  height: auto;
+}
+.page .comment-tab .comments-rate ul li {
+  width: .5rem;
+  height: .5rem;
+  background: yellow;
+  display: inline-block;
+  float: left;
+  margin-right: .15rem;
+}
+.page .comment-tab .comments-rate .comment-sign {
+  font-size: .3rem;
+  color: #7f7f7f;
+}
+.page .comment-tab .comments-tag-list {
+  display: flex;
+  flex-flow: row wrap;
+  position: relative;
+  padding: .20667rem 0 .3rem .3rem;
+}
+.page .comment-tab .comments-tag-list ul {
+  width: auto;
+  height: auto;
+}
+.page .comment-tab .comments-tag-list ul li {
+  float: left;
+  box-sizing: border-box;
+  font-size: .26rem;
+  padding: .10667rem .11333rem .14667rem;
+  margin: .3rem .3rem 0 0;
+  border: solid #7F7F7F;
+  border-radius: .05333rem;
+  border-width: thin;
+}
+.page .comment-tab .comments-tag-list ul .active {
+  color: #b4282d;
+  border-color: #b4282d;
+}
+.page .comment-tab .comments-tag-list:after {
+  content: '';
+  position: absolute;
+  background-color: #d9d9d9;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  -webkit-transform-origin: 50% 100% 0;
+  transform-origin: 50% 100% 0;
+  bottom: 0;
+}
+.comments-list {
+  width: 100%;
+  height: auto;
+}
+.comments-list ul {
+  width: auto;
+  height: auto;
+  margin-left: .3rem;
+}
+.comments-list ul li {
+  margin-right: .3rem;
+  border-bottom: 1px solid #d9d9d9;
+}
+.comments-list ul li .m-comment {
+  margin-bottom: .2rem;
+}
+.comments-list ul li .m-comment .m-comment-header {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: .2rem 0 .05333rem;
+  overflow: hidden;
+}
+.comments-list ul li .m-comment .m-comment-header .left {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  -webkit-box-align: center;
+  font-size: .26rem;
+  color: #000000;
+}
+.comments-list ul li .m-comment .m-comment-header .left em {
+  width: .44rem;
+  height: .44rem;
+  background: #f53828;
+  margin-right: .2rem;
+}
+.comments-list ul li .m-comment .m-comment-header .left span {
+  margin-right: .2rem;
+}
+.comments-list ul li .m-comment .m-comment-header .right {
+  display: flex;
+  width: auto;
+  height: .5rem;
+  align-items: center;
+}
+.comments-list ul li .m-comment .m-comment-header .right ul {
+  width: auto;
+  height: auto;
+  margin-left: 0;
+}
+.comments-list ul li .m-comment .m-comment-header .right ul li {
+  width: .24rem;
+  height: .24rem;
+  background: #333333;
+  float: left;
+  margin-right: .15rem;
+}
+.comments-list ul li .m-comment .m-comment-time {
+  display: block;
+  font-size: .24rem;
+  color: #999;
+  margin: .15rem 0 0;
+}
+.comments-list ul li .m-comment .m-comment-info {
+  margin-top: .15rem;
+  margin-right: .3rem;
+}
+.comments-list ul li .m-comment .m-comment-info .inner {
+  font-size: .28rem;
+  color: #555;
+  line-height: .4rem;
+}
+.comments-list ul li .m-comment .m-comment-pic {
+  margin: .1rem 0 .08rem;
+  display: flex;
+  flex-flow: row wrap;
+}
+.comments-list ul li .m-comment .m-comment-pic span {
+  width: 1.6rem;
+  height: 1.6rem;
+  display: block;
+  background: #7a7a7a;
+  margin-right: .12rem;
+  margin-top: .12rem;
+}
+.comments-list ul li .m-comment .m-comment-footer {
+  display: flex;
+  flex-flow: wrap row;
+  align-items: center;
+  justify-content: center;
+  -webkit-box-pack: center;
+}
+.comments-list ul li .m-comment .m-comment-footer .comment-service {
+  margin: .32rem 0 0;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-radius: 4px;
+  padding: .26667rem;
+  width: 100%;
+  font-weight: 400;
+  font-size: .26rem;
+  line-height: .4rem;
+  color: #7f7f7f;
+}
+.comments-list ul li .m-comment .m-comment-footer .comment-service .comment-service-title {
+  color: #333;
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>顶部导航</title>
+    <meta name="description" content="">
+    <meta name="Keywords" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no,email=no">
+    <script src="../common/js/zepto.min.js"></script>
+    <link href="../common/css/common.css" rel="stylesheet">
+    <link href="css/nav.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="hy-nav-block">
+
+    <div class="nav-left">
+        <!--<a href="javascript: void (0)" class="nav-back"></a>-->
+        <a href="javascript: void (0)" class="nav-home">
+            <ul class="show-nav">
+                <li class="index">首页</li>
+                <li class="classify">全部分类</li>
+                <li class="products">产地</li>
+                <li class="shopping">购物车</li>
+                <li class="me">我的乐虎</li>
+            </ul>
+        </a>
+    </div>
+    <h2>我的易购</h2>
+    <div class="nav-right">
+        <a href="javascript: void (0)" class="nav-search"></a>
+        <a href="javascript: void (0)" class="nav-shopping"></a>
+    </div>
+
+</div>
+
+</body>
+<script type="text/javascript">
+    window.onload = function () {
+
+        $(document).click(function (event) {
+
+            $('.show-nav').removeClass('show');
+
+        });
+
+        $('.show-nav li').click(function (event) {
+            let e = event || window.event;
+            e.stopPropagation();
+            alert(1);
+        });
+
+
+        $('.nav-home').click(function (event) {
+
+            let e = event || window.event;
+            e.stopPropagation();
+
+            if($('.show-nav').hasClass('show')){
+                $('.show-nav').removeClass('show');
+                return false;
+            }
+            $('.show-nav').addClass('show');
+
+        });
+
+
+    }
+</script>
+</html>

@@ -4,7 +4,7 @@
 import $ from 'zepto';
 
 
-let env_url = 'http://121.196.208.98:28080'; //测试环境
+let env_url = 'http://mobile.see-more.cn:28080'; //测试环境
 
 
 let Api = function (params) {

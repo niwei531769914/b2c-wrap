@@ -53,15 +53,12 @@ class Area extends Component {
         if(area == ''){
             return false;
         }
-        let Span = provincial + city + area;
 
-        this.props.btnarea(Span);
+        this.props.btnarea(provincial, city , area);
     }
 
     changeArea(...arg) {
 
-        console.log(2);
-        let {provincial, city, area, _cityList, _areaList} = this.state;
         let that = this;
         //初始化数据
         this.setState({

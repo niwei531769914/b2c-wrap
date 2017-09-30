@@ -1,6 +1,6 @@
 
 /*
-* 编辑地址 容器主入口
+* 地址列表 容器主入口
 */
 import React ,{ Component } from 'react';
 import ReactDOM , { render } from 'react-dom';

@@ -35,4 +35,41 @@
 .cart-page {
   width: 100%;
   height: auto;
+  color: #333;
+}
+.cart-page h1 {
+  display: -webkit-box;
+  height: .88rem;
+  line-height: .88rem;
+  font-weight: 400;
+  padding: 0 .2rem;
+  font-size: .24rem;
+  background-color: #dbd0ca;
+}
+.cart-page h1 p {
+  display: block;
+  -webkit-box-flex: 1;
+  text-align: right;
+}
+.cart-page ul {
+  width: 100%;
+  height: auto;
+}
+.cart-page ul li {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  padding: .3rem .2rem 0;
+  margin-left: 0;
+  border-bottom: 1px solid #d0d0d0;
+  background-color: #fff;
+  margin-bottom: .2rem;
+}
+.cart-page ul li .info {
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px dashed #e0e0e0;
+}
+.cart-page ul li .edit {
+  width: 100%;
+  height: 30px;
 }
